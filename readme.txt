@@ -1,518 +1,518 @@
 ***************************************************************************
-	�g�у��C�u�����ulib3gk�v��CakePHP1.2�p�w���p�[/�R���|�[�l���g
-	������
+	携帯ライブラリ「lib3gk」＆CakePHP1.2用ヘルパー/コンポーネント
+	説明書
 	Copyright 2009 ECWorks ( http://www.ecworks.jp/ )
 ***************************************************************************
 
-�@�_�E�����[�h���������܂��Ă��肪�Ƃ��������܂��B
+　ダウンロードいただきましてありがとうございます。
 
-�@�{�h�L�������g�ł́A�g�уT�C�g�̍\�z�ɕK�v�ȋ@�\��񋟂���g�у��C�u�����ƁA
-CakePHP���ŗ��p���邽�߂̃w���p�[�E�R���|�[�l���g�ꎮ�ɂ��Ă̐ݒu���@�����
-�ݒ���@�ɂ��ĊȒP�ɂ����������Ă��������܂��B�ݒu����O�ɂ���ǂ��������܂�
-�悤�A���肢�\���グ�܂��B
-
-
---------------------------------------------------
-���͂��߂�
---------------------------------------------------
-
-�@�{���C�u�����Q�́ACakePHP�𗘗p���Čg�уT�C�g����y�ɍ\�z���邽�߂̋@�\��
-�񋟂������܂��B�Ƃ�킯�A�L�����A���̊G�����ϊ�����уL�����A����E���[�������
-�{���C�u�����Q�𗘗p���邱�ƂŊȒP�ɍs����悤�ɂȂ�܂��B
-�@�Ȃ��{���C�u�����P�̂́ACakePHP�Ɍ��炸PHP���ł�����C���N���[�h���邱�Ƃ�
-�g����悤�ɍ쐬����Ă���܂��̂ŁA���L���V�`���G�[�V�����ł����p�ł��܂��B
+　本ドキュメントでは、携帯サイトの構築に必要な機能を提供する携帯ライブラリと、
+CakePHP内で利用するためのヘルパー・コンポーネント一式についての設置方法および
+設定方法について簡単にご説明させていただきます。設置する前にご一読いただきます
+よう、お願い申し上げます。
 
 
 --------------------------------------------------
-�������
+■はじめに
 --------------------------------------------------
 
-�@�{���C�u�����́APHP4/5�œ��삷��悤�ɍ쐬����Ă��܂��B�`�F�b�N��PHP5���ɂ�
-�s���Ă���܂��B
-�@CakePHP�p�w���p�[�E�R���|�[�l���g�́ACakePHP1.2.3.8166 Stable�ɂē���m�F��
-���Ă���܂����A����ȑO�̃o�[�W�����ł��g�p�ł���Ǝv���܂��B
-�@�Ȃ��ACakePHP1.1�ł́A�ꕔ�A�E�g�v�b�g�d�l���قȂ邽�߁A�g�p�ł��Ȃ��@�\��
-����܂��̂ŃT�|�[�g�O�ł��B
-
-
---------------------------------------------------
-���Ώے[��
---------------------------------------------------
-
-�@�{���C�u�����́A3G�g�т����iPhone�APHS��ΏۂƂ��Ă��܂��B����ȑO�̌g�т�
-���p�ł�����̂�����܂����A��{�I�ɃT�|�[�g�O�ł��B
-�@����J-PHONE/Vodafone����̒[���AHDML�Ή���EZWeb�ł͓���ł��Ȃ����̂�
-����܂��B���̂��߁A�����T�C�g�Ȃǌ����ȊǗ����s���悤�ȃT�C�g�ɂ͌�����
-����܂���̂ł��������������B
+　本ライブラリ群は、CakePHPを利用して携帯サイトを手軽に構築するための機能を
+提供いたします。とりわけ、キャリア毎の絵文字変換およびキャリア判定・メール判定は
+本ライブラリ群を利用することで簡単に行えるようになります。
+　なお本ライブラリ単体は、CakePHPに限らずPHP環境でしたらインクルードすることで
+使えるように作成されておりますので、幅広いシチュエーションでご利用できます。
 
 
 --------------------------------------------------
-�������p����
+■動作環境
 --------------------------------------------------
 
-�@�{�c�[���ꎮ�͎g�p�������͍Ĕz�z�ɂ��āA�����ł����p���������܂��B
-
-�@�{�c�[������уA�[�J�C�u���Ɋ܂܂��S�Ă̒��앨�ɑ΂��錠����ECWorks���ۗL
-���Ă���AGNU��ʌ��O���p�����_��Ɋ�Â��Ĕz�z���Ă���܂��B�Ĕz�z�E���ϓ���
-�_��͈͓̔��Ŏ��R�ɍs�����Ƃ��o���܂��B�ڂ����́A�Y�t��GNU��ʌ��O���p����
-�_�񏑂����ǂ݂��������B
-
-�@�Ȃ��A�{�c�[���͈�ʓI�ȗ��p�ɂ����ē�����m�F���Ă���܂����A�����p�̊���
-�󋵁A�ݒ�������̓v���O������̕s����ɂ����҂ƈقȂ铮�������ꍇ��
-�l�����܂��B�{�c�[���̗��p�ɑ΂�����ʂ͖��ۏ؂ł���A������s���v�⑹�Q����
-���āA�����͈�؂̐ӔC�����������˂܂��̂ŁA���������������܂��悤���肢
-�\���グ�܂��B
+　本ライブラリは、PHP4/5で動作するように作成されています。チェックはPHP5環境にて
+行っております。
+　CakePHP用ヘルパー・コンポーネントは、CakePHP1.2.3.8166 Stableにて動作確認を
+しておりますが、それ以前のバージョンでも使用できると思います。
+　なお、CakePHP1.1では、一部アウトプット仕様が異なるため、使用できない機能が
+ありますのでサポート外です。
 
 
 --------------------------------------------------
-���K�v�t�@�C���ƃA�b�v���[�h���@
+■対象端末
 --------------------------------------------------
 
-�@�z�z�A�[�J�C�u���𓀂���ƁA���̃t�@�C������������܂��B�����t�@�C�����A
-CakePHP���̏���̏ꏊ�ɃA�b�v���[�h���Ă��������B
+　本ライブラリは、3G携帯およびiPhone、PHSを対象としています。それ以前の携帯で
+利用できるものもありますが、基本的にサポート外です。
+　特にJ-PHONE/Vodafone時代の端末、HDML対応のEZWebでは動作できないものが
+あります。このため、公式サイトなど厳密な管理を行うようなサイトには向いて
+おりませんのでご了承ください。
+
+
+--------------------------------------------------
+■ご利用条件
+--------------------------------------------------
+
+　本ツール一式は使用もしくは再配布について、無料でご利用いただけます。
+
+　本ツールおよびアーカイブ内に含まれる全ての著作物に対する権利はECWorksが保有
+しており、GNU一般公衆利用許諾契約に基づいて配布しております。再配布・改変等は
+契約の範囲内で自由に行うことが出来ます。詳しくは、添付のGNU一般公衆利用許諾
+契約書をお読みください。
+
+　なお、本ツールは一般的な利用において動作を確認しておりますが、ご利用の環境や
+状況、設定もしくはプログラム上の不具合等により期待と異なる動作をする場合が
+考えられます。本ツールの利用に対する効果は無保証であり、あらゆる不利益や損害等に
+ついて、当方は一切の責任をいたしかねますので、ご了承いただきますようお願い
+申し上げます。
+
+
+--------------------------------------------------
+■必要ファイルとアップロード方法
+--------------------------------------------------
+
+　配布アーカイブを解凍すると、次のファイルが生成されます。生成ファイルを、
+CakePHP内の所定の場所にアップロードしてください。
 
 +- app								[755] 
 |  +- config						[755] 
-|  |  +- ktai-session.php			[644] �g�ь����Z�b�V�����ݒ�
+|  |  +- ktai-session.php			[644] 携帯向けセッション設定
 |  +- controllers					[755] 
 |  |  +- components					[755] 
-|  |  |  +- ktai.php				[644] �g�уR���|�[�l���g
-|  |  +- app_controller.php.ktai	[644] ���_�C���N�g�Ή��p�b�`(*)
+|  |  |  +- ktai.php				[644] 携帯コンポーネント
+|  |  +- app_controller.php.ktai	[644] リダイレクト対応パッチ(*)
 |  +- views							[755] 
 |  |  +- helpers					[755] 
-|  |     +- ktai.php				[644] �g�уw���p�[
+|  |     +- ktai.php				[644] 携帯ヘルパー
 |  +- webroot						[755] 
 |     +- img						[755] 
-|        +- emoticons				[755] �G�����摜�͂����ɐݒu���܂�(��q)
-|           +- empty				[***] (�_�~�[�E�A�b�v���[�h�s�v�ł�)
+|        +- emoticons				[755] 絵文字画像はここに設置します(後述)
+|           +- empty				[***] (ダミー・アップロード不要です)
 +- vendors							[755] 
 |  +- ecw							[755] 
-|     +- lib3gk.php					[644] �g�у��C�u�����{��
-|     +- lib3gk_emoji.php			[644] �g�у��C�u�����{��(�G�����֘A)
-|     +- lib3gk_machine.php			[644] �g�у��C�u�����{��(�[�����֘A)
-|									�������ȉ��̓A�b�v���[�h�s�v�ł�
-+- readme.txt						[***] ���̃t�@�C��
-+- LICENSE							[***] GNU���C�Z���X�K��
+|     +- lib3gk.php					[644] 携帯ライブラリ本体
+|     +- lib3gk_emoji.php			[644] 携帯ライブラリ本体(絵文字関連)
+|     +- lib3gk_machine.php			[644] 携帯ライブラリ本体(端末情報関連)
+|									↓↓↓以下はアップロード不要です
++- readme.txt						[***] このファイル
++- LICENSE							[***] GNUライセンス規約書
 
-�@�Ȃ��A���C�u�����P�̂ŗ��p����ꍇ�́Alib3gk.php�݂̂�����̃f�B���N�g����
-�A�b�v���[�h���Ă��������B���̑��̃t�@�C���͕s�v�ł��B
+　なお、ライブラリ単体で利用する場合は、lib3gk.phpのみを所定のディレクトリに
+アップロードしてください。その他のファイルは不要です。
 
-(*)�Z�b�V�����֘A���g�p����ꍇ�́A�K��app_controller.php�Ƀ��l�[�����邩�A
-����app_controller.php�ɕK�v�ӏ����y�[�X�g���Ă�������
+(*)セッション関連を使用する場合は、必ずapp_controller.phpにリネームするか、
+既存app_controller.phpに必要箇所をペーストしてください
 
 
 --------------------------------------------------
-���ݒ�
+■設定
 --------------------------------------------------
 
-�@�g�у��C�u�����ł́A���̐ݒ肪�K�v�ɂȂ�܂��B
+　携帯ライブラリでは、次の設定が必要になります。
 
-�y�ȒP�ȗ���z
+【簡単な流れ】
 
-[�ݒ�J�n]
-�@�@��          No
-CakePHP�Ŏg���H --�� �P�F���C�u�����P�̂ŗp����ꍇ ------------------+
-�@�@�bYes                                                             |
-�@�@��             Yes                                                |
-�Z�b�V�������g���H --�� 2-a�F�Z�b�V�������g�p����ꍇ -+              |
-�@�@�bNo                                               |              |
-�@�@�b                      +--------------------------+              |
-�@�@��                      | Yes                                     |
-ktai�R���|�[�l���g���g���H -+-�� 2-b�Fktai�R���|�[�l���g��p����ꍇ -+
-�@�@�bNo                                                              |
-�@�@��                                                                |
-2-c�Fktai�w���p�[�݂̂�p����ꍇ                                     |
-�@�@�b                                                                |
-�@�@�b��--------------------------------------------------------------+
-�@�@��
-[�ݒ芮��]
+[設定開始]
+　　↓          No
+CakePHPで使う？ --→ １：ライブラリ単体で用いる場合 ------------------+
+　　｜Yes                                                             |
+　　↓             Yes                                                |
+セッションを使う？ --→ 2-a：セッションを使用する場合 -+              |
+　　｜No                                               |              |
+　　｜                      +--------------------------+              |
+　　↓                      | Yes                                     |
+ktaiコンポーネントを使う？ -+-→ 2-b：ktaiコンポーネントを用いる場合 -+
+　　｜No                                                              |
+　　↓                                                                |
+2-c：ktaiヘルパーのみを用いる場合                                     |
+　　｜                                                                |
+　　｜←--------------------------------------------------------------+
+　　↓
+[設定完了]
 
 
-�P�F���C�u�����P�̂ŗp����ꍇ
+１：ライブラリ単体で用いる場合
 
-�@���C�u�����P�̂ŗp����ꍇ�́A�܂����C�u�����N���X�̃C���X�^���X����肵�A
-���̒��́u_params�v�v���p�e�B��ύX���܂��B_params�v���p�e�B�͘A�z�z���
-�\������Ă��܂��B
+　ライブラリ単体で用いる場合は、まずライブラリクラスのインスタンスを入手し、
+その中の「_params」プロパティを変更します。_paramsプロパティは連想配列で
+表現されています。
 
-�y�ݒ��z
+【設定例】
 
 $ktai = Lib3gk::get_instance();
 $ktai->_params = array(
-		'use_img_emoji' => true, 					//�摜�G�������g�p
-		'input_encoding'  => KTAI_ENCODING_UTF8, 	//���͂�UTF-8�ɕύX
-		'output_encoding' => KTAI_ENCODING_UTF8, 	//�o�͂�UTF-8�ɕύX
+		'use_img_emoji' => true, 					//画像絵文字を使用
+		'input_encoding'  => KTAI_ENCODING_UTF8, 	//入力をUTF-8に変更
+		'output_encoding' => KTAI_ENCODING_UTF8, 	//出力をUTF-8に変更
 );
 
 
-�Q�FCakePHP�Ŏg�p����ꍇ
+２：CakePHPで使用する場合
 
-�@CakePHP�ŗp����ꍇ�́A�R���|�[�l���g�𗘗p����ꍇ�ƁA�w���p�[�P�̂ŗ��p
-����ꍇ�ƂŁA�ݒ���@���قȂ�܂��B
-�@�܂��A�g�тŃZ�b�V������p�������ꍇ�́A�Z�b�V�����p�̐ݒ肪�K�v�ɂȂ�܂��B
+　CakePHPで用いる場合は、コンポーネントを利用する場合と、ヘルパー単体で利用
+する場合とで、設定方法が異なります。
+　また、携帯でセッションを用いたい場合は、セッション用の設定が必要になります。
 
-2-a�F�Z�b�V�������g�p����ꍇ�y��ςɏd�v!!�z
+2-a：セッションを使用する場合【大変に重要!!】
 
-�@CakePHP�Ōg�уT�C�g����������ɂ�����A�Z�b�V�������g�����߂̐ݒ肪�K�v��
-�Ȃ�܂�(�g�тŃZ�b�V�����@�\���g��Ȃ��ꍇ�͏ȗ����邱�Ƃ��o���܂�)�B
-�@�Ȃ��A�Z�b�V�������g�p����ꍇ�́AKtai�R���|�[�l���g���K�{�ƂȂ�܂��B
+　CakePHPで携帯サイトを実現するにあたり、セッションを使うための設定が必要に
+なります(携帯でセッション機能を使わない場合は省略することも出来ます)。
+　なお、セッションを使用する場合は、Ktaiコンポーネントが必須となります。
 
-2-a-1 : routes.php�ւ̋L�q
+2-a-1 : routes.phpへの記述
 
-�@named�p�����[�^�̃Z�p���[�^������ύX���܂��B
-�@�uapp/config/routes.php�v�ɁA���̋L�q���u��ԍŏ��Ɂv�s���Ă��������B
-�@�Z�p���[�^������́A���w��̏ꍇ�́u:�v�ƂȂ�܂����A���̕����̏ꍇ��
-iMODE�ɂăZ�b�V����ID���t������Ȃ��Ȃ�܂��̂ŕK���w�肵�܂��B
-�@���p�\�ȕ����͉��LURL�Ŋm�F���Ă�������(�ݒ��ł́A��r�I�e���̏��Ȃ�
-���̂Ǝv����u~�v�Ƃ��Ă��܂�)�B
+　namedパラメータのセパレータ文字を変更します。
+　「app/config/routes.php」に、次の記述を「一番最初に」行ってください。
+　セパレータ文字列は、無指定の場合は「:」となりますが、この文字の場合に
+iMODEにてセッションIDが付加されなくなりますので必ず指定します。
+　利用可能な文字は下記URLで確認してください(設定例では、比較的影響の少ない
+ものと思われる「~」としています)。
 
-�yroutes.php�̐ݒ��z
+【routes.phpの設定例】
 
 	Router::connectNamed(array(), array('argSeparator' => '~'));
 	
-	//���ȉ��ARouter::connect(�`)���L�q���܂�
+	//↓以下、Router::connect(～)を記述します
 
 
-2-a-2�Fapp_controller.php�̃R�s�[(�������͕ҏW)
+2-a-2：app_controller.phpのコピー(もしくは編集)
 
-�@�Y�t����Ă���app_controller.php.ktai��app/controllers�f�B���N�g����
-�R�s�[���āuapp_controller.php�v�Ƀ��l�[�����邩�A���ɐݒu����Ă���
-app_controller.php�ɃR�[�h�������y�[�X�g���܂��B
-�@���l�[����Y���ƃ��_�C���N�g������ɓ��삵�Ȃ��Ȃ�܂��̂ŋC������
-���������B
+　添付されているapp_controller.php.ktaiをapp/controllersディレクトリに
+コピーして「app_controller.php」にリネームするか、既に設置されている
+app_controller.phpにコード部分をペーストします。
+　リネームを忘れるとリダイレクトが正常に動作しなくなりますので気をつけて
+ください。
 
-2-a-3�F�p�����[�^�̒ǉ�
+2-a-3：パラメータの追加
 
-�@�e�R���g���[����������app_controler.php���ɁA�Z�b�V�����p�̃p�����[�^��
-�ǉ����܂��B
-�@��{�I�ɂ̓f�t�H���g�̂܂܂œ��삷��悤�ɏo���Ă��܂����A�t�ɓ��삳�������Ȃ�
-�ꍇ�Ȃǂōs���܂��B
+　各コントローラもしくはapp_controler.php内に、セッション用のパラメータを
+追加します。
+　基本的にはデフォルトのままで動作するように出来ていますが、逆に動作させたくない
+場合などで行います。
 
 var $ktai = array(
-	'enable_ktai_session' => true, 			//�Z�b�V�����g�p��L���ɂ��܂�
-	'use_redirect_session_id' => false, 	//���_�C���N�g�ɕK���Z�b�V����ID��
-											//���܂�
-	'imode_session_name' => 'csid', 		//iMODE���̃Z�b�V��������ύX���܂�
+	'enable_ktai_session' => true, 			//セッション使用を有効にします
+	'use_redirect_session_id' => false, 	//リダイレクトに必ずセッションIDを
+											//つけます
+	'imode_session_name' => 'csid', 		//iMODE時のセッション名を変更します
 );
 
 
-2-b�Fktai�R���|�[�l���g��p����ꍇ(�w���p�[�̎g�p�͖��Ȃ�)
+2-b：ktaiコンポーネントを用いる場合(ヘルパーの使用は問わない)
 
-�@�R���|�[�l���g��p����ꍇ�́A���p����R���g���[�����Ɂuktai�v�v���p�e�B��
-�쐬���܂��B
+　コンポーネントを用いる場合は、利用するコントローラ内に「ktai」プロパティを
+作成します。
 
-�y�ݒ��z
+【設定例】
 
 class HogeController extends AppController {
 	
-	//�ȗ�
+	//省略
 	
 	var $ktai = array(
-		'use_img_emoji' => true, 			//�摜�G�������g�p
-		'input_encoding'  => 'UTF-8', 		//���͂�UTF-8�ɕύX
-		'output_encoding' => 'UTF-8', 		//�o�͂�UTF-8�ɕύX
+		'use_img_emoji' => true, 			//画像絵文字を使用
+		'input_encoding'  => 'UTF-8', 		//入力をUTF-8に変更
+		'output_encoding' => 'UTF-8', 		//出力をUTF-8に変更
 	
-	//�ȗ�
+	//省略
 }
 
-�@�R���g���[�����Ń��C�u�������g���ꍇ�́A��Lktai�v���p�e�B��ύX���܂��B
-���̃v���p�e�B�́A���C�u�������̐ݒ�l�v���p�e�B���Q�Ƃ��Ă��邽�߁A�ݒ��
-�����Ƀ��C�u�������ɔ��f���܂��B
-�@�Ȃ��A�����ݒ�l�ͤktai�w���p�[�g�p���͂��̂܂܈����p����܂��B
+　コントローラ中でライブラリを使う場合は、上記ktaiプロパティを変更します。
+このプロパティは、ライブラリ内の設定値プロパティを参照しているため、設定は
+即座にライブラリ内に反映します。
+　なお、これら設定値は､ktaiヘルパー使用時はそのまま引き継がれます。
 
-�������_�ŁA�G���R�[�f�B���O��������`���Ă���萔�͎g�p���邱�Ƃ�
-�@�o���܂���B
+※現時点で、エンコーディング文字列を定義している定数は使用することは
+　出来ません。
 
-2-c�Fktai�w���p�[�݂̂�p����ꍇ
+2-c：ktaiヘルパーのみを用いる場合
 
-�@�w���p�[�u�̂݁v��p����ꍇ�́A�R���g���[������Configure::write()��p����
-�ݒ�l���󂯓n���܂��B
-�@��{�I�ɉ����ɏ����Ă��A�ŏI�I�ɂ�render()���Ńw���p�[������������邽�߁A
-�l�͔��f����܂��BbeforeFilter���ŋL�q����̂���ʓI�ł����A�R���g���[������
-�A�N�V�����������ł�OK�ł��B
+　ヘルパー「のみ」を用いる場合は、コントローラ内でConfigure::write()を用いて
+設定値を受け渡します。
+　基本的に何処に書いても、最終的にはrender()内でヘルパーが初期化されるため、
+値は反映されます。beforeFilter内で記述するのが一般的ですが、コントローラ内の
+アクション処理内でもOKです。
 
-�y�ݒ��P�FbeforeFilter���Őݒ肷��ꍇ�z
+【設定例１：beforeFilter内で設定する場合】
 
 class HogeController extends AppController {
 	
-	//�ȗ�
+	//省略
 	
 	function beforeFilter(){
 		Configure::write('Ktai', array(
-			'use_img_emoji'   => true, 					//�摜�G�������g�p
-			'input_encoding'  => KTAI_ENCODING_UTF8, 	//���͂�UTF-8�ɕύX
-			'output_encoding' => KTAI_ENCDING_UTF8, 	//�o�͂�UTF-8�ɕύX
-			'output_convert_kana' => 'knr', 			//���p�ϊ�
+			'use_img_emoji'   => true, 					//画像絵文字を使用
+			'input_encoding'  => KTAI_ENCODING_UTF8, 	//入力をUTF-8に変更
+			'output_encoding' => KTAI_ENCDING_UTF8, 	//出力をUTF-8に変更
+			'output_convert_kana' => 'knr', 			//半角変換
 		));
 	}
 	
-	//�ȗ�
+	//省略
 }
 
-�y�ݒ��Q�F�A�N�V�����������Őݒ肷��ꍇ�z
+【設定例２：アクション処理内で設定する場合】
 
 class HogeController extends AppController {
 	
-	//�ȗ�
+	//省略
 	
 	function fuga(){
 		
-		//�ȗ�
+		//省略
 		
 		Configure::write('Ktai', array(
-			'use_img_emoji'   => true, 					//�摜�G�������g�p
-			'input_encoding'  => KTAI_ENCODING_UTF8, 	//���͂�UTF-8�ɕύX
-			'output_encoding' => KTAI_ENCDING_UTF8, 	//�o�͂�UTF-8�ɕύX
+			'use_img_emoji'   => true, 					//画像絵文字を使用
+			'input_encoding'  => KTAI_ENCODING_UTF8, 	//入力をUTF-8に変更
+			'output_encoding' => KTAI_ENCDING_UTF8, 	//出力をUTF-8に変更
 		));
 		
-		$this->render();								//render�܂łɐݒ��
-														//�I���Ă�������
+		$this->render();								//renderまでに設定を
+														//終えてください
 	}
 	
-	//�ȗ�
+	//省略
 }
 
-�@�܂��A�r���[���ł́A�w���p�[���̐ݒ�v���p�e�B�𒼐ڏ��������邱�Ƃ�
-�ݒ�l��ύX���邱�Ƃ��o���܂��B�ݒ�v���p�e�B�́A���C�u�������̐ݒ�
-�v���p�e�B���Q�Ƃ��Ă���܂��̂ŁA�����ɒl�����f����܂��B
+　また、ビュー内では、ヘルパー内の設定プロパティを直接書き換えることで
+設定値を変更することが出来ます。設定プロパティは、ライブラリ内の設定
+プロパティを参照しておりますので、即座に値が反映されます。
 
-�y�ݒ��R�F�r���[�e���v���[�g���Őݒ������ꍇ�z
+【設定例３：ビューテンプレート内で設定をする場合】
 
 <?php
 $ktai->options['use_img_emoji']   = true;
-$ktai->options['input_encoding']  = KTAI_ENCODING_UTF8, //���͂�UTF-8�ɕύX
-$ktai->options['output_encoding'] = KTAI_ENCDING_UTF8, 	//�o�͂�UTF-8�ɕύX
-$ktai->options['output_convert_kana'] = 'knr', 			//���p�ϊ�
+$ktai->options['input_encoding']  = KTAI_ENCODING_UTF8, //入力をUTF-8に変更
+$ktai->options['output_encoding'] = KTAI_ENCDING_UTF8, 	//出力をUTF-8に変更
+$ktai->options['output_convert_kana'] = 'knr', 			//半角変換
 ?>
-�������̂��V�C<br>
-�����s�F<?php $ktai->emoji(0xe63e); ?><br>
+■今日のお天気<br>
+東京都：<?php $ktai->emoji(0xe63e); ?><br>
 
 
-���ݒ�l�ڍ�
+◎設定値詳細
 
-���C�u�������́u_params�v�v���p�e�B�A��������controller���́uktai�v
-�v���p�e�B�A�w���p�[�𗘗p����ۂ́uConfigure::write('Ktai', $params);�v�Őݒ�
-����params�A�z�z��Ŏw�肷��A�e��ݒ�l�ɂ��ẮA���̒ʂ�ł��B
-�Ȃ��A�L�ڂ���Ă���ݒ�l�̓f�t�H���g�ł��B
+ライブラリ内の「_params」プロパティ、もしくはcontroller内の「ktai」
+プロパティ、ヘルパーを利用する際の「Configure::write('Ktai', $params);」で設定
+するparams連想配列で指定する、各種設定値については、次の通りです。
+なお、記載されている設定値はデフォルトです。
 
-�y�G���R�[�f�B���O�֘A�ݒ�z
+【エンコーディング関連設定】
 
-�E���̓G���R�[�f�B���O(string)
+・入力エンコーディング(string)
 	'input_encoding'  => KTAI_ENCODING_SJIS, 
 
-�@���H�O�̃G���R�[�f�B���O���w�肵�܂��B
+　加工前のエンコーディングを指定します。
 
-�E�o�̓G���R�[�f�B���O(string)
+・出力エンコーディング(string)
 	'output_encoding' => KTAI_ENCODING_SJIS, 
 
-�@���H��̃G���R�[�f�B���O���w�肵�܂��B
+　加工後のエンコーディングを指定します。
 
-�E�o�C�i���G�������g�p(bool)
+・バイナリ絵文字を使用(bool)
 	'use_binary_emoji' => true, 
 
-�@�G���������̍ہA�o�C�i��������𐶐����܂��B
+　絵文字生成の際、バイナリ文字列を生成します。
 
 
-�y�G�����摜�֘A�ݒ�z
+【絵文字画像関連設定】
 
-�@�摜�G�������g�p����ꍇ�̐ݒ�ł��B
-�@�f�t�H���g��Typepad�G������W���I�Ɏg�p����ۂ̐ݒ�ƂȂ��Ă��܂��B
+　画像絵文字を使用する場合の設定です。
+　デフォルトはTypepad絵文字を標準的に使用する際の設定となっています。
 
-�E�摜�G�����g�p�t���O(bool)
+・画像絵文字使用フラグ(bool)
 	'use_img_emoji' => false, 
 
-�@�@��ɂ���Ċ��蓖�Ă̂Ȃ��G�����ɂ��āA�摜�G������K�p���܂��B
+　機種によって割り当てのない絵文字について、画像絵文字を適用します。
 
-�E�摜�G�����i�[URL(string)
+・画像絵文字格納URL(string)
 	'img_emoji_url' => './img/emoticons/', 
 
-�@�摜�G�����̊i�[�ꏊ���w�肵�܂��B���̐ݒ肪img�^�O��src�ɋL�ڂ���܂��B
+　画像絵文字の格納場所を指定します。この設定がimgタグのsrcに記載されます。
 
-�E�摜�G�����g���q(string)
+・画像絵文字拡張子(string)
 	'img_emoji_ext' => 'gif', 
 
-�@�摜�G�����̊g���q���w�肵�܂��B
+　画像絵文字の拡張子を指定します。
 
-�E�摜�G�����̉摜�T�C�Y(array(int, int))
+・画像絵文字の画像サイズ(array(int, int))
 	'img_emoji_size' => array(16, 16), 
 
-�@�摜�G�����̉摜�T�C�Y��(width, height)�Ŏw�肵�܂��B
+　画像絵文字の画像サイズを(width, height)で指定します。
 
 
-�yiPhone�֘A�ݒ�z
+【iPhone関連設定】
 
-�EiPhone���g�тƂ݂Ȃ�(bool)
+・iPhoneを携帯とみなす(bool)
 	'iphone_user_agent_belongs_to_ktai'      => false, 
 
-�EiPhone��SoftBank�g�тƂ݂Ȃ�(bool)
+・iPhoneをSoftBank携帯とみなす(bool)
 	'iphone_user_agent_belongs_to_softbank'  => false, 
 
-�EiPhone���[�����g�у��[���Ƃ݂Ȃ�(bool)
+・iPhoneメールを携帯メールとみなす(bool)
 	'iphone_email_belongs_to_ktai_email'     => false, 
 
-�EiPhone���[����SoftBank�g�т̃��[���Ƃ݂Ȃ�(bool)
+・iPhoneメールをSoftBank携帯のメールとみなす(bool)
 	'iphone_email_belongs_to_softbank_email' => false, 
 
 
-�y���z�X�N���[���T�C�Y�ݒ�z
+【仮想スクリーンサイズ設定】
 
-�E���z�X�N���[���T�C�Y�̐ݒ�(array(int, int))
+・仮想スクリーンサイズの設定(array(int, int))
 	'default_screen_size' => array(240, 320), 
 
-�@���z�I�ȃX�N���[���T�C�Y��(width, height)�Ŏw�肵�܂��B
-�@�摜�X�g���b�`�@�\(�����C�u�����֐����t�@�����X�u���X�N���[���T�C�Y��
-�œK�������摜��\���v���Q��)�Ŏg�p����܂��B
+　仮想的なスクリーンサイズを(width, height)で指定します。
+　画像ストレッチ機能(■ライブラリ関数リファレンス「◎スクリーンサイズに
+最適化した画像を表示」を参照)で使用されます。
 
 
-�y�����R�[�h�R���o�[�g�֘A�z(�w���p�[�̂�)
+【文字コードコンバート関連】(ヘルパーのみ)
 
-�E�A�E�g�v�b�g�ɑ΂��ĊG�����̎����R���o�[�g���s��(bool)
+・アウトプットに対して絵文字の自動コンバートを行う(bool)
 	'output_auto_convert_emoji' => false, 
 
-�@���̃t���O���w�肷��ƁA�A�E�g�v�b�g���ɂ���G�����ɂ��Č������s���A
-�R���o�[�g�������ōs���܂��B
+　このフラグを指定すると、アウトプット内にある絵文字について検索を行い、
+コンバートを自動で行います。
 
 
-�E�A�E�g�v�b�g�ɑ΂��ĕ����R�[�h�̎����R���o�[�g���s��(bool)
+・アウトプットに対して文字コードの自動コンバートを行う(bool)
 	'output_auto_encoding' => false, 
 
-�@���̃t���O���w�肷��ƁA���͕����R�[�h�w��Əo�͕����R�[�h�w�肪�قȂ�ꍇ�A
-�����ϊ����܂��B
+　このフラグを指定すると、入力文字コード指定と出力文字コード指定が異なる場合、
+自動変換します。
 
-�E�����ϊ�(string)
+・仮名変換(string)
 	'output_convert_kana' => 'knr', 
 
-�@���̃I�v�V�������w�肷��ƁA���������ϊ�(mb_convert_kana())�������ōs���܂��B
-�@�^���镶�����mb_convert_kana()�ŗ^����I�v�V�����ł��B
-�@�f�t�H���g��false�ƂȂ��Ă��āA�ϊ������͍s���܂���B
+　このオプションを指定すると、仮名文字変換(mb_convert_kana())を自動で行います。
+　与える文字列はmb_convert_kana()で与えるオプションです。
+　デフォルトはfalseとなっていて、変換処理は行いません。
 
-�������R���o�[�g�֘A�́A�����̐������ςɏ����\�͂��g���܂��̂ł��C����
-�@��������
+※文字コンバート関連は、処理の性質上大変に処理能力を使いますのでお気をつけ
+　ください
 
-�yXML�֘A�z
+【XML関連】
 
-�EXML�̎g�p(bool)[New!]
+・XMLの使用(bool)[New!]
 	'use_xml' => false, 
 
-�@���̃I�v�V�������w�肷��ƁAURL������XML�\�L�ɂȂ�܂��B
+　このオプションを指定すると、URL生成がXML表記になります。
 
 
 --------------------------------------------------
-���w���p�[�̗��p���@
+■ヘルパーの利用方法
 --------------------------------------------------
 
-�w���p�[�Ń��C�u�����[���g�p����ɂ́A���̎菇�ōs���܂��B
+ヘルパーでライブラリーを使用するには、次の手順で行います。
 
-�P�F���C�u����������̈ʒu�ɃR�s�[����(�O�q)
-�Q�F�K�v�ł���΁A�ݒ�l���J�X�^�}�C�Y����
-�R�F�R���g���[���Ƀw���p�[��o�^����
+１：ライブラリを所定の位置にコピーする(前述)
+２：必要であれば、設定値をカスタマイズする
+３：コントローラにヘルパーを登録する
 
 	var $helper = array('Ktai', ...);
 
-�S�F�r���[���ɋL�q
+４：ビュー内に記述
 
-<?php $ktai->emoji(63879); ?>���u[1]�v��\��
+<?php $ktai->emoji(63879); ?>←「[1]」を表示
 
 
 --------------------------------------------------
-���R���|�[�l���g�̗��p���@
+■コンポーネントの利用方法
 --------------------------------------------------
 
-�R���|�[�l���g�Ń��C�u�����[���g�p����ɂ́A���̎菇�ōs���܂��B
+コンポーネントでライブラリーを使用するには、次の手順で行います。
 
-�P�F���C�u����������̈ʒu�ɃR�s�[����(�O�q)
-�Q�F�K�v�ł���΁A�ݒ�l���J�X�^�}�C�Y����
-�R�F�R���g���[���ɃR���|�[�l���g��o�^����
+１：ライブラリを所定の位置にコピーする(前述)
+２：必要であれば、設定値をカスタマイズする
+３：コントローラにコンポーネントを登録する
 
 	var $components = array('Ktai', ...);
 
-�S�F�R���g���[�����ɋL�q
+４：コントローラ内に記述
 
 if($this->Ktai->is_ktai()){
-	echo "�g�тŃA�N�Z�X���Ă��܂�<br>\n";
+	echo "携帯でアクセスしています<br>\n";
 }
 
-�y���l�z
-�@�����_�����O���ʂɑ΂��ĊG������S�ĕϊ��������ꍇ�́A�R���g���[��������
-�I���܂łɁu$this->ktai['convert_output'] = true�v��ݒ肵�܂��B
+【備考】
+　レンダリング結果に対して絵文字を全て変換したい場合は、コントローラ処理が
+終わるまでに「$this->ktai['convert_output'] = true」を設定します。
 
 
 --------------------------------------------------
-���G�����摜�̎g�p
+■絵文字画像の使用
 --------------------------------------------------
 
-�@�{���C�u�����́ATypePad�Ŏg�p����Ă���G�����摜�ɑΉ����Ă��܂��B�ʓr
-�_�E�����[�h�������̂�ݒu���A�ݒ肷�邱�ƂŁAPC�������͊e�L�����A�Ŋ��蓖�Ă�
-�Ȃ��G�������G�����摜�Œu�������邱�Ƃ��o���܂��B
+　本ライブラリは、TypePadで使用されている絵文字画像に対応しています。別途
+ダウンロードしたものを設置し、設定することで、PCもしくは各キャリアで割り当ての
+ない絵文字を絵文字画像で置き換えることが出来ます。
 
-�G�����摜�̎g�p�́A���̎菇�ōs���܂��B
+絵文字画像の使用は、次の手順で行います。
 
-�P�F�G�����摜������URL������肷��
+１：絵文字画像を次のURLから入手する
 
-��TypePad�̊G�����A�C�R���摜�ƁA�g�ѕ\�����W���[�����t���[(���R)���C�Z���X��
-�@���J
+▼TypePadの絵文字アイコン画像と、携帯表示モジュールをフリー(自由)ライセンスで
+　公開
 http://start.typepad.jp/typecast/
 
-�Q�F���肵���A�[�J�C�u���𓀂��Aemoicon�t�H���_��app/webroot/img/�ɃR�s�[����
-�R�F�R���|�[�l���g�E�w���p�[���̊G�����摜�̃I�v�V������ݒ肷��B
+２：入手したアーカイブを解凍し、emoiconフォルダをapp/webroot/img/にコピーする
+３：コンポーネント・ヘルパー内の絵文字画像のオプションを設定する。
 
-$this->ktai['use_img_emoji']    = true;		(�R���g���[���������Őݒ肷��ꍇ)
-$ktai->options['use_img_emoji'] = true;		(�r���[�������Őݒ肷��ꍇ)
+$this->ktai['use_img_emoji']    = true;		(コントローラ内処理で設定する場合)
+$ktai->options['use_img_emoji'] = true;		(ビュー内処理で設定する場合)
 
-�������ݒ���@�́u���ݒ�v���ڂ�������������
+※初期設定方法は「■設定」項目をご覧ください
 
-�Ȃ��A�T�C�g�ŊG�����摜���g�p����ꍇ�́A�摜�ɂ��Ă̗��p�K��ɏ]����
-�����p���������܂��悤���肢�������܂��B
+なお、サイトで絵文字画像を使用する場合は、画像についての利用規約に従って
+ご利用いただきますようお願いいたします。
 
 
 --------------------------------------------------
-�����C�u�����֐����t�@�����X
+■ライブラリ関数リファレンス
 --------------------------------------------------
 
-�����C�u�����̃o�[�W���������
+◎ライブラリのバージョンを入手
 
 string get_version()
 
-�@���C�u�����̃o�[�W�����R�[�h(������)����肵�܂��B
+　ライブラリのバージョンコード(文字列)を入手します。
 
 
-���L�����A�̔���
+◎キャリアの判別
 
-bool is_imode()		iMODE�g�т̔���
-bool is_softbank()	�\�t�g�o���N�g�т̔���
-bool is_vodafone()	�{�[�_�t�H���g�т̔���
-bool is_jphone()	JPHONE�g�т̔���
-bool is_ezweb()		EZWeb�g�т̔���
-bool is_emobile()	EMOBILE�g�т̔���
-bool is_iphone()	iPhone�̔���
+bool is_imode()		iMODE携帯の判別
+bool is_softbank()	ソフトバンク携帯の判別
+bool is_vodafone()	ボーダフォン携帯の判別
+bool is_jphone()	JPHONE携帯の判別
+bool is_ezweb()		EZWeb携帯の判別
+bool is_emobile()	EMOBILE携帯の判別
+bool is_iphone()	iPhoneの判別
 
-�@�e�g�ђ[���𔻕ʂ��A�����ł�������true��Ԃ��܂��B
-�@is_vodafone()��J-PHONE���Ais_softbank()��vodafone��J-PHONE���܂݂܂�
-(�ʏ��is_softbank()���g���܂�)�B
+　各携帯端末を判別し、そうであったらtrueを返します。
+　is_vodafone()はJ-PHONEも、is_softbank()はvodafoneとJ-PHONEも含みます
+(通常はis_softbank()を使います)。
 
 
-���g�т̔���
+◎携帯の判別
 
 bool is_ktai()
 
-�@�g�ђ[���ŃA�N�Z�X���Ă���ꍇ�Atrue��Ԃ��܂��B
-�@�ݒ�ɂ��AiPhone�[�����g�тƂ��Ĕ��ʂ��邱�Ƃ��o���܂��B
+　携帯端末でアクセスしている場合、trueを返します。
+　設定により、iPhone端末も携帯として判別することが出来ます。
 
 
-��PHS�̔���
+◎PHSの判別
 
 bool is_phs()
 
-�@PHS�[���ŃA�N�Z�X���Ă���ꍇ�Atrue��Ԃ��܂��B
+　PHS端末でアクセスしている場合、trueを返します。
 
 
-���L�����A�R�[�h�����
+◎キャリアコードを入手
 
 int get_carrier()
 
-�@���݂̃A�N�Z�X�[���̔��ʂ��A���l�œ��肵�܂��B
-�@�萔�Ƃ��āA���̐��l�����蓖�Ă��Ă��܂��B
+　現在のアクセス端末の判別を、数値で入手します。
+　定数として、次の数値が割り当てられています。
 
-KTAI_CARRIER_UNKNOWN	(�s��)
+KTAI_CARRIER_UNKNOWN	(不明)
 KTAI_CARRIER_DOCOMO		iMODE
 KTAI_CARRIER_KDDI		EZWeb
 KTAI_CARRIER_SOFTBANK	Softbank
@@ -521,327 +521,327 @@ KTAI_CARRIER_IPHONE		iPhone
 KTAI_CARRIER_PHS		PHS
 
 
-�����[�U�[�G�[�W�F���g�̉��
+◎ユーザーエージェントの解析
 
 array analyze_user_agent(string $user_agent = null)
 
-�@���[�U�[�G�[�W�F���g����͂��A�[��������肵�܂��B
-�@�������w�肳��Ă��Ȃ��ꍇ�͌��݂̃��[�U�G�[�W�F���g����肵�ĉ�͂��܂��B
-�@�z��œn�����l�͎��̒ʂ�ł��B
+　ユーザーエージェントを解析し、端末情報を入手します。
+　引数が指定されていない場合は現在のユーザエージェントを入手して解析します。
+　配列で渡される値は次の通りです。
 
 array(
-	'carrier' => 0, 				//�L�����A�R�[�h(int)
-	'carrier_name' = 'default', 	//�L�����A��(string)
-	'machine_name' => 'default', 	//�[����(string)
+	'carrier' => 0, 				//キャリアコード(int)
+	'carrier_name' = 'default', 	//キャリア名(string)
+	'machine_name' => 'default', 	//端末名(string)
 )
 
-�Ȃ��APC�Ȃǒ[��������ł��Ȃ������ꍇ�̓f�t�H���g�̒l������܂��B
+なお、PCなど端末が特定できなかった場合はデフォルトの値が入ります。
 
 
-���[�����̓���
+◎端末情報の入手
 
 array get_machineinfo(string $carrier_name = null, string $machine_name = null)
 
-�@�[���������C�u����������肵�܂��B
-�@�L�����A���ƒ[�������ȗ������ꍇ�́A���݂̃��[�U�[�G�[�W�F���g���炱����
-���肵�A�[��������肵�܂��B
-�@�[����񂪑��݂��Ȃ��ꍇ�͈�ʓI�Ȓ[���̏�񂪕Ԃ���܂��B
-�@�z��œn�����l�͎��̒ʂ�ł��B
+　端末情報をライブラリから入手します。
+　キャリア名と端末名を省略した場合は、現在のユーザーエージェントからこれらを
+入手し、端末情報を入手します。
+　端末情報が存在しない場合は一般的な端末の情報が返されます。
+　配列で渡される値は次の通りです。
 
 array(
-	'carrier'							//�L�����A�R�[�h(int)
-	'carrier_name'						//�L�����A��(string)
-	'machine_name'						//�[����(string)
-	'text_size'   => array(20, 11), 	//������(width, height / ���p / int)
-	'screen_size' => array(240, 320), 	//�X�N���[���T�C�Y(width, height / int)
-	'image_size'  => array(240, 320), 	//�摜�T�C�Y(�ǎ��Ȃ�)
+	'carrier'							//キャリアコード(int)
+	'carrier_name'						//キャリア名(string)
+	'machine_name'						//端末名(string)
+	'text_size'   => array(20, 11), 	//文字数(width, height / 半角 / int)
+	'screen_size' => array(240, 320), 	//スクリーンサイズ(width, height / int)
+	'image_size'  => array(240, 320), 	//画像サイズ(壁紙など)
 										//(width, height / int)
 	'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
-										//�Ή��摜�t�H�[�}�b�g(bool)
+										//対応画像フォーマット(bool)
 )
 
 
-�����[���A�h���X�̔���
+◎メールアドレスの判別
 
-bool is_imode_email(string $email)		iMODE���[���̔���
-bool is_softbank_email(string $email)	�\�t�g�o���N���[���̔���
-bool is_vodafone_email(string $email)	�{�[�_�t�H�����[���̔���
-bool is_jphone_email(string $email)		JPHONE���[���̔���
-bool is_ezweb_email(string $email)		EZWeb���[���̔���
-bool is_emobile_email(string $email)	EMOBILE���[���̔���
-bool is_iphone_email(string $email)		iPhone���[���̔���
+bool is_imode_email(string $email)		iMODEメールの判別
+bool is_softbank_email(string $email)	ソフトバンクメールの判別
+bool is_vodafone_email(string $email)	ボーダフォンメールの判別
+bool is_jphone_email(string $email)		JPHONEメールの判別
+bool is_ezweb_email(string $email)		EZWebメールの判別
+bool is_emobile_email(string $email)	EMOBILEメールの判別
+bool is_iphone_email(string $email)		iPhoneメールの判別
 
-�@�e�g�у��[���A�h���X�𔻕ʂ��A�����ł�������true��Ԃ��܂��B
-�@is_vodafone_email()��J-PHONE���Ais_softbank_email()��vodafone��J-PHONE��
-�܂݂܂�(�ʏ��is_softbank_email()���g���܂�)�B
+　各携帯メールアドレスを判別し、そうであったらtrueを返します。
+　is_vodafone_email()はJ-PHONEも、is_softbank_email()はvodafoneとJ-PHONEも
+含みます(通常はis_softbank_email()を使います)。
 
 
-���g�у��[���̔���
+◎携帯メールの判別
 
 bool is_ktai_email(string $email)
 
-�@�g�у��[���A�h���X�̏ꍇ�Atrue��Ԃ��܂��B
-�@�ݒ�ɂ��AiPhone�[�����g�тƂ��Ĕ��ʂ��邱�Ƃ��o���܂��B
+　携帯メールアドレスの場合、trueを返します。
+　設定により、iPhone端末も携帯として判別することが出来ます。
 
 
-��PHS���[���̔���
+◎PHSメールの判別
 
 bool is_phs_email(string $email)
 
-�@PHS���[���A�h���X�̏ꍇ�Atrue��Ԃ��܂��B
+　PHSメールアドレスの場合、trueを返します。
 
 
-��iMODE�G�����𑼃L�����A�p�ɕϊ�����
+◎iMODE絵文字を他キャリア用に変換する
 
 void convert_emoji(string &$str, int $carrier = null, $input_encoding = null, 
 	$output_encoding = null, $binary = null)
 
-�@$str�����e�L�����A�ɑΉ������G�����ŕϊ����܂��B
-�@$str���Œ�`����Ă���G�����́AiMODE�p�ł���K�v������܂��B����ȊO��
-�G�����͕ϊ�����܂���B
-�@�e�L�����A�Ή��G�����ŁAiMODE�G�����ɑ���������̂��Ȃ��ꍇ�A�e�L�X�g����
-�܂��͊G�����摜�ŕϊ�����܂��B
-�@input_encoding�œ��͕����R�[�h�Aoutput_encoding�ŏo�͕����R�[�h���w��
-�ł��܂��B���w��̏ꍇ�́A���C�u�����N���X�C���X�^���X�̐ݒ�l�����p����܂��B
-�@binary��true�ɂ���ƊG�����̓o�C�i��������Ƃ��ďo�͂���܂��Bfalse�ɂ����
-���l�w��(&#?????; / &#x????;)���o�͂��܂��B
+　$str内を各キャリアに対応した絵文字で変換します。
+　$str内で定義されている絵文字は、iMODE用である必要があります。それ以外の
+絵文字は変換されません。
+　各キャリア対応絵文字で、iMODE絵文字に相当するものがない場合、テキスト文字
+または絵文字画像で変換されます。
+　input_encodingで入力文字コード、output_encodingで出力文字コードを指定
+できます。無指定の場合は、ライブラリクラスインスタンスの設定値が利用されます。
+　binaryをtrueにすると絵文字はバイナリ文字列として出力されます。falseにすると
+数値指定(&#?????; / &#x????;)を出力します。
 
 
-���G������\������
+◎絵文字を表示する
 
 string emoji(mixed $code, bool $disp = true, int $carrier = null, 
 	$output_encoding = null, $binary = null)
 
-�@�w�肵���G��������肵�܂��B
-�@$code�́AiMODE�����̑��A�����R�[�h�𐔒l�Ƃ��ē��͂��邱�Ƃ��ł��܂��B
-�@$disp���ȗ�����ƁA�r���[�ɒ��ڕ\�����s���܂�(echo���s�v�ł�)�B
-�@$carrier�ɃL�����A�R�[�h���w�肷��ƁA���̃L�����A�ɑΉ������G��������肷��
-���Ƃ��o���܂��B�ȗ�����ƌ��݃A�N�Z�X���Ă���[���̊G�������o�͂���܂��B
-�@output_encoding�ŏo�͕����R�[�h���w��ł��܂��B���w��̏ꍇ�́A
-���C�u�����N���X�C���X�^���X�̐ݒ�l�����p����܂��B
-�@binary��true�ɂ���ƊG�����̓o�C�i��������Ƃ��ďo�͂���܂��Bfalse�ɂ����
-���l�w��(&#?????; / &#x????;)���o�͂��܂��B
+　指定した絵文字を入手します。
+　$codeは、iMODE文字の他、文字コードを数値として入力することができます。
+　$dispを省略すると、ビューに直接表示を行います(echoが不要です)。
+　$carrierにキャリアコードを指定すると、そのキャリアに対応した絵文字を入手する
+ことが出来ます。省略すると現在アクセスしている端末の絵文字が出力されます。
+　output_encodingで出力文字コードを指定できます。無指定の場合は、
+ライブラリクラスインスタンスの設定値が利用されます。
+　binaryをtrueにすると絵文字はバイナリ文字列として出力されます。falseにすると
+数値指定(&#?????; / &#x????;)を出力します。
 
-���o�[�W����0.0.1�����g���̕���
-�@�o�[�W�����A�b�v�ɔ����A�����̔z�u���኱�قȂ��Ă��܂��B���C�u�����u��������
-�@�ۂɂ͂����ӂ��������B
+※バージョン0.0.1をお使いの方へ
+　バージョンアップに伴い、引数の配置が若干異なっています。ライブラリ置き換えの
+　際にはご注意ください。
 
 
-���X�N���[���T�C�Y�ɍœK�������摜��\��
+◎スクリーンサイズに最適化した画像を表示
 
 string image(string $url, array $htmlAttribute = array())
 
-�@���z�X�N���[���T�C�Y�ƒ[���X�N���[���T�C�Y����摜�̊g�嗦���v�Z���A���̔䗦��
-�C�������摜��\�����܂��B���̊֐����g�p���邱�ƂŁA���𑜓x�g�тł̉摜��
-���C�A�E�g�����␳���邱�Ƃ��o���܂��B
-�@CakePHP��HtmlHelper�����̈����ƂȂ��Ă���Aimg�^�O�̃A�g���r���[�g��
-htmlAttribute���ɘA�z�z��Ŏw�肵�܂��B
-�@�Ȃ��A�œK���ɂ��ẮA�摜�̕��ƍ���(width, height)���K���w�肳���
-���Ȃ���΂Ȃ�܂���B�ǂ��炩���������ꍇ�A�œK���͍s���܂���B
-�@�Ȃ��A�œK�����s�������Ȃ��ꍇ��HtmlHelper::image()�ɒu�������Ă��������B
+　仮想スクリーンサイズと端末スクリーンサイズから画像の拡大率を計算し、その比率に
+修正した画像を表示します。この関数を使用することで、高解像度携帯での画像の
+レイアウト崩れを補正することが出来ます。
+　CakePHPのHtmlHelper準拠の引数となっており、imgタグのアトリビュートを
+htmlAttribute内に連想配列で指定します。
+　なお、最適化については、画像の幅と高さ(width, height)が必ず指定されて
+いなければなりません。どちらかが欠けた場合、最適化は行いません。
+　なお、最適化を行いたくない場合はHtmlHelper::image()に置き換えてください。
 
 
-���X�N���[���T�C�Y�ɍœK�������摜�T�C�Y�����
+◎スクリーンサイズに最適化した画像サイズを入手
 
 array stretch_image_size(int $width, int $height, 	int $default_width = null, 
 	int $default_height = null)
 
-�@���z�X�N���[���T�C�Y�ƒ[���X�N���[���T�C�Y����摜�̊g�嗦���v�Z���A���̔䗦��
-�C�������摜�T�C�Y����肵�܂��B�߂�l�̔z��́Awidth, height�̏��ł��B
+　仮想スクリーンサイズと端末スクリーンサイズから画像の拡大率を計算し、その比率に
+修正した画像サイズを入手します。戻り値の配列は、width, heightの順です。
 
 
-���A�N�Z�X�L�[�t��link�̏o��(�w���p�[�̂�)
+◎アクセスキー付きlinkの出力(ヘルパーのみ)
 
 string link(string $title, mixed $url = null, mixed $htmlAttributes = array(), 
 	bool $confirmMessage = false, bool $escapeTitle = true)
 
-�@�A�N�Z�X�L�[�t���̃����N���쐬���܂��B
-�@htmlAttributes�Ɂu'accesskey'�v�p�����[�^���܂܂�Ă���ꍇ�A�����N�������
-�O�ɔԍ��G����icon���o�͂��܂��B
-�@����ȊO�̃p�����[�^�Ȃǂ́A$html->link()�Ɠ����ł��B
+　アクセスキー付きのリンクを作成します。
+　htmlAttributesに「'accesskey'」パラメータが含まれている場合、リンク文字列の
+前に番号絵文字iconを出力します。
+　それ以外のパラメータなどは、$html->link()と同じです。
 
 
-��mailto�����N�̍쐬
+◎mailtoリンクの作成
 
 string mailto(string $title, string $email, string $subject = null, 
 	string $body = null, bool $input_encoding = null, 
 	$output_encoding = null, $display = true)
 
-�@�e�[���ɍ��킹��mailto�����N���쐬���܂��B
-�@������{�����A�����������邱�ƂȂ��}�����邱�Ƃ��o���܂��B
-�@�����I�ɃA�E�g�v�b�g�������Ȃ��ꍇ��display��false�ɂ��܂��B
+　各端末に合わせたmailtoリンクを作成します。
+　件名や本文を、文字化けすることなく挿入することが出来ます。
+　自動的にアウトプットしたくない場合はdisplayをfalseにします。
 
 
-�����_�C���N�g
+◎リダイレクト
 
 void redirect(string $url, bool $exit = true)
 
-�@���_�C���N�g�������������܂��B
-�@enable_ktai_session���L���ł���Ause_redirect_session_id���L�����A��������
-iMODE�[������̃A�N�Z�X�������ꍇ�́A�Z�b�V����ID��URL�ɕt������܂��B
+　リダイレクト処理を実現します。
+　enable_ktai_sessionが有効であり、use_redirect_session_idが有効か、もしくは
+iMODE端末からのアクセスだった場合は、セッションIDがURLに付加されます。
 
-��lib3gk�ŗL�̋@�\�����֐��ł��BCakePHP�ł́Aapp_controller.php��ݒ肵�A
-�@�R���g���[������redirect()��p���Ă�������
+※lib3gk固有の機能を持つ関数です。CakePHPでは、app_controller.phpを設定し、
+　コントローラ内のredirect()を用いてください
 
 
-�����[�UID�̓���
+◎ユーザIDの入手
 
 mixed get_uid()
 
-�@�g�тɕt������Ă��郆�[�UID(uid)����肵�܂��B
-�@uid������o�����ꍇ�͂��̃R�[�h��string�ŕԂ�܂��B
-�@����o���Ȃ������ꍇ��false���Ԃ�܂��B
+　携帯に付加されているユーザID(uid)を入手します。
+　uidが入手出来た場合はそのコードがstringで返ります。
+　入手出来なかった場合はfalseが返ります。
 
 
-���ȉ��́A���ڌg�тɊ֌W�Ȃ����ǂ��𗧂��֐��ł�
+★以下は、直接携帯に関係ないけどお役立ち関数です
 
-���G���R�[�f�B���O������𐳋K��
+◎エンコーディング文字列を正規化
 
 string normal_encoding_str(string $str)
 
-�@�G���R�[�f�B���O�������PHP�����ŗ��p���Ă���W���I�ȕ�����Ő��K�����܂��B
-�@�Ⴆ�΁A�usjis�v, �uShift_JIS�v�͑S�āuSJIS�v�ƕϊ�����܂�
+　エンコーディング文字列をPHP内部で利用している標準的な文字列で正規化します。
+　例えば、「sjis」, 「Shift_JIS」は全て「SJIS」と変換されます
 
 
-�����l���當������쐬
+◎数値から文字列を作成
 
 string int2str(int $value)
 
-�@���l(�L�����N�^�[�R�[�h)�𕶎���ɕϊ����܂��B
-�@�}���`�o�C�g�ɑΉ����Ă��܂��B
+　数値(キャラクターコード)を文字列に変換します。
+　マルチバイトに対応しています。
 
-�����l(���j�R�[�h)����UTF-8��������쐬
+◎数値(ユニコード)からUTF-8文字列を作成
 
 string int2utf8(int $value)
 
-�@���j�R�[�h��UTF-8������ɕϊ����܂��B
+　ユニコードをUTF-8文字列に変換します。
 
 
-��QR�R�[�h�̍쐬
+◎QRコードの作成
 
 string get_qrcode(string $str, array $options = array(), 
 	$input_encoding = null, $output_encoding = null)
 
-�@Google chart API��p���āA�g�уT�C�g�U����i�Ƃ��Ĉ�ʓI��QR�R�[�h���쐬
-���܂��B
-�@$options�́A�A�z�z��Ŏ��̃I�v�V�������w��ł��܂��B
-�@�e�I�v�V�����l�̏ڍׂ́AGoogle Chart API�f�x���b�p�[�K�C�h���Q�Ƃ��Ă��������B
+　Google chart APIを用いて、携帯サイト誘導手段として一般的なQRコードを作成
+します。
+　$optionsは、連想配列で次のオプションを指定できます。
+　各オプション値の詳細は、Google Chart APIデベロッパーガイドを参照してください。
 
-��Google Chart API�F�f�x���b�p�[ �K�C�h(QR�R�[�h)
+▼Google Chart API：デベロッパー ガイド(QRコード)
 http://code.google.com/intl/ja/apis/chart/#qrcodes
 
 $options = array(
-	'width' => 220, 		//QR�R�[�h�摜�̕�(�}�[�W�����܂�ł��܂�)
-	'height' => 220, 		//QR�R�[�h�摜�̍���(����)
-//	'margin' => 4, 			//�}�[�W��(���ʐF)��
-//	'ec' => '-L', 			//�G���[�������x��
+	'width' => 220, 		//QRコード画像の幅(マージンを含んでいます)
+	'height' => 220, 		//QRコード画像の高さ(同上)
+//	'margin' => 4, 			//マージン(無彩色)幅
+//	'ec' => '-L', 			//エラー訂正レベル
 );
 
-�@����ȊO�̃L�[�����l�́Aimage()�̃I�v�V�����Ƃ��Ď����z����܂��B
-�@�f�t�H���g�l�́A�c��220pixel�ƂȂ��Ă��܂��B
-�@�߂�l�̓C���[�W�^�O�̕�����ƂȂ�܂��B
+　これ以外のキーを持つ値は、image()のオプションとして持ち越されます。
+　デフォルト値は、縦横220pixelとなっています。
+　戻り値はイメージタグの文字列となります。
 
 
 --------------------------------------------------
-�������Ktai Library�ɂ���
+■今後のKtai Libraryについて
 --------------------------------------------------
 
-�@�����_�ŁA���̋@�\�𓋍ڌ������Ă���܂��B
+　現時点で、次の機能を搭載検討しております。
 
-�E���[���f�[�^���烁�[���A�h���X�⌏���E�{���𔲂��o��(�󃁁[������)
-�E�t�@�C���_�E�����[�h�Ή�(�������E�A�v���cetc)
-�E�f�o�b�O���(�y�[�W�T�C�Y�\���ȂǁH)
+・メールデータからメールアドレスや件名・本文を抜き出す(空メール向け)
+・ファイルダウンロード対応(着メロ・アプリ…etc)
+・デバッグ情報(ページサイズ表示など？)
 
-�@���ɗ~�����@�\���������܂�����A���񂨊񂹂��������B���������Ă��������܂��B
+　他に欲しい機能がございましたら、是非お寄せください。検討させていただきます。
 
-�@�܂��A���C�u����������ɂȂ�n�߂Ă��܂��̂ŁA�@�\�̕������������Ă���܂��B
+　また、ライブラリが巨大になり始めていますので、機能の分割も検討しております。
 
 
 --------------------------------------------------
-���X�y�V�����T���N�X
+■スペシャルサンクス
 --------------------------------------------------
 
-�@�o�[�W����0.1.0�̊J���ɓ�����Akenji0302�l����uget_uid()�v�Ɋւ���\�[�X
-�R�[�h�񋟂����������܂����B���肪�Ƃ��������܂����B
+　バージョン0.1.0の開発に当たり、kenji0302様から「get_uid()」に関するソース
+コード提供をいただきました。ありがとうございました。
 
-���a�J�ŃT�{��G���W�j�A�̓��L
+▼渋谷でサボるエンジニアの日記
 http://blog.firstlife.jp/
 
-�@�o�[�W����0.0.2�̊J���ɓ�����A���l�̂����͂𓾂܂����B���肪�Ƃ�������
-�܂����B
+　バージョン0.0.2の開発に当たり、あつ様のご協力を得ました。ありがとうござい
+ました。
 
-��WEB�Œn�抈����
+▼WEBで地域活性化
 http://as.blog16.jp/
 
 
 --------------------------------------------------
-�����ӌ��E�����z�E�s��񍐂Ȃ�
+■ご意見・ご感想・不具合報告など
 --------------------------------------------------
 
-�@���ӌ��A�����z�Ȃǂ́A�����̃u���O���u���₢���킹�v�t�H�[���ɂĂ��A��
-���������܂��ƍK���ł��B
+　ご意見、ご感想などは、当方のブログ内「お問い合わせ」フォームにてご連絡
+いただけますと幸いです。
 
-��ECWorks
+▼ECWorks
 http://www.ecworks.jp/
 
-��ECWorks blog
+▼ECWorks blog
 http://blog.ecworks.jp/
 
-���g�у��C�u�����T�|�[�g�y�[�W
+▼携帯ライブラリサポートページ
 http://blog.ecworks.jp/ktai
 
-�yCM�z
-�@�e���v���[�g�t�@�C����e�Ղɍ쐬�E�z�u���邽�߂̃c�[���uTplcutter�v��
-���J���Ă��܂��B����Dreamweaver���̃T�C�g�f�U�C���c�[���𗘗p���Ă̐����
-��ϕ֗��ł��B����������񂲗��p���������I
+【CM】
+　テンプレートファイルを容易に作成・配置するためのツール「Tplcutter」も
+公開しています。特にDreamweaver等のサイトデザインツールを利用しての制作に
+大変便利です。こちらも是非ご利用ください！
 
 
 --------------------------------------------------
-���o�[�W�������
+■バージョン情報
 --------------------------------------------------
 
-�yVer0.2.0�z2009.06.08
-�@�Edocomo�̏ꍇ�ɃZ�b�V�������������J�n����Ȃ��s����C��
-�@�E�G�����e�[�u���ƒ[�����e�[�u�����ulib3gk.php�v���番��
-�@�EAU�Ő��l�w��̊G����(&#x????)���������\���ł��Ȃ��s����C��
-�@�E�A�N�Z�X�L�[�t�������N�ŁA�K�����l�w��G�����ɂȂ��Ă��܂��s����C��
-�@�ECakePHP�̏ꍇ��URL�����ŁARouter::url()���g�p����悤�ɉ���
-�@�EURL��htmlspecialchars()��ʂ��悤�ɉ��ǁB
-�@�EURL�������R�[���o�b�N�ɂ��t���ւ��o����悤�ɉ��ǁB
-�@�E�o�͂���^�O��XML�`���ɂ���I�v�V������ǉ�(�f�t�H���g�͖���)
-�@�EKTAI_ENCODING_SJISWIN�萔(SJIS-win)��ǉ�
+【Ver0.2.0】2009.06.08
+　・docomoの場合にセッションが正しく開始されない不具合を修正
+　・絵文字テーブルと端末情報テーブルを「lib3gk.php」から分離
+　・AUで数値指定の絵文字(&#x????)が正しく表示できない不具合を修正
+　・アクセスキー付きリンクで、必ず数値指定絵文字になってしまう不具合を修正
+　・CakePHPの場合のURL生成で、Router::url()を使用するように改良
+　・URLをhtmlspecialchars()を通すように改良。
+　・URL処理をコールバックにより付け替え出来るように改良。
+　・出力するタグをXML形式にするオプションを追加(デフォルトは無効)
+　・KTAI_ENCODING_SJISWIN定数(SJIS-win)を追加
 
-�yVer0.1.1�z2009.05.19
-�@�E�usession_save�v�I�v�V������p�~
-�@�EDoCoMo�g�тŁAcore.php����Configure::write('Session.save', 'php');�ȊO������
-�@�@�ꍇ�ɃZ�b�V�������L���ɂȂ�Ȃ��s����C��
-�@�E�ꕔ�G�����̕s�����C��
-�@�E�㏑����h�~�΍�Ƃ��āuapp_controller.php�v�̃t�@�C������
-�@�@�uapp_controller.php.ktai�v�ɕύX
+【Ver0.1.1】2009.05.19
+　・「session_save」オプションを廃止
+　・DoCoMo携帯で、core.php内でConfigure::write('Session.save', 'php');以外だった
+　　場合にセッションが有効にならない不具合を修正
+　・一部絵文字の不備を修正
+　・上書きを防止対策として「app_controller.php」のファイル名を
+　　「app_controller.php.ktai」に変更
 
-�yVer0.1.0�z2009.05.11
-�@�E�Z�b�V�����Ή�
-�@�E�Z�b�V�������̃��_�C���N�g�Ή�
-�@�EQR�R�[�h�̐���
-�@�E�g�т���uid�����
-�@�E�����ϊ������֘A�ł��ȕϊ��I�v�V������ǉ�
+【Ver0.1.0】2009.05.11
+　・セッション対応
+　・セッション時のリダイレクト対応
+　・QRコードの生成
+　・携帯からuidを入手
+　・自動変換処理関連でかな変換オプションを追加
 
-�yVer0.0.2�z2009.04.13
-�@�EUTF-8�G���R�[�f�B���O�Ή�
-�@�ESJIS/UTF-8�ȊO�̃G���R�[�f�B���O����̕ϊ�
-�@�EPHS�Ή�(�����I��)
-�@�E�[�����o�͂̋���
-�@�Emailto�����N�̐����@�\�ǉ�
-�@�E���𑜓x��ʃT�C�Y�ɍ��킹���摜�̃X�g���b�`�@�\�ǉ�
-�@�E�R���|�[�l���g�E�w���p�[���̃p�����[�^�����C�u�������̂��̂Ƌ��ʉ�
-�@�E�R���g���[������R���|�[�l���g�E�w���p�[���ւ̃p�����[�^���o��i��ǉ�
-�@�E�����R���o�[�g�@�\���R���|�[�l���g����w���p�[�Ɉړ�
+【Ver0.0.2】2009.04.13
+　・UTF-8エンコーディング対応
+　・SJIS/UTF-8以外のエンコーディングからの変換
+　・PHS対応(部分的に)
+　・端末情報出力の強化
+　・mailtoリンクの生成機能追加
+　・高解像度画面サイズに合わせた画像のストレッチ機能追加
+　・コンポーネント・ヘルパー内のパラメータをライブラリ内のものと共通化
+　・コントローラからコンポーネント・ヘルパー内へのパラメータ送出手段を追加
+　・自動コンバート機能をコンポーネントからヘルパーに移動
 
-�yVer0.0.1�z2009.03.12
-�@���J�o�[�W����
+【Ver0.0.1】2009.03.12
+　公開バージョン
 
 
 **************************************************
-�@�@ECWorks(H.N MASA-P)
-�@�@http://www.ecworks.jp/
+　　ECWorks(H.N MASA-P)
+　　http://www.ecworks.jp/
 **************************************************
