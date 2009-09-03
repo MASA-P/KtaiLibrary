@@ -319,29 +319,9 @@ class Lib3gk {
 			return $arr['carrier'];
 		}
 		return $this->_carrier;
-		
-		if($this->is_imode()){
-			$code = KTAI_CARRIER_DOCOMO;
-		}else
-		if($this->is_ezweb()){
-			$code = KTAI_CARRIER_KDDI;
-		}else
-		if($this->is_softbank()){
-			$code = KTAI_CARRIER_SOFTBANK;
-		}else
-		if($this->is_emobile()){
-			$code = KTAI_CARRIER_EMOBILE;
-		}else
-		if($this->is_iphone()){
-			$code = KTAI_CARRIER_IPHONE;
-		}else
-		if($this->is_phs()){
-			$code = KTAI_CARRIER_PHS;
-		}else{
-			$code = KTAI_CARRIER_UNKNOWN;
-		}
-		return $code;
 	}
+	
+	
 	//------------------------------------------------
 	//Create machine informations from HTTP_USER_AGENT
 	//------------------------------------------------
@@ -630,6 +610,35 @@ class Lib3gk {
 		return stripos($email, '@willcom.com') !== false;
 	}
 	
+	
+	//------------------------------------------------
+	//Get carrier code from email
+	//------------------------------------------------
+	function get_email_carrier($email){
+		
+		$carrier = KTAI_CARRIER_UNKNOWN;
+		
+		if($this->Ktai->is_imode_email($email)){
+			$carrier = KTAI_CARRIER_DOCOMO;
+		}else
+		if($this->Ktai->is_ezweb_email($email)){
+			$carrier = KTAI_CARRIER_KDDI;
+		}else
+		if($this->Ktai->is_iphone_email($email)){
+			$carrier = KTAI_CARRIER_IPHONE;
+		}else
+		if($this->Ktai->is_softbank_email($email)){
+			$carrier = KTAI_CARRIER_SOFTBANK;
+		}else
+		if($this->Ktai->is_emobile_email($email)){
+			$carrier = KTAI_CARRIER_EMOBILE;
+		}else
+		if($this->Ktai->is_phs_email($email)){
+			$carrier = KTAI_CARRIER_PHS;
+		}
+		
+		return $carrier;
+	}
 	
 	//------------------------------------------------
 	//Create link tags for mailto
