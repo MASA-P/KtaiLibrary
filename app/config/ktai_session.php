@@ -19,6 +19,19 @@
  * @license			http://www.gnu.org/licenses/gpl.html The GNU General Public Licence
  */
 
+//Replacement function ini_set('session.use_trans_sid')
+//
+function session_use_trans_sid($flag){
+	if($flag){
+		$session_name = session_name();
+		if(isset($_GET[$session_name]) && preg_match('/^\w+$/', $_GET[$session_name])){
+			session_id($_GET[$session_name]);
+			output_add_rewrite_var($session_name, $_GET[$session_name]);
+		}
+	}
+}
+
+
 //Get Lib3gk instance.
 //
 if(!class_exists('lib3gk')){
@@ -114,11 +127,11 @@ if($ktai->is_imode()){
 		$ktai->_params['imode_session_name'] = 'csid';
 	}
 	
-	ini_set('session.use_trans_sid', 1);
 	ini_set('session.use_only_cookies', 0);
 	$this->_userAgent = '';
 	Configure::write('Security.level', 'middle');
 	Configure::write('Session.cookie', $ktai->_params['imode_session_name']);
 	ini_set('session.name', Configure::read('Session.cookie'));
 	ini_set('url_rewriter.tags', 'a=href,area=href,frame=src,input=src,form=fakeentry,fieldset=');
+	session_use_trans_sid(1);
 }
