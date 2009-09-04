@@ -232,6 +232,9 @@ class KtaiHelper extends Helper {
 	//------------------------------------------------
 	//Check email carrier.
 	//------------------------------------------------
+	function get_email_carrier($email){
+		return $this->_lib3gk->get_email_carrier($email);
+	}
 	function is_imode_email($email){
 		return $this->_lib3gk->is_imode_email($email);
 	}

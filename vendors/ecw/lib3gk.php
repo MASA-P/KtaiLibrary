@@ -618,22 +618,22 @@ class Lib3gk {
 		
 		$carrier = KTAI_CARRIER_UNKNOWN;
 		
-		if($this->Ktai->is_imode_email($email)){
+		if($this->is_imode_email($email)){
 			$carrier = KTAI_CARRIER_DOCOMO;
 		}else
-		if($this->Ktai->is_ezweb_email($email)){
+		if($this->is_ezweb_email($email)){
 			$carrier = KTAI_CARRIER_KDDI;
 		}else
-		if($this->Ktai->is_iphone_email($email)){
+		if($this->is_iphone_email($email)){
 			$carrier = KTAI_CARRIER_IPHONE;
 		}else
-		if($this->Ktai->is_softbank_email($email)){
+		if($this->is_softbank_email($email)){
 			$carrier = KTAI_CARRIER_SOFTBANK;
 		}else
-		if($this->Ktai->is_emobile_email($email)){
+		if($this->is_emobile_email($email)){
 			$carrier = KTAI_CARRIER_EMOBILE;
 		}else
-		if($this->Ktai->is_phs_email($email)){
+		if($this->is_phs_email($email)){
 			$carrier = KTAI_CARRIER_PHS;
 		}
 		
