@@ -79,7 +79,7 @@ class AppController extends Controller {
 					$url['?'] = array();
 				}
 				$url['?'][session_name()] = session_id();
-				$url = Router::url($url);
+				$url = Router::url($url, true);
 			}
 		}
 		return parent::redirect($url, $status, $exit);
