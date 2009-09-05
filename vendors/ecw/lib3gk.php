@@ -898,7 +898,7 @@ class Lib3gk {
 		$str = '';
 		if($table !== null){
 			if($key == 0 || $key == 1){
-				$str = $this->__convertEmojiChractor($fvalue[$key][$oekey], $oekey, $binary);
+				$str = $this->__convertEmojiChractor($table[$key][$oekey], $oekey, $binary);
 			}else
 			if($key == 2){
 				$str = $table[$key];
