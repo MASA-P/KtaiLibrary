@@ -101,6 +101,9 @@ class Lib3gk {
 		//
 		'use_xml' => false, 
 		
+		//Inline stylesheet params
+		//
+		'style' => array(), 
 	);
 	
 	//------------------------------------------------
@@ -1047,4 +1050,22 @@ class Lib3gk {
 		
 		return $uid;
 	}
+	
+	//------------------------------------------------------------------------------
+	//Get inline stylesheet
+	//------------------------------------------------------------------------------
+	function style($name, $display = true){
+		
+		$str = '';
+		
+		if(isset($this->_params['style'][$name])){
+			$str = $this->_params['style'][$name];
+		}
+		if($display){
+			echo $str;
+		}
+		
+		return $str;
+	}
+	
 }

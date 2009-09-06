@@ -310,4 +310,11 @@ class KtaiHelper extends Helper {
 		return $this->_lib3gk->get_uid();
 	}
 	
+	//----------------------------------------------------------
+	//Get inline stylesheet params
+	//----------------------------------------------------------
+	function style($name, $display = true){
+		return $this->_lib3gk->style($name, $display);
+	}
+	
 }
