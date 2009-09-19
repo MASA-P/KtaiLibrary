@@ -32,6 +32,85 @@ class Lib3gkMachine {
 		//docomo
 		//
 		'DoCoMo' => array(
+			'SH08A' => array(
+				'text_size'   => array(24, 14), 
+				'screen_size' => array(240, 296), 
+				'image_size'  => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+			), 
+			'SH07A3' => array(
+				'text_size'   => array(24, 14), 
+				'screen_size' => array(240, 296), 
+				'image_size'  => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+			), 
+			'SH06A3' => array(
+				'text_size'   => array(24, 14), 
+				'screen_size' => array(240, 296), 
+				'image_size'  => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+			), 
+			'SH05A3' => array(
+				'text_size'   => array(24, 14), 
+				'screen_size' => array(240, 296), 
+				'image_size'  => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+			), 
+			'F09A3' => array(
+				'text_size'   => array(24, 16), 
+				'screen_size' => array(240, 324), 
+				'image_size'  => array(480, 960), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+			), 
+			'F08A3' => array(
+				'text_size'   => array(24, 16), 
+				'screen_size' => array(240, 324), 
+				'image_size'  => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+			), 
+			'N09A3' => array(
+				'text_size'   => array(24, 16), 
+				'screen_size' => array(240, 320), 
+				'image_size'  => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+			), 
+			'N08A3' => array(
+				'text_size'   => array(24, 16), 
+				'screen_size' => array(240, 320), 
+				'image_size'  => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+			), 
+			'N07A3' => array(
+				'text_size'   => array(24, 16), 
+				'screen_size' => array(240, 320), 
+				'image_size'  => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+			), 
+			'N06A3' => array(
+				'text_size'   => array(24, 16), 
+				'screen_size' => array(240, 320), 
+				'image_size'  => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+			), 
+			'P09A3' => array(
+				'text_size'   => array(24, 15), 
+				'screen_size' => array(240, 331), 
+				'image_size'  => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+			), 
+			'P08A3' => array(
+				'text_size'   => array(24, 15), 
+				'screen_size' => array(240, 331), 
+				'image_size'  => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+			), 
+			'P07A3' => array(
+				'text_size'   => array(24, 15), 
+				'screen_size' => array(240, 331), 
+				'image_size'  => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+			), 
+			
 			'N04A' => array(
 				'text_size'   => array(24, 16), 
 				'screen_size' => array(240, 320), 
@@ -1142,6 +1221,79 @@ class Lib3gkMachine {
 		//Softbank(/Vodaphone/Disney Mobile)
 		//
 		'SoftBank' => array(
+			'936SH' => array(
+				'text_size' => array(24, 18), 
+				'screen_size' => array(480, 754), 
+				'image_size' => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+			), 
+			'832SH' => array(
+				'text_size' => array(24, 17), 
+				'screen_size' => array(240, 350), 
+				'image_size' => array(240, 400), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+			), 
+			'935SH' => array(
+				'text_size' => array(30, 23), 
+				'screen_size' => array(480, 754), 
+				'image_size' => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+			), 
+			'931P' => array(
+				'text_size' => array(29, 21), 
+				'screen_size' => array(471, 700), 
+				'image_size' => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+			), 
+			'832T' => array(
+				'text_size' => array(15, 6), 
+				'screen_size' => array(234, 243), 
+				'image_size' => array(240, 320), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+			), 
+			'931SC' => array(
+				'text_size' => array(29, 16), 
+				'screen_size' => array(471, 512), 
+				'image_size' => array(480, 800), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+			), 
+			'930N' => array(
+				'text_size' => array(24, 16), 
+				'screen_size' => array(480, 650), 
+				'image_size' => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+			), 
+			'934SH' => array(
+				'text_size' => array(24, 13), 
+				'screen_size' => array(480, 754), 
+				'image_size' => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+			), 
+			'933SH' => array(
+				'text_size' => array(30, 23), 
+				'screen_size' => array(480, 738), 
+				'image_size' => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+			), 
+			'832P' => array(
+				'text_size' => array(23, 17), 
+				'screen_size' => array(230, 350), 
+				'image_size' => array(240, 427), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+			), 
+			'831SHs' => array(
+				'text_size' => array(24, 17), 
+				'screen_size' => array(240, 350), 
+				'image_size' => array(240, 400), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+			), 
+			'831SH' => array(
+				'text_size' => array(24, 17), 
+				'screen_size' => array(240, 350), 
+				'image_size' => array(240, 400), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+			), 
+			
 			'830SHp' => array(
 				'text_size' => array(24, 13), 
 				'screen_size' => array(240, 270), 
@@ -1839,6 +1991,67 @@ class Lib3gkMachine {
 		//AU(KDDI)
 		//
 		'KDDI' => array(
+			'KC3P' => array(
+				'text_size' => array(14, 10), 
+				'screen_size' => array(232, 325), 
+				'image_size' => array(240, 400), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+			), 
+			'HI3G' => array(
+				'text_size' => array(23, 16), 
+				'screen_size' => array(232, 336), 
+				'image_size' => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+			), 
+			'KC3Q' => array(
+				'text_size' => array(23, 15), 
+				'screen_size' => array(232, 325), 
+				'image_size' => array(240, 400), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+			), 
+			'TS3O' => array(
+				'text_size' => array(23, 17), 
+				'screen_size' => array(233, 358), 
+				'image_size' => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+			), 
+			'TS3P' => array(
+				'text_size' => array(23, 16), 
+				'screen_size' => array(233, 358), 
+				'image_size' => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+			), 
+			'SH3B' => array(
+				'text_size' => array(23, 16), 
+				'screen_size' => array(234, 358), 
+				'image_size' => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+			), 
+			'KC3O' => array(
+				'text_size' => array(23, 15), 
+				'screen_size' => array(232, 325), 
+				'image_size' => array(240, 400), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+			), 
+			'SH3C' => array(
+				'text_size' => array(23, 16), 
+				'screen_size' => array(234, 358), 
+				'image_size' => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+			), 
+			'CA3E' => array(
+				'text_size' => array(23, 15), 
+				'screen_size' => array(232, 333), 
+				'image_size' => array(240, 400), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+			), 
+			'SN3K' => array(
+				'text_size' => array(23, 16), 
+				'screen_size' => array(232, 358), 
+				'image_size' => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+			), 
+			
 			'SN3J' => array(
 				'text_size' => array(23, 16), 
 				'screen_size' => array(233, 358), 
@@ -3020,6 +3233,37 @@ class Lib3gkMachine {
 		//WILLCOM(/DDIPOCKET)
 		//
 		'WILLCOM' => array(
+			'WX341K' => array(
+				'text_size'   => array(24, 17),
+				'screen_size' => array(240, 356), 
+				'image_size'  => array(240, 400), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+			), 
+			'WX340K' => array(
+				'text_size'   => array(24, 17),
+				'screen_size' => array(240, 356), 
+				'image_size'  => array(240, 400), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+			), 
+			'WX331KC' => array(
+				'text_size'   => array(24, 12), //pf
+				'screen_size' => array(237, 243), 
+				'image_size'  => array(240, 320), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+			), 
+			'WX331K' => array(
+				'text_size'   => array(24, 12), //pf
+				'screen_size' => array(237, 243), 
+				'image_size'  => array(240, 320), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+			), 
+			'WX330K' => array(
+				'text_size'   => array(24, 12), //pf
+				'screen_size' => array(237, 243), 
+				'image_size'  => array(240, 320), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+			), 
+			
 			'WX320KR' => array(
 				'text_size'   => array(28, 15), //pf
 				'screen_size' => array(237, 241), 
