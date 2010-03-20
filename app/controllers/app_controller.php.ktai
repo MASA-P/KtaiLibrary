@@ -14,8 +14,8 @@
  *
  * @copyright		Copyright 2009, ECWorks.
  * @link			http://www.ecworks.jp/ ECWorks.
- * @version			0.2.1
- * @lastmodified	$Date: 2009-12-23 06:00:00 +0900 (Wed, 23 Dec 2009) $
+ * @version			0.2.2
+ * @lastmodified	$Date: 2010-03-21 00:00:00 +0900 (Sun, 21 Mar 2010) $
  * @license			http://www.gnu.org/licenses/gpl.html The GNU General Public Licence
  */
 
@@ -69,12 +69,13 @@ class AppController extends Controller {
 	//If iMODE access or use_redirect_session_id is true, 
 	// adding session id to url param.
 	//----------------------------------------------------------
-	function redirect($url, $status = null, $exit = true){
-		
-		if(isset($this->Ktai)){
+	function __redirect_url($url){
+		if(!preg_match('|^http[s]?://|', $url) && isset($this->Ktai)){
 			if($this->Ktai->_options['enable_ktai_session'] && 
 				($this->Ktai->_options['use_redirect_session_id'] || $this->Ktai->is_imode())){
-				$url = Router::parse($url);
+				if(!is_array($url)){
+					$url = Router::parse($url);
+				}
 				if(!isset($url['?'])){
 					$url['?'] = array();
 				}
@@ -82,6 +83,9 @@ class AppController extends Controller {
 				$url = Router::url($url, true);
 			}
 		}
-		return parent::redirect($url, $status, $exit);
+		return $url;
+	}
+	function redirect($url, $status = null, $exit = true){
+		return parent::redirect($this->__redirect_url($url), $status, $exit);
 	}
 }

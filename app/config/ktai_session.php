@@ -14,25 +14,27 @@
  *
  * @copyright		Copyright 2009, ECWorks.
  * @link			http://www.ecworks.jp/ ECWorks.
- * @version			0.2.1
- * @lastmodified	$Date: 2009-12-23 06:00:00 +0900 (Wed, 23 Dec 2009) $
+ * @version			0.2.2
+ * @lastmodified	$Date: 2010-03-21 00:00:00 +0900 (Sun, 21 Mar 2010) $
  * @license			http://www.gnu.org/licenses/gpl.html The GNU General Public Licence
  */
 
 //Replacement function ini_set('session.use_trans_sid')
 //
-function session_use_trans_sid($flag){
-	if(ini_set('session.use_trans_sid', $flag) !== false){
-		if($flag){
-			$session_name = session_name();
-			if(isset($_REQUEST[$session_name]) && preg_match('/^\w+$/', $_REQUEST[$session_name])){
-				session_id($_REQUEST[$session_name]);
-				output_add_rewrite_var($session_name, $_REQUEST[$session_name]);
+if(!defined('__KTAI_SESSION__')){
+	define('__KTAI_SESSION__', 1);
+	function session_use_trans_sid($flag){
+		if(ini_set('session.use_trans_sid', $flag) !== false){
+			if($flag){
+				$session_name = session_name();
+				if(isset($_REQUEST[$session_name]) && preg_match('/^\w+$/', $_REQUEST[$session_name])){
+					session_id($_REQUEST[$session_name]);
+					output_add_rewrite_var($session_name, $_REQUEST[$session_name]);
+				}
 			}
 		}
 	}
 }
-
 
 //Get Lib3gk instance.
 //

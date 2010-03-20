@@ -820,6 +820,12 @@ http://blog.ecworks.jp/ktai
 ■バージョン情報
 --------------------------------------------------
 
+【Ver0.2.2】2010.03.21
+　・SoftBank携帯の新機種によるアクセスで不具合が生じる件を修正
+　・新機種情報の追加
+　・app_controller.php.ktai内のリダイレクト処理を改良
+　・セッションが切断された際にsession_use_trans_sid()が二重で定義される不具合を修正
+
 【Ver0.2.1】2009.12.23
 　・ktai_session.php内のsession.use_trans_sid関連の設定方法を変更
 
