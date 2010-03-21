@@ -14,8 +14,8 @@
  *
  * @copyright		Copyright 2009, ECWorks.
  * @link			http://www.ecworks.jp/ ECWorks.
- * @version			0.2.2
- * @lastmodified	$Date: 2010-03-21 00:00:00 +0900 (Sun, 21 Mar 2010) $
+ * @version			0.2.3
+ * @lastmodified	$Date: 2010-03-21 15:00:00 +0900 (Sun, 21 Mar 2010) $
  * @license			http://www.gnu.org/licenses/gpl.html The GNU General Public Licence
  */
 
@@ -70,17 +70,20 @@ class AppController extends Controller {
 	// adding session id to url param.
 	//----------------------------------------------------------
 	function __redirect_url($url){
-		if(!preg_match('|^http[s]?://|', $url) && isset($this->Ktai)){
+		
+		if(isset($this->Ktai)){
 			if($this->Ktai->_options['enable_ktai_session'] && 
 				($this->Ktai->_options['use_redirect_session_id'] || $this->Ktai->is_imode())){
 				if(!is_array($url)){
+					if(preg_match('|^http[s]?://|', $url)){
+						return $url;
+					}
 					$url = Router::parse($url);
 				}
 				if(!isset($url['?'])){
 					$url['?'] = array();
 				}
 				$url['?'][session_name()] = session_id();
-				$url = Router::url($url, true);
 			}
 		}
 		return $url;
