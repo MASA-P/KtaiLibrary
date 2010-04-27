@@ -7,17 +7,23 @@
  * PHP versions 4 and 5
  *
  * Ktai Library for CakePHP1.2
- * Copyright 2009, ECWorks.
+ * Copyright 2009-2010, ECWorks.
  
  * Licensed under The GNU General Public Licence
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright		Copyright 2009, ECWorks.
+ * @copyright		Copyright 2009-2010, ECWorks.
  * @link			http://www.ecworks.jp/ ECWorks.
- * @version			0.2.3
- * @lastmodified	$Date: 2010-03-21 15:00:00 +0900 (Sun, 21 Mar 2010) $
+ * @version			0.3.0
+ * @lastmodified	$Date: 2010-04-27 12:00:00 +0900 (Thu, 27 Apr 2010) $
  * @license			http://www.gnu.org/licenses/gpl.html The GNU General Public Licence
  */
+
+/**
+ * defines
+ */
+require_once(dirname(__FILE__).'/lib3gk_def.php');
+
 
 /**
  * Emoji sub class
@@ -25,9 +31,110 @@
 class Lib3gkEmoji {
 	
 	//------------------------------------------------
-	//Emoji converting table
+	//Library sub classes
 	//------------------------------------------------
-	var $emoji_table = array(
+	var $__lib3gk  = null;
+	var $__carrier = null;
+	var $__tools   = null;
+	
+	//------------------------------------------------
+	//Parameters
+	//------------------------------------------------
+	var $_params = array(
+		
+		//Encoding params
+		//
+		'input_encoding'  => KTAI_ENCODING_SJISWIN, 
+		'output_encoding' => KTAI_ENCODING_SJISWIN, 
+		'use_binary_emoji' => true, 
+		
+		//Emoji image params
+		//
+		'use_img_emoji' => false, 
+		'img_emoji_url' => './img/emoticons/', 
+		'img_emoji_ext' => 'gif', 
+		'img_emoji_size' => array(16, 16), 
+		
+	);
+	
+	//------------------------------------------------
+	//endoding name to encode code
+	//------------------------------------------------
+	var $encodings = array(
+		KTAI_ENCODING_SJIS    => 0, 
+		KTAI_ENCODING_SJISWIN => 0, 
+		KTAI_ENCODING_UTF8    => 1, 
+	);
+	
+	//------------------------------------------------
+	//encode code to encoding name
+	//------------------------------------------------
+	var $encoding_codes = array(
+		0 => KTAI_ENCODING_SJISWIN, 
+		1 => KTAI_ENCODING_UTF8, 
+	);
+	
+	//------------------------------------------------
+	//carrier code to usings in emoji converters
+	//------------------------------------------------
+	var $carriers = array(
+		KTAI_CARRIER_UNKNOWN  => 0, 
+		KTAI_CARRIER_DOCOMO   => 1, 
+		KTAI_CARRIER_KDDI     => 2, 
+		KTAI_CARRIER_SOFTBANK => 3, 
+		KTAI_CARRIER_EMOBILE  => 1, 
+		KTAI_CARRIER_IPHONE   => 0, 
+		KTAI_CARRIER_PHS      => 1, 
+		KTAI_CARRIER_CLAWLER  => 0, 
+	);
+	
+	//------------------------------------------------
+	//usings of carrier code
+	//------------------------------------------------
+	var $carrier_codes = array(
+		0 => KTAI_CARRIER_UNKNOWN, 
+		1 => KTAI_CARRIER_DOCOMO, 
+		2 => KTAI_CARRIER_KDDI, 
+		3 => KTAI_CARRIER_SOFTBANK, 
+	);
+	
+	//------------------------------------------------
+	//carrier code to emoji table indexes
+	//------------------------------------------------
+	var $carrier_indexes = array(
+		0 => 3, 
+		1 => 0, 
+		2 => 1, 
+		3 => 2, 
+	);
+	
+	//------------------------------------------------
+	//emoji patterns for preg_match()
+	//------------------------------------------------
+	var $patterns = array(
+		0 => array(
+			'/^(\xf8[\x9f-\xfc])|(\xf9[\x40-\xfc])$/', 
+			'/^\xee[\x98-\x9c][\x80-\xbf]$/', 
+		), 
+		1 => array(
+			'/^(\xf8[\x9f-\xfc])|(\xf9[\x40-\xfc])$/', 
+			'/^\xee[\x98-\x9c][\x80-\xbf]$/', 
+		), 
+		2 => array(
+			'/^[\xf3\xf4\xf6\xf7][\x40-\xfc]$/', 
+//				'/^(\xee[\x91-\x97\a0\aa-\ae][\x80-\xbf])|(\xee[\xb1-\xb3\xb5-\xb7\bd-\xbf][\x80-\xbf])|(\xef[\x81-\x83][\x80-\xbf])$/', 
+			'/^(\xee[\xb1-\xb3\xb5-\xb7\bd-\xbf][\x80-\xbf])|(\xef[\x81-\x83][\x80-\xbf])$/', 
+		), 
+		3 => array(
+			'/^(\xf7[\x41-\x9b])|(\xf7[\xa1-\xfa])|(\xf9[\x41-\x9b])|(\xf9[\xa1-\xed])|(\xfb[\x41-\x8d])|(\xfb[\xa1-\xde])$/', 
+			'/^\xee[\x80-\x81\x84-\x85\x88-\x89\x8c-\x8d\x90-\x91\x94][\x80-\xbf]$/', 
+		), 
+	);
+	
+	//------------------------------------------------
+	//emoji converting table
+	//------------------------------------------------
+	var $__emoji_table = array(
 		array(						//1
 			array(0xf89f, 0xe63e), 
 			array(0xf660, 0xe488, 0xef60, 0x7541, 0xeb60), 
@@ -1819,7 +1926,427 @@ class Lib3gkEmoji {
 	//Shutdown process
 	//------------------------------------------------
 	function shutdown(){
+		$this->__lib3gk  = null;
+		$this->__carrier = null;
+		$this->__tools   = null;
 	}
 	
+	//------------------------------------------------
+	//Load lib3gk class(deprecate)
+	//------------------------------------------------
+	function __load_lib3gk(){
+		if(!class_exists('lib3gk')){
+			require_once(dirname(__FILE__).'/lib3gk.php');
+		}
+		$this->__lib3gk = Lib3gk::get_instance();
+		$this->_params = array_merge($this->__lib3gk->_params, $this->_params);
+		$this->__lib3gk->_params = &$this->_params;
+	}
+	
+	//------------------------------------------------
+	//Load lib3gkCarrier class
+	//------------------------------------------------
+	function __load_carrier(){
+		if(!class_exists('lib3gkcarrier')){
+			require_once(dirname(__FILE__).'/lib3gk_carrier.php');
+		}
+		$this->__carrier = Lib3gkCarrier::get_instance();
+		$this->_params = array_merge($this->__carrier->_params, $this->_params);
+		$this->__carrier->_params = &$this->_params;
+	}
+	
+	//------------------------------------------------
+	//Load tools class
+	//------------------------------------------------
+	function __load_tools(){
+		if(!class_exists('lib3gktools')){
+			require_once(dirname(__FILE__).'/lib3gk_tools.php');
+		}
+		$this->__tools = Lib3gkTools::get_instance();
+		$this->_params = array_merge($this->__tools->_params, $this->_params);
+		$this->__tools->_params = &$this->_params;
+	}
+	
+	//------------------------------------------------
+	//Converting a emoji code to a charactor
+	//------------------------------------------------
+	function __convertEmojiChractor($code, $oekey, $binary){
+		
+		$replace = '';
+		
+		$this->__load_tools();
+		
+		if($code != 0){
+			if(!$binary){
+				if($oekey == 0){
+					$replace = '&#'.$code.';';
+				}else{
+					$replace = '&#x'.dechex($code).';';
+				}
+			}else{
+				if($oekey == 0){
+					$replace = $this->__tools->int2str($code);
+				}else{
+					$replace = $this->__tools->int2utf8($code);
+				}
+			}
+		}
+		return $replace;
+	}
+	
+	//------------------------------------------------
+	//Create emoji image tags
+	//------------------------------------------------
+	function create_image_emoji($name){
+		
+		$this->__load_lib3gk();		//deprecate
+		
+		$url = $this->_params['img_emoji_url'].$name.'.'.$this->_params['img_emoji_ext'];
+		$htmlAttribute = array(
+			'border' => 0, 
+			'width' => $this->_params['img_emoji_size'][0], 
+			'height' => $this->_params['img_emoji_size'][1], 
+		);
+		return $this->__lib3gk->image($url, $htmlAttribute);	//deprecate
+	}
+	
+	//------------------------------------------------------------------------------
+	//Create Emoji charactor code
+	//------------------------------------------------------------------------------
+	function emoji($code, $disp = true, $carrier = null, $output_encoding = null, $binary = null){
+		
+		$this->__load_tools();
+		
+		if($carrier === null){
+			$this->__load_carrier();
+			$carrier = $this->__carrier->get_carrier();
+		}
+		
+		if($binary === null){
+			$binary = $this->_params['use_binary_emoji'];
+		}
+		
+		if($output_encoding === null){
+			$output_encoding = $this->_params['output_encoding'];
+		}
+		$output_encoding = $this->__tools->normal_encoding_str($output_encoding);
+		if($output_encoding == KTAI_ENCODING_UTF8){
+			if($carrier == KTAI_CARRIER_KDDI && $binary){
+				$oekey = 2;
+			}else{
+				$oekey = 1;
+			}
+		}else{
+			$oekey = 0;
+		}
+		
+		if($this->_params['use_img_emoji']){
+			$default_key = 4;
+		}else{
+			$default_key = 3;
+		}
+		
+		switch($carrier){
+		case KTAI_CARRIER_DOCOMO:
+		case KTAI_CARRIER_EMOBILE:
+			$key = 0;
+			break;
+			
+		case KTAI_CARRIER_KDDI:
+			$key = 1;
+			break;
+			
+		case KTAI_CARRIER_SOFTBANK:
+			$key = 2;
+			break;
+			
+		default:
+			$key = $default_key;
+		}
+		
+		if(is_int($code)){
+			if($code >= $this->__emoji_table[0][0][0]){
+				$iekey = 0;
+			}else{
+				$iekey = 1;
+			}
+		}
+		
+		$table = null;
+		foreach($this->__emoji_table as $emoji_table){
+			if(is_int($code)){
+				$check = $emoji_table[0][$iekey];
+				if($check == $code){
+					$table = $emoji_table;
+					break;
+				}
+			}else{
+				$check = $this->__tools->int2str($emoji_table[0][0]);
+				if($check == $code){
+					$table = $emoji_table;
+					break;
+				}
+				$check = $this->__tools->int2utf8($emoji_table[0][1]);
+				if($check == $code){
+					$table = $emoji_table;
+					break;
+				}
+			}
+		}
+		
+		$str = '';
+		if($table !== null){
+			if($key == 0 || $key == 1){
+				$str = $this->__convertEmojiChractor($table[$key][$oekey], $oekey, $binary);
+			}else
+			if($key == 2){
+				$str = $table[$key];
+			}
+			
+			if($str == ''){
+				if($default_key == 4){
+					$str = $this->create_image_emoji($table[$default_key]);
+				}else{
+					$str = $table[$default_key];
+					if($oekey == 1){
+						$str = mb_convert_encoding($str, KTAI_ENCODING_UTF8, KTAI_ENCODING_SJISWIN);
+					}
+				}
+			}
+		}
+		
+		if($disp){
+			echo $str;
+		}
+		return $str;
+	}
+	
+	//------------------------------------------------------------------------------
+	//Emoji analizer for convert_emoji()
+	//------------------------------------------------------------------------------
+	function &__analyzeEmoji($str, $options = array()){
+		
+		$this->__load_carrier();
+		$this->__load_tools();
+		
+		$defalt_options = array(
+			'input_carrier'   => $this->__carrier->_carrier, 
+			'output_carrier'  => $this->__carrier->_carrier, 
+			'input_encoding'  => $this->_params['input_encoding'], 
+		);
+		$options = array_merge($defalt_options, $options);
+		
+		$ecode = $options['input_encoding'];
+		$ccode = $this->carriers[$options['input_carrier']];
+		if($ecode == KTAI_ENCODING_SJIS || $ecode == KTAI_ENCODING_SJISWIN || $ecode == KTAI_ENCODING_UTF8){
+			$ecode = $this->encodings[$ecode];
+			$pattern = $this->patterns[$ccode][$ecode];
+			$binary_search = true;
+		}else{
+			$pattern = '';
+			$binary_search = false;
+		}
+		
+		$arr = array();
+		
+		//数値文字参照を入手
+		//
+		preg_match_all('/(&#[0-9]{5};)|(&#x[0-9a-zA-Z]{4};)/', $str, $match, PREG_OFFSET_CAPTURE);
+		$pos = 0;
+		$len = strlen($str);
+		foreach($match[0] as $fvalue){
+			$s = substr($str, $pos, $fvalue[1] - $pos);
+			$e   = null;
+			$enc = null;
+			if(preg_match('/^&#([0-9]{5});$/', $fvalue[0], $a)){
+				$e = intval($a[1]);
+				$enc = 0;
+			}else
+			if(preg_match('/^&#x([0-9a-zA-Z]{4});$/', $fvalue[0], $a)){
+				$e = hexdec($a[1]);
+				$enc = 1;
+			}
+			$pos = $fvalue[1] + strlen($fvalue[0]);
+			$arr[] = array($s, $e, $enc, $ccode);
+		}
+		$s = substr($str, $pos, $len - $pos);
+		$arr[] = array($s, null, null, $ccode);
+		
+		//バイナリをチェック
+		//
+		if($binary_search){
+			
+			$tmpenc = mb_internal_encoding();
+			mb_internal_encoding($options['input_encoding']);
+			
+			$carrier = $options['input_carrier'];
+			$c = count($arr);
+			for($i = 0;$i < $c;$i++){
+				
+				$str_bin = $arr[$i][0];
+				$arr_bin = array();
+				
+				$pos = $spos = 0;
+				$len = mb_strlen($str_bin);
+				while($pos < $len){
+					if(preg_match($pattern, mb_substr($str_bin, $pos, 1), $a)){
+						$s = mb_substr($str_bin, $spos, $pos - $spos);
+						$e = null;
+						if($ecode == 0){
+							$e = $this->__tools->str2int($a[0]);
+						}else
+						if($ecode == 1){
+							$e = $this->__tools->utf82int($a[0]);
+						}
+						$arr_bin[] = array($s, $e, $ecode, $ccode);
+						$spos = $pos + 1;
+					}
+					$pos++;
+				}
+				
+				//現在の手前に配列を挿入し、あまりを代入
+				//
+				$arr[$i][0] = mb_substr($str_bin, $spos, $len - $spos);
+				
+				if(count($arr_bin) > 0){
+					$arr_tmp = array();
+					for($j = 0;$j < $i;$j++){
+						$arr_tmp[] = array_shift($arr);
+					}
+					$arr = array_merge($arr_tmp, $arr_bin, $arr);
+					$c  = count($arr);
+					$i += count($arr_bin);
+				}
+			}
+			mb_internal_encoding($tmpenc);
+		}
+		
+		return $arr;
+	}
+	
+	//------------------------------------------------------------------------------
+	//Emoji search for convert_emoji()
+	//------------------------------------------------------------------------------
+	function __searchEmojiSet($code, $encoding = KTAI_ENCODING_UTF8, $carrier = KTAI_CARRIER_DOCOMO){
+		
+		//キャリアとエンコーディングの正規化
+		//
+		if(isset($this->carriers[$carrier])){
+			$c = $this->carrier_indexes[$this->carriers[$carrier]];
+		}else{
+			$c = $this->carrier_indexes[$this->carriers[KTAI_CARRIER_DOCOMO]];
+		}
+		if(isset($this->encodings[$encoding])){
+			$e = $this->encodings[$encoding];
+		}else{
+			$e = $this->encodings[KTAI_ENCODING_UTF8];
+		}
+		
+		if($c == 3){
+			$c = 0;		//PCはdocomo扱い
+		}
+		if($c == 2){
+			$e = 0;		//SoftBankは必ず１種類
+		}
+		
+		//絵文字セットを探し出す(※将来的に見直し予定)
+		//
+		foreach($this->__emoji_table as $table){
+			if($code == $table[$c][$e]){
+				return $table;
+			}
+			//AUの場合は数値文字参照とバイナリの２つのコードを参照する必要あり
+			//
+			if($c == 1 && $e == 1){
+				if($code == $table[$c][$e + 1]){
+					return $table;
+				}
+			}
+		}
+		return false;
+	}
+	
+	//------------------------------------------------------------------------------
+	//Convert iMODE Emoji to other carriers
+	//------------------------------------------------------------------------------
+	function convert_emoji(&$str, $carrier = null, $input_encoding = null, $output_encoding = null, $binary = null){
+		
+		$this->__load_carrier();
+		$this->__load_tools();
+		
+		$input_carrier = KTAI_CARRIER_DOCOMO;
+		$output_carrier = ($carrier !== null ? $carrier : $this->__carrier->_carrier);
+		if($input_encoding === null){
+			$input_encoding = $this->_params['input_encoding'];
+		}
+		if($output_encoding === null){
+			$output_encoding = $this->_params['output_encoding'];
+		}
+		if($binary === null){
+			$binary = false;
+		}
+		
+		$options = compact('input_carrier', 'output_carrier', 'input_encoding', 'output_encoding', 'binary');
+		
+		$arr = $this->__analyzeEmoji($str, $options);
+		if(empty($arr)){
+			return false;
+		}
+		
+		$str = '';
+		foreach($arr as $fvalue){
+			if($fvalue[0] != ''){
+				$str .= mb_convert_encoding($fvalue[0], $output_encoding, $input_encoding);
+			}
+			if($fvalue[1] !== null){
+				$emoji = $this->__searchEmojiSet($fvalue[1], $this->encoding_codes[$fvalue[2]], $fvalue[3]);
+				if(!empty($emoji)){
+					if(isset($this->carriers[$output_carrier])){
+						$oc = $this->carrier_indexes[$this->carriers[$output_carrier]];
+					}else{
+						$oc = $this->carrier_indexes[$this->carriers[KTAI_CARRIER_DOCOMO]];
+					}
+					if(isset($this->encodings[$output_encoding])){
+						$oe = $this->encodings[$output_encoding];
+					}else{
+						$oe = $this->encodings[KTAI_ENCODING_UTF8];
+					}
+					
+					if($oc == 0 || $oc == 1){
+						if($oc == 1 && $oe == 1 && $binary){
+							$oe = 2;
+						}
+						$code = $emoji[$oc][$oe];
+						if($binary){
+							if($oe == 0){
+								$code = $this->__tools->int2str($code);
+							}else{
+								$code = $this->__tools->int2utf8($code);
+							}
+						}else{
+							if($oe == 0){
+								$code = sprintf('&#%d;', $code);
+							}else{
+								$code = sprintf('&#x%04x;', $code);
+							}
+						}
+					}else
+					if($oc == 2){
+						$code = $emoji[$oc];
+					}else
+					if($oc == 3){
+						if($this->_params['use_img_emoji']){
+							$oc = 4;
+							$code = $this->create_image_emoji($emoji[$oc]);
+						}else{
+							$code = mb_convert_encoding($emoji[$oc], $output_encoding, KTAI_ENCODING_SJISWIN);
+						}
+					}
+					
+					$str .= $code;
+				}
+			}
+		}
+	}
 	
 }

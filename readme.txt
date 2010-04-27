@@ -1,6 +1,6 @@
 ***************************************************************************
 	携帯用ライブラリ「Ktai Library」説明書
-	Copyright 2009 ECWorks ( http://www.ecworks.jp/ )
+	Copyright 2009-2010 ECWorks ( http://www.ecworks.jp/ )
 ***************************************************************************
 
 　ダウンロードいただきましてありがとうございます。
@@ -28,7 +28,7 @@ CakePHP内で利用するためのヘルパー・コンポーネント一式に�
 
 　本ライブラリは、PHP4/5で動作するように作成されています。チェックはPHP5環境にて
 行っております。
-　CakePHP用ヘルパー・コンポーネントは、CakePHP1.2.3.8166 Stableにて動作確認を
+　CakePHP用ヘルパー・コンポーネントは、CakePHP1.3.0 Stableにて動作確認を
 しておりますが、それ以前のバージョンでも使用できると思います。
 　なお、CakePHP1.1では、一部アウトプット仕様が異なるため、使用できない機能が
 ありますのでサポート外です。
@@ -72,11 +72,12 @@ CakePHP内の所定の場所にアップロードしてください。
 
 +- app								[755] 
 |  +- config						[755] 
-|  |  +- ktai-session.php			[644] 携帯向けセッション設定
+|  |  +- ktai_session.php			[644] 携帯向けセッション設定
 |  +- controllers					[755] 
 |  |  +- components					[755] 
 |  |  |  +- ktai.php				[644] 携帯コンポーネント
-|  |  +- app_controller.php.ktai	[644] リダイレクト対応パッチ(*)
+|  |  +- app_error.php				[644] 携帯用app_error.php
+|  |  +- ktai_app_controller.php	[644] リダイレクト対応パッチ(*)
 |  +- views							[755] 
 |  |  +- helpers					[755] 
 |  |     +- ktai.php				[644] 携帯ヘルパー
@@ -87,17 +88,21 @@ CakePHP内の所定の場所にアップロードしてください。
 +- vendors							[755] 
 |  +- ecw							[755] 
 |     +- lib3gk.php					[644] 携帯ライブラリ本体
+|     +- lib3gk_carrier.php			[644] 携帯ライブラリ本体(キャリア判定関連)
+|     +- lib3gk_def.php				[644] 携帯ライブラリ本体(定義関連)
 |     +- lib3gk_emoji.php			[644] 携帯ライブラリ本体(絵文字関連)
-|     +- lib3gk_machine.php			[644] 携帯ライブラリ本体(端末情報関連)
+|     +- lib3gk_html.php			[644] 携帯ライブラリ本体(HTML関連)
+|     +- lib3gk_machine.php			[644] 携帯ライブラリ本体(機種情報関連)
+|     +- lib3gk_tools.php			[644] 携帯ライブラリ本体(その他ツール関連)
 |									↓↓↓以下はアップロード不要です
 +- readme.txt						[***] このファイル
 +- LICENSE							[***] GNUライセンス規約書
 
-　なお、ライブラリ単体で利用する場合は、lib3gk.phpのみを所定のディレクトリに
-アップロードしてください。その他のファイルは不要です。
+　なお、ライブラリ単体で利用する場合は、vendors/ecw内のライブラリファイルのみを
+所定のディレクトリにアップロードしてください。その他のファイルは不要です。
 
-(*)セッション関連を使用する場合は、必ずapp_controller.phpにリネームするか、
-既存app_controller.phpに必要箇所をペーストしてください
+(*)セッション関連を使用する場合は、app_controller.phpの代わりにこちらを利用
+するか、既存app_controller.phpに必要箇所をペーストしてください
 
 
 --------------------------------------------------
@@ -133,7 +138,7 @@ ktaiコンポーネントを使う？ -+-→ 2-b：ktaiコンポーネントを�
 その中の「_params」プロパティを変更します。_paramsプロパティは連想配列で
 表現されています。
 
-【設定例】
+【設定例１：標準で利用する場合】
 
 $ktai = Lib3gk::get_instance();
 $ktai->_params = array(
@@ -142,6 +147,20 @@ $ktai->_params = array(
 		'output_encoding' => KTAI_ENCODING_UTF8, 	//出力をUTF-8に変更
 );
 
+　バージョン0.3からは、ライブラリの機能をサブクラス化しました。このため、
+特定機能のみを利用することが出来ます。例えばキャリア判定のみを利用する場合は
+「Lib3gkCarrier」のインスタンスを入手することでキャリア判定が行えます。
+
+【設定例２：特定機能のみを利用する場合】
+
+$carrier = Lib3gkCarrier::get_instance();
+$carrier->_params = array(
+		'use_img_emoji' => true, 					//画像絵文字を使用
+		'input_encoding'  => KTAI_ENCODING_UTF8, 	//入力をUTF-8に変更
+		'output_encoding' => KTAI_ENCODING_UTF8, 	//出力をUTF-8に変更
+);
+$html = Lib3gkHtml::get_instance();		//別の機能も利用できます。
+										//パラメータは引き継がれます
 
 ２：CakePHPで使用する場合
 
@@ -389,14 +408,14 @@ $ktai->options['output_convert_kana'] = 'knr', 			//半角変換
 
 【XML関連】
 
-・XMLの使用(bool)[New!]
+・XMLの使用(bool)
 	'use_xml' => false, 
 
 　このオプションを指定すると、URL生成がXML表記になります。
 
 【CSS関連】
 
-・インラインスタイルシートの登録(array(string))[New!]
+・インラインスタイルシートの登録(array(string))
 	'style' => array(
 		'warning' => 'color: #ff0000;font-size: x-small;', 
 	), 
@@ -600,7 +619,7 @@ bool is_phs_email(string $email)
 　PHSメールアドレスの場合、trueを返します。
 
 
-◎iMODE絵文字を他キャリア用に変換する
+◎iMODE絵文字を他キャリア用に変換する [Update!]
 
 void convert_emoji(string &$str, int $carrier = null, $input_encoding = null, 
 	$output_encoding = null, $binary = null)
@@ -614,6 +633,8 @@ void convert_emoji(string &$str, int $carrier = null, $input_encoding = null,
 できます。無指定の場合は、ライブラリクラスインスタンスの設定値が利用されます。
 　binaryをtrueにすると絵文字はバイナリ文字列として出力されます。falseにすると
 数値指定(&#?????; / &#x????;)を出力します。
+
+　バージョン0.3からは、文字のエンコーディングも同時に行うようになりました。
 
 
 ◎絵文字を表示する
@@ -636,9 +657,9 @@ string emoji(mixed $code, bool $disp = true, int $carrier = null,
 　際にはご注意ください。
 
 
-◎スクリーンサイズに最適化した画像を表示
+◎スクリーンサイズに最適化した画像を表示 [Update!]
 
-string image(string $url, array $htmlAttribute = array())
+string image(string $url, array $htmlAttribute = array(), $stretch = true)
 
 　仮想スクリーンサイズと端末スクリーンサイズから画像の拡大率を計算し、その比率に
 修正した画像を表示します。この関数を使用することで、高解像度携帯での画像の
@@ -649,6 +670,8 @@ htmlAttribute内に連想配列で指定します。
 いなければなりません。どちらかが欠けた場合、最適化は行いません。
 　なお、最適化を行いたくない場合はHtmlHelper::image()に置き換えてください。
 
+　バージョン0.3からは、画像のストレッチをするかしないか選べます。デフォルトは
+ストレッチを行います。
 
 ◎スクリーンサイズに最適化した画像サイズを入手
 
@@ -702,7 +725,7 @@ mixed get_uid()
 　入手出来なかった場合はfalseが返ります。
 
 
-◎インラインスタイルシートの入手[New!]
+◎インラインスタイルシートの入手
 
 string style(string $name)
 
@@ -736,6 +759,18 @@ string int2utf8(int $value)
 
 　ユニコードをUTF-8文字列に変換します。
 
+◎文字から数値を作成 [New!]
+
+string str2int(int $str)
+
+　文字から数値(キャラクターコード)に変換します。
+　マルチバイトに対応しています。
+
+◎UTF-8文字から数値(ユニコード)を作成 [New!]
+
+string utf82int(int $value)
+
+　UTF-8文字から数値(ユニコード)に変換します。
 
 ◎QRコードの作成
 
@@ -774,8 +809,6 @@ $options = array(
 
 　他に欲しい機能がございましたら、是非お寄せください。検討させていただきます。
 
-　また、ライブラリが巨大になり始めていますので、機能の分割も検討しております。
-
 
 --------------------------------------------------
 ■スペシャルサンクス
@@ -793,10 +826,28 @@ http://blog.firstlife.jp/
 ▼WEBで地域活性化
 http://as.blog16.jp/
 
+　バージョン0.3.0の開発に当たり、TAKA様の公開されている「Google Static Maps 
+APIヘルパー」を参考に「get_static_maps()」を作成しました。ご協力ありがとう
+ございました。
+
+▼忘れないログ(cakePHP1.2など)
+http://andweb.jp/blog/
+
 
 --------------------------------------------------
 ■ご意見・ご感想・不具合報告など
 --------------------------------------------------
+
+　「Ktai Library.org」を立ち上げました。バグ情報やKtai Libraryに関する
+ニュースをこちらにて公開しています。バグ報告やご要望などはこちらにて受け付けて
+おります。
+
+▼Ktai Library.org
+http://www.ktailibrary.org/
+
+　また、TwitterにてKtai Libraryのアカウント(@ktailibrary)を取得しました。
+「http://www.ktailibrary.org/」の更新情報の他、Ktai Libraryに関する情報を
+つぶやいています。
 
 　ご意見、ご感想などは、当方のブログ内「お問い合わせ」フォームにてご連絡
 いただけますと幸いです。
@@ -820,6 +871,15 @@ http://blog.ecworks.jp/ktai
 ■バージョン情報
 --------------------------------------------------
 
+【Ver0.3.0】2010.04.27
+　・サブクラス化(lib3gk_carrier/lib3gk_def/lib3gk_html/lib3gk_ip/lib3gk_tools)
+　・IPキャリア判定機能の追加
+　・image()の仕様変更(画像をストレッチしないフラグを引数に追加)
+　・convert_emoji()の仕様変更(文字もエンコーディングする)
+　・絵文字変換の仕組みをリファクタリング
+　・get_static_maps()の追加
+　・str2int()/utf82int()の追加
+
 【Ver0.2.3】2010.03.21
 　・app_controller.php.ktai内のリダイレクト処理の不具合を修正
 
@@ -827,7 +887,8 @@ http://blog.ecworks.jp/ktai
 　・SoftBank携帯の新機種によるアクセスで不具合が生じる件を修正
 　・新機種情報の追加
 　・app_controller.php.ktai内のリダイレクト処理を改良
-　・セッションが切断された際にsession_use_trans_sid()が二重で定義される不具合を修正
+　・セッションが切断された際にsession_use_trans_sid()が二重で定義される不具合を
+　　修正
 
 【Ver0.2.1】2009.12.23
 　・ktai_session.php内のsession.use_trans_sid関連の設定方法を変更

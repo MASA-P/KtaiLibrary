@@ -7,15 +7,15 @@
  * PHP versions 4 and 5
  *
  * Ktai Library for CakePHP1.2
- * Copyright 2009, ECWorks.
+ * Copyright 2009-2010, ECWorks.
  
  * Licensed under The GNU General Public Licence
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright		Copyright 2009, ECWorks.
+ * @copyright		Copyright 2009-2010, ECWorks.
  * @link			http://www.ecworks.jp/ ECWorks.
- * @version			0.2.3
- * @lastmodified	$Date: 2010-03-21 15:00:00 +0900 (Sun, 21 Mar 2010) $
+ * @version			0.3.0
+ * @lastmodified	$Date: 2010-04-27 12:00:00 +0900 (Thu, 27 Apr 2010) $
  * @license			http://www.gnu.org/licenses/gpl.html The GNU General Public Licence
  */
 
@@ -127,15 +127,18 @@ switch ($ktai->_params['session_save']) {
 //
 if($ktai->is_imode()){
 	
+	ini_set('session.use_only_cookies', 0);
+	$this->_userAgent = '';
+	if(Configure::read('Security.level') == 'high'){
+		Configure::write('Security.level', 'medium');
+	}
+	
 	if(!isset($ktai->_params['imode_session_name'])){
 		$ktai->_params['imode_session_name'] = 'csid';
 	}
-	
-	ini_set('session.use_only_cookies', 0);
-	$this->_userAgent = '';
-	Configure::write('Security.level', 'middle');
 	Configure::write('Session.cookie', $ktai->_params['imode_session_name']);
 	ini_set('session.name', Configure::read('Session.cookie'));
+	
 	ini_set('url_rewriter.tags', 'a=href,area=href,frame=src,input=src,form=fakeentry,fieldset=');
 	session_use_trans_sid(1);
 }

@@ -7,22 +7,37 @@
  * PHP versions 4 and 5
  *
  * Ktai Library for CakePHP1.2
- * Copyright 2009, ECWorks.
+ * Copyright 2009-2010, ECWorks.
  
  * Licensed under The GNU General Public Licence
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright		Copyright 2009, ECWorks.
+ * @copyright		Copyright 2009-2010, ECWorks.
  * @link			http://www.ecworks.jp/ ECWorks.
- * @version			0.2.3
- * @lastmodified	$Date: 2010-03-21 15:00:00 +0900 (Sun, 21 Mar 2010) $
+ * @version			0.3.0
+ * @lastmodified	$Date: 2010-04-27 12:00:00 +0900 (Thu, 27 Apr 2010) $
  * @license			http://www.gnu.org/licenses/gpl.html The GNU General Public Licence
  */
+
+/**
+ * defines
+ */
+require_once(dirname(__FILE__).'/lib3gk_def.php');
+
 
 /**
  * Machine info class
  */
 class Lib3gkMachine {
+	
+	//------------------------------------------------
+	//Library sub classes
+	//------------------------------------------------
+	var $__carrier = null;
+	
+	//------------------------------------------------
+	//Parameters
+	//------------------------------------------------
 	
 	//------------------------------------------------
 	//Machine information table
@@ -3753,6 +3768,21 @@ class Lib3gkMachine {
 	);
 	
 	
+	var $carrier_name_table = array(
+		'others'    => 0, 
+		'DoCoMo'    => 1, 
+		'KDDI'      => 2, 
+		'SoftBank'  => 3, 
+		'Vodafone'  => 3, 
+		'MOT-C980'  => 3, 
+		'MOT-V980'  => 3, 
+		'emobile'   => 4, 
+		'iPhone'    => 5, 
+		'WILLCOM'   => 6, 
+		'DDIPOCKET' => 6, 
+	);
+	
+	
 	//------------------------------------------------
 	//Get instance
 	//------------------------------------------------
@@ -3779,5 +3809,46 @@ class Lib3gkMachine {
 	function shutdown(){
 	}
 	
+	
+	//------------------------------------------------
+	//Load carrier class
+	//------------------------------------------------
+	function __load_carrier(){
+		if(!class_exists('lib3gkecarrier')){
+			require_once(dirname(__FILE__).'/lib3gk_carrier.php');
+		}
+		$this->__carrier = Lib3gkCarrier::get_instance();
+	}
+	
+	//------------------------------------------------------------------------------
+	//Get machine informations
+	//------------------------------------------------------------------------------
+	function get_machineinfo($carrier_name = null, $machine_name = null){
+		
+		$this->__load_carrier();
+		
+		if($carrier_name === null || $machine_name === null){
+			$carrier_name = $this->__carrier->_carrier_name;
+			$machine_name = $this->__carrier->_machine_name;
+		}
+		
+		$default = false;
+		if(!isset($this->machine_table[$carrier_name])){
+			$carrier_name = 'others';
+			$default = true;
+		}
+		if(!isset($this->machine_table[$carrier_name][$machine_name])){
+			$machine_name = 'default';
+			$default = true;
+		}
+		$arr = $this->machine_table[$carrier_name][$machine_name];
+		
+		$arr['carrier'] = $this->carrier_name_table[$carrier_name];
+		$arr['carrier_name'] = $carrier_name;
+		$arr['machine_name'] = $machine_name;
+		$arr['default'] = $default;
+		
+		return $arr;
+	}
 	
 }
