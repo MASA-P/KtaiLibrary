@@ -14,32 +14,61 @@
  *
  * @copyright		Copyright 2009-2010, ECWorks.
  * @link			http://www.ecworks.jp/ ECWorks.
- * @version			0.3.0
- * @lastmodified	$Date: 2010-04-27 12:00:00 +0900 (Thu, 27 Apr 2010) $
+ * @version			0.3.1
+ * @lastmodified	$Date: 2010-05-17 02:00:00 +0900 (Mon, 17 May 2010) $
  * @license			http://www.gnu.org/licenses/gpl.html The GNU General Public Licence
  */
 
 /**
- * Ktai Library tools sub class
+ * Lib3gkTools sub class
+ *
+ * @package       KtaiLibrary
+ * @subpackage    KtaiLibrary.vendors.ecw
  */
 class Lib3gkTools {
 	
+	//================================================================
+	//Properties
+	//================================================================
 	//------------------------------------------------
 	//Library sub classes
 	//------------------------------------------------
+	/**
+	 * Lib3gkCarrierのインスタンス
+	 *
+	 * @var object
+	 * @access private
+	 */
 	var $__carrier = null;
 	
 	//------------------------------------------------
 	//Parameters
 	//------------------------------------------------
+	/**
+	 * Ktai Libraryパラメータ
+	 *
+	 * @var array
+	 * @access protected
+	 */
 	var $_params = array(
 		'input_encoding' => 'UTF-8', 
 		'output_encoding' => 'UTF-8', 
 	);
 	
+	
+	//================================================================
+	//Methods
+	//================================================================
 	//------------------------------------------------
-	//Get instance
+	//Basics
 	//------------------------------------------------
+	/**
+	 * インスタンスの取得
+	 *
+	 * @return object 自分自身のインスタンス
+	 * @access public
+	 * @static
+	 */
 	function &get_instance(){
 		static $instance = array();
 		if(!$instance){
@@ -50,23 +79,35 @@ class Lib3gkTools {
 	}
 	
 	
-	//------------------------------------------------
-	//Initialize process
-	//------------------------------------------------
+	/**
+	 * 初期化
+	 *
+	 * @return (なし)
+	 * @access public
+	 */
 	function initialize(){
 	}
 	
 	
-	//------------------------------------------------
-	//Shutdown process
-	//------------------------------------------------
+	/**
+	 * 後始末
+	 *
+	 * @return (なし)
+	 * @access public
+	 */
 	function shutdown(){
 	}
 	
 	
 	//------------------------------------------------
-	//Load carrier class
+	//Load subclasses
 	//------------------------------------------------
+	/**
+	 * キャリア関連サブクラスの読み込み
+	 *
+	 * @return (なし)
+	 * @access private
+	 */
 	function __load_carrier(){
 		if(!class_exists('lib3gkecarrier')){
 			require_once(dirname(__FILE__).'/lib3gk_carrier.php');
@@ -76,9 +117,17 @@ class Lib3gkTools {
 		$this->__carrier->_params = &$this->_params;
 	}
 	
+	
 	//------------------------------------------------
-	//Convert integer to charactor code of emoji
+	//Lib3gkTools methods
 	//------------------------------------------------
+	/**
+	 * 数値からバイナリコードを入手
+	 *
+	 * @param $value integer アスキーコード(2バイト対応)
+	 * @return str バイナリコード
+	 * @access public
+	 */
 	function int2str($value){
 		if($value < 0){
 			return false;
@@ -92,9 +141,14 @@ class Lib3gkTools {
 		return $str;
 	}
 	
-	//------------------------------------------------
-	//Convert unicode to UTF-8 charactor code of emoji
-	//------------------------------------------------
+	
+	/**
+	 * UNICODE数値からUTF-8バイナリコードを入手
+	 *
+	 * @param $value integer UNICODEのアスキーコード
+	 * @return str UTF-8バイナリコード
+	 * @access public
+	 */
 	function int2utf8($value){
 		$str = call_user_func(array(__CLASS__, 'int2str'), $value);
 		if($str === false){
@@ -103,9 +157,14 @@ class Lib3gkTools {
 		return mb_convert_encoding($str, 'UTF-8', 'Unicode');
 	}
 	
-	//------------------------------------------------
-	//Convert charactor code to integer of emoji
-	//------------------------------------------------
+	
+	/**
+	 * バイナリコードから数値を入手
+	 *
+	 * @param $str integer バイナリコード
+	 * @return integer アスキーコード
+	 * @access public
+	 */
 	function str2int($str){
 		if(strlen($str) != 2){
 			return false;
@@ -115,17 +174,27 @@ class Lib3gkTools {
 		return $value >= 256 ? $value : false;
 	}
 	
-	//------------------------------------------------
-	//Convert UTF-8 to unicode charactor code of emoji
-	//------------------------------------------------
+	
+	/**
+	 * UTF-8からUNICODE数値バイナリコードを入手
+	 *
+	 * @param $str string UTF-8バイナリコード
+	 * @return integer UNICODEのアスキーコード
+	 * @access public
+	 */
 	function utf82int($str){
 		$str = mb_convert_encoding($str, 'Unicode', 'UTF-8');
 		return call_user_func(array(__CLASS__, 'str2int'), $str);
 	}
 	
-	//------------------------------------------------
-	//Normal encoding strings
-	//------------------------------------------------
+	
+	/**
+	 * 文字エンコーディング名を正規化する
+	 *
+	 * @param $str string 正規化した文字エンコーディング名
+	 * @return string 正規化された文字エンコーディング名
+	 * @access public
+	 */
 	function normal_encoding_str($str){
 		$enc = mb_internal_encoding();
 		
@@ -137,9 +206,20 @@ class Lib3gkTools {
 		return $str;
 	}
 	
-	//------------------------------------------------
-	//Create link tags for mailto
-	//------------------------------------------------
+	
+	/**
+	 * mailtoリンクの作成
+	 *
+	 * @param $title string リンクのタイトル文字列
+	 * @param $email string 宛先メールアドレス
+	 * @param $subject string メールの題名
+	 * @param $body string 本文
+	 * @param $input_encoding integer 入力文字エンコーディングコード
+	 * @param $output_encoding integer 出力文字エンコーディングコード
+	 * @param $display boolean trueでecho出力(デフォルト)
+	 * @return string aタグ付きのmailto文字列
+	 * @access public
+	 */
 	function mailto($title, $email, $subject = null, $body = null, $input_encoding = null, $output_encoding = null, $display = true){
 		
 		$this->__load_carrier();
@@ -209,9 +289,13 @@ class Lib3gkTools {
 		return $str;
 	}
 	
-	//------------------------------------------------------------------------------
-	//Get uid
-	//------------------------------------------------------------------------------
+	
+	/**
+	 * 端末UIDの入手
+	 *
+	 * @return string 端末UID
+	 * @access public
+	 */
 	function get_uid(){
 		
 		$this->__load_carrier();

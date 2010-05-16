@@ -14,8 +14,8 @@
  *
  * @copyright		Copyright 2009-2010, ECWorks.
  * @link			http://www.ecworks.jp/ ECWorks.
- * @version			0.3.0
- * @lastmodified	$Date: 2010-04-27 12:00:00 +0900 (Thu, 27 Apr 2010) $
+ * @version			0.3.1
+ * @lastmodified	$Date: 2010-05-17 02:00:00 +0900 (Mon, 17 May 2010) $
  * @license			http://www.gnu.org/licenses/gpl.html The GNU General Public Licence
  */
 
@@ -25,19 +25,44 @@
 require_once(dirname(__FILE__).'/lib3gk_def.php');
 
 /**
- * Ktai Library html sub class
+ * Lib3gkHtml sub class
+ *
+ * @package       KtaiLibrary
+ * @subpackage    KtaiLibrary.vendors.ecw
  */
 class Lib3gkHtml {
 	
+	//================================================================
+	//Properties
+	//================================================================
 	//------------------------------------------------
 	//Library sub classes
 	//------------------------------------------------
+	/**
+	 * Lib3gkCarrierのインスタンス
+	 *
+	 * @var object
+	 * @access private
+	 */
 	var $__carrier = null;
+	
+	/**
+	 * Lib3gkMachineのインスタンス
+	 *
+	 * @var object
+	 * @access private
+	 */
 	var $__machine = null;
 	
 	//------------------------------------------------
 	//Parameters
 	//------------------------------------------------
+	/**
+	 * Ktai Libraryパラメータ
+	 *
+	 * @var array
+	 * @access protected
+	 */
 	var $_params = array(
 		
 		//Encoding params
@@ -58,14 +83,28 @@ class Lib3gkHtml {
 		'style' => array(), 
 	);
 	
-	//------------------------------------------------
-	//Callbacks
-	//------------------------------------------------
+	/**
+	 * Lib3gkHtml::url()のコールバック
+	 *
+	 * @var object
+	 * @access protected
+	 */
 	var $_url_callback = null;
 	
+	
+	//================================================================
+	//Methods
+	//================================================================
 	//------------------------------------------------
-	//Get instance
+	//Basics
 	//------------------------------------------------
+	/**
+	 * インスタンスの取得
+	 *
+	 * @return object 自分自身のインスタンス
+	 * @access public
+	 * @static
+	 */
 	function &get_instance(){
 		static $instance = array();
 		if(!$instance){
@@ -76,24 +115,36 @@ class Lib3gkHtml {
 	}
 	
 	
-	//------------------------------------------------
-	//Initialize process
-	//------------------------------------------------
+	/**
+	 * 初期化
+	 *
+	 * @return (なし)
+	 * @access public
+	 */
 	function initialize(){
 		$this->_url_callback = array($this, '__url_callback_func');
 	}
 	
 	
-	//------------------------------------------------
-	//Shutdown process
-	//------------------------------------------------
+	/**
+	 * 後始末
+	 *
+	 * @return (なし)
+	 * @access public
+	 */
 	function shutdown(){
 	}
 	
 	
 	//------------------------------------------------
-	//Load carrier class
+	//Load subclasses
 	//------------------------------------------------
+	/**
+	 * キャリア関連サブクラスの読み込み
+	 *
+	 * @return (なし)
+	 * @access private
+	 */
 	function __load_carrier(){
 		if(!class_exists('lib3gkecarrier')){
 			require_once(dirname(__FILE__).'/lib3gk_carrier.php');
@@ -103,9 +154,13 @@ class Lib3gkHtml {
 		$this->__carrier->_params = &$this->_params;
 	}
 	
-	//------------------------------------------------
-	//Load machine info class
-	//------------------------------------------------
+	
+	/**
+	 * 機種情報関連サブクラスの読み込み
+	 *
+	 * @return (なし)
+	 * @access private
+	 */
 	function __load_machine(){
 		if(!class_exists('lib3gkmachine')){
 			require_once(dirname(__FILE__).'/lib3gk_machine.php');
@@ -113,26 +168,49 @@ class Lib3gkHtml {
 		$this->__machine = Lib3gkMachine::get_instance();
 	}
 	
+	
 	//------------------------------------------------
-	//call URL function
+	//Lib3gkHtml methods
 	//------------------------------------------------
+	/**
+	 * URLの生成
+	 *
+	 * @param $url mixed URL
+	 * @return array 加工されたURL
+	 * @access public
+	 */
 	function url($url){
 		return call_user_func($this->_url_callback, $url);
 	}
 	
 	
-	//------------------------------------------------
-	//URL callback function
-	//------------------------------------------------
+	/**
+	 * URLの生成(デフォルトの処理)
+	 *
+	 * @param $url string URL
+	 * @return array 加工されたURL
+	 * @access public
+	 */
 	function __url_callback_func($url){
 		return htmlspecialchars($url, ENT_QUOTES);
 	}
 	
-	//------------------------------------------------
-	//Create image tags adding width and height params 
-	//that is calculated by virtual screen size and 
-	//machine screen size
-	//------------------------------------------------
+	
+	/**
+	 * imageタグ付きの文字列を入手
+	 *
+	 * @param $url mixed URL
+	 * @param $htmlAttribute array HTMLアトリビュート
+	 * @param $stretch boolean trueで画像サイズをストレッチ
+	 * @return string 生成されたHTMLタグ
+	 * @access public
+	 *
+	 * $htmlAttributeのキーと値
+	 *   'width' 幅
+	 *   'height' 高さ
+	 *
+	 * ※その他キーについてもimgタグに付加します
+	 */
 	function image($url, $htmlAttribute = array(), $stretch = true){
 		
 		$url = $this->url($url);
@@ -156,9 +234,16 @@ class Lib3gkHtml {
 	}
 	
 	
-	//------------------------------------------------
-	//Adjiust image size
-	//------------------------------------------------
+	/**
+	 * 指定のサイズの描画エリアにあった画像になるようストレッチの計算をする
+	 *
+	 * @param $width integer 画像の幅
+	 * @param $height integer 画像の高さ
+	 * @param $default_width integer 基本となる幅
+	 * @param $default_height integer 基本となる高さ
+	 * @return array 計算された画像の幅と高さ
+	 * @access public
+	 */
 	function stretch_image_size($width, $height, $default_width = null, $default_height = null){
 		
 		$this->__load_machine();
@@ -181,9 +266,15 @@ class Lib3gkHtml {
 	}
 	
 	
-	//------------------------------------------------------------------------------
-	//Get inline stylesheet
-	//------------------------------------------------------------------------------
+	/**
+	 * 登録スタイルの呼び出し
+	 * $this->_params['style']内に登録したスタイルを呼び出します
+	 *
+	 * @param $name string 登録スタイル名
+	 * @param $display boolean trueでechoもする(デフォルト)
+	 * @return string 入手したインラインスタイルシート文字列
+	 * @access public
+	 */
 	function style($name, $display = true){
 		
 		$str = '';
@@ -198,9 +289,21 @@ class Lib3gkHtml {
 		return $str;
 	}
 	
-	//------------------------------------------------------------------------------
-	//Get QR code tag
-	//------------------------------------------------------------------------------
+	
+	/**
+	 * QRコードの生成(Google chart APIの利用)
+	 *
+	 * @param $str string QRコード内に含める文字列(URLなど)
+	 * @param $options array APIに与えるオプション
+	 * @param $input_encoding integer 入力文字エンコーディングコード
+	 * @param $output_encoding integer 出力文字エンコーディングコード
+	 * @return string imageタグ付き文字列
+	 * @access public
+	 *
+	 * ※パラメータについては下記URLを参照してください
+	 * http://code.google.com/intl/ja/apis/chart/docs/gallery/qr_codes.html
+	 
+	 */
 	function get_qrcode($str, $options = array(), $input_encoding = null, $output_encoding = null){
 		
 		$options = array_merge(array('width' => 220, 'height' => 220), $options);
@@ -241,9 +344,21 @@ class Lib3gkHtml {
 		return $this->image($url, $options);
 	}
 	
-	//------------------------------------------------------------------------------
-	//Get Google Static Maps image
-	//------------------------------------------------------------------------------
+	
+	/**
+	 * Google static Maps APIを用いて地図表示
+	 *
+	 * @param $lat string 緯度
+	 * @param $lon string 経度
+	 * @param $options array APIに与えるオプション
+	 * @param $apikey string 取得したGoogle API キー
+	 * @return string imageタグ付き文字列
+	 * @access public
+	 *
+	 * ※パラメータについては下記URLを参照してください
+	 * http://code.google.com/intl/ja/apis/maps/documentation/staticmaps/
+	 
+	 */
 	function get_static_maps( $lat, $lon, $options = array(), $api_key = null){
 		
 		$default_options = array(

@@ -14,8 +14,8 @@
  *
  * @copyright		Copyright 2009-2010, ECWorks.
  * @link			http://www.ecworks.jp/ ECWorks.
- * @version			0.3.0
- * @lastmodified	$Date: 2010-04-27 12:00:00 +0900 (Thu, 27 Apr 2010) $
+ * @version			0.3.1
+ * @lastmodified	$Date: 2010-05-17 02:00:00 +0900 (Mon, 17 May 2010) $
  * @license			http://www.gnu.org/licenses/gpl.html The GNU General Public Licence
  */
 
@@ -26,22 +26,36 @@ require_once(dirname(__FILE__).'/lib3gk_def.php');
 
 
 /**
- * Machine info class
+ * Lib3gkMachine sub class
+ *
+ * @package       KtaiLibrary
+ * @subpackage    KtaiLibrary.vendors.ecw
  */
 class Lib3gkMachine {
 	
+	//================================================================
+	//Properties
+	//================================================================
 	//------------------------------------------------
 	//Library sub classes
 	//------------------------------------------------
+	/**
+	 * Lib3gkCarrierのインスタンス
+	 *
+	 * @var object
+	 * @access private
+	 */
 	var $__carrier = null;
 	
 	//------------------------------------------------
 	//Parameters
 	//------------------------------------------------
-	
-	//------------------------------------------------
-	//Machine information table
-	//------------------------------------------------
+	/**
+	 * 機種情報テーブル
+	 *
+	 * @var array
+	 * @access public
+	 */
 	var $machine_table = array(
 		
 		//docomo
@@ -3768,6 +3782,12 @@ class Lib3gkMachine {
 	);
 	
 	
+	/**
+	 * キャリア名→キャリアコード変換テーブル
+	 *
+	 * @var string
+	 * @access protected
+	 */
 	var $carrier_name_table = array(
 		'others'    => 0, 
 		'DoCoMo'    => 1, 
@@ -3783,9 +3803,19 @@ class Lib3gkMachine {
 	);
 	
 	
+	//================================================================
+	//Methods
+	//================================================================
 	//------------------------------------------------
-	//Get instance
+	//Basics
 	//------------------------------------------------
+	/**
+	 * インスタンスの取得
+	 *
+	 * @return object 自分自身のインスタンス
+	 * @access public
+	 * @static
+	 */
 	function &get_instance(){
 		static $instance = array();
 		if(!$instance){
@@ -3796,23 +3826,35 @@ class Lib3gkMachine {
 	}
 	
 	
-	//------------------------------------------------
-	//Initialize process
-	//------------------------------------------------
+	/**
+	 * 初期化
+	 *
+	 * @return (なし)
+	 * @access public
+	 */
 	function initialize(){
 	}
 	
 	
-	//------------------------------------------------
-	//Shutdown process
-	//------------------------------------------------
+	/**
+	 * 後始末
+	 *
+	 * @return (なし)
+	 * @access public
+	 */
 	function shutdown(){
 	}
 	
 	
 	//------------------------------------------------
-	//Load carrier class
+	//Load subclasses
 	//------------------------------------------------
+	/**
+	 * キャリア関連サブクラスの読み込み
+	 *
+	 * @return (なし)
+	 * @access private
+	 */
 	function __load_carrier(){
 		if(!class_exists('lib3gkecarrier')){
 			require_once(dirname(__FILE__).'/lib3gk_carrier.php');
@@ -3820,9 +3862,18 @@ class Lib3gkMachine {
 		$this->__carrier = Lib3gkCarrier::get_instance();
 	}
 	
-	//------------------------------------------------------------------------------
-	//Get machine informations
-	//------------------------------------------------------------------------------
+	
+	//------------------------------------------------
+	//Lib3gkMachine methods
+	//------------------------------------------------
+	/**
+	 * 機種情報の入手
+	 *
+	 * @param $carrier_name string キャリア名
+	 * @param $machine_name string 端末名
+	 * @return array 端末情報
+	 * @access public
+	 */
 	function get_machineinfo($carrier_name = null, $machine_name = null){
 		
 		$this->__load_carrier();

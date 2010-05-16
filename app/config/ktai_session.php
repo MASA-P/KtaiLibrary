@@ -14,8 +14,8 @@
  *
  * @copyright		Copyright 2009-2010, ECWorks.
  * @link			http://www.ecworks.jp/ ECWorks.
- * @version			0.3.0
- * @lastmodified	$Date: 2010-04-27 12:00:00 +0900 (Thu, 27 Apr 2010) $
+ * @version			0.3.1
+ * @lastmodified	$Date: 2010-05-17 02:00:00 +0900 (Mon, 17 May 2010) $
  * @license			http://www.gnu.org/licenses/gpl.html The GNU General Public Licence
  */
 
@@ -24,7 +24,7 @@
 if(!defined('__KTAI_SESSION__')){
 	define('__KTAI_SESSION__', 1);
 	function session_use_trans_sid($flag){
-		if(ini_set('session.use_trans_sid', $flag) !== false){
+		if(ini_set('session.use_trans_sid', $flag) === false){
 			if($flag){
 				$session_name = session_name();
 				if(isset($_REQUEST[$session_name]) && preg_match('/^\w+$/', $_REQUEST[$session_name])){

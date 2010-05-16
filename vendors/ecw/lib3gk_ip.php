@@ -14,8 +14,8 @@
  *
  * @copyright		Copyright 2009-2010, ECWorks.
  * @link			http://www.ecworks.jp/ ECWorks.
- * @version			0.3.0
- * @lastmodified	$Date: 2010-04-27 12:00:00 +0900 (Thu, 27 Apr 2010) $
+ * @version			0.3.1
+ * @lastmodified	$Date: 2010-05-17 02:00:00 +0900 (Mon, 17 May 2010) $
  * @license			http://www.gnu.org/licenses/gpl.html The GNU General Public Licence
  */
 
@@ -30,17 +30,18 @@ require_once(dirname(__FILE__).'/lib3gk_def.php');
  */
 class Lib3gkIp {
 	
-	//------------------------------------------------
-	//Library sub classes
-	//------------------------------------------------
-	
+	//================================================================
+	//Properties
+	//================================================================
 	//------------------------------------------------
 	//Parameters
 	//------------------------------------------------
-	
-	//------------------------------------------------
-	//IP table
-	//------------------------------------------------
+	/**
+	 * IPテーブル
+	 *
+	 * @var array
+	 * @access public
+	 */
 	var $addr_table = array(
 		
 		//docomo
@@ -329,9 +330,19 @@ class Lib3gkIp {
 	);
 	
 	
+	//================================================================
+	//Methods
+	//================================================================
 	//------------------------------------------------
-	//Get instance
+	//Basics
 	//------------------------------------------------
+	/**
+	 * インスタンスの取得
+	 *
+	 * @return object 自分自身のインスタンス
+	 * @access public
+	 * @static
+	 */
 	function &get_instance(){
 		static $instance = array();
 		if(!$instance){
@@ -342,22 +353,36 @@ class Lib3gkIp {
 	}
 	
 	
-	//------------------------------------------------
-	//Initialize process
-	//------------------------------------------------
+	/**
+	 * 初期化
+	 *
+	 * @return (なし)
+	 * @access public
+	 */
 	function initialize(){
 	}
 	
 	
-	//------------------------------------------------
-	//Shutdown process
-	//------------------------------------------------
+	/**
+	 * 後始末
+	 *
+	 * @return (なし)
+	 * @access public
+	 */
 	function shutdown(){
 	}
 	
+	
 	//------------------------------------------------
-	//Convert IP address to long value(wrapper)
+	//Lib3gkIp methods
 	//------------------------------------------------
+	/**
+	 * IPアドレスを数値に変換
+	 *
+	 * @param $ip string IPアドレス(xxx.xxx.xxx.xxx[/xx])
+	 * @return integer IPアドレスを32ビット数値にしたもの
+	 * @access public
+	 */
 	function ip2long($ip){
 		
 		$value = ip2long($ip);
@@ -368,9 +393,15 @@ class Lib3gkIp {
 		return $value;
 	}
 	
-	//------------------------------------------------
-	//check inclusive IP address
-	//------------------------------------------------
+	
+	/**
+	 * IPアドレスが範囲内にあるかのチェック
+	 *
+	 * @param $ip string IPアドレス(xxx.xxx.xxx.xxx)
+	 * @param $ip string 対象IP領域(xxx.xxx.xxx.xxx[/xx])
+	 * @return boolean 範囲内の場合はtrue
+	 * @access public
+	 */
 	function is_inclusive($ip, $check_addr){
 		
 		$check_ip_mask = 32;
@@ -403,9 +434,14 @@ class Lib3gkIp {
 		return $no == $check_no;
 	}
 	
-	//------------------------------------------------
-	//get carrier no from carrier address tables
-	//------------------------------------------------
+	
+	/**
+	 * IPアドレスからキャリアコードを入手
+	 *
+	 * @param $ip string IPアドレス(xxx.xxx.xxx.xxx)
+	 * @return integer キャリアコード
+	 * @access public
+	 */
 	function ip2carrier($ip = null){
 		
 		$carrier = 0;

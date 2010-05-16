@@ -14,8 +14,8 @@
  *
  * @copyright		Copyright 2009-2010, ECWorks.
  * @link			http://www.ecworks.jp/ ECWorks.
- * @version			0.3.0
- * @lastmodified	$Date: 2010-04-27 12:00:00 +0900 (Thu, 27 Apr 2010) $
+ * @version			0.3.1
+ * @lastmodified	$Date: 2010-05-17 02:00:00 +0900 (Mon, 17 May 2010) $
  * @license			http://www.gnu.org/licenses/gpl.html The GNU General Public Licence
  */
 
@@ -28,12 +28,37 @@ if(!class_exists('lib3gk')){
 
 /**
  * Ktai component class for CakePHP1.2
+ *
+ * @package       KtaiLibrary
+ * @subpackage    KtaiLibrary.app.controllers.components
  */
 class KtaiComponent extends Object {
 	
+	//================================================================
+	//Properties
+	//================================================================
+	/**
+	 * Lib3gkのインスタンス
+	 *
+	 * @var object
+	 * @access protected
+	 */
 	var $_lib3gk = null;
+	
+	/**
+	 * コントローラのインスタンス
+	 *
+	 * @var object
+	 * @access protected
+	 */
 	var $_controller = null;
 	
+	/**
+	 * Ktai Libraryパラメータ
+	 *
+	 * @var array
+	 * @access protected
+	 */
 	var $_options = array(
 		'img_emoji_url' => "/img/emoticons/", 
 		'enable_ktai_session' => true, 
@@ -42,9 +67,20 @@ class KtaiComponent extends Object {
 		'session_save' => 'php', 
 	);
 	
-	//--------------------------------------------------
-	//Initialize ktai library
-	//--------------------------------------------------
+	
+	//================================================================
+	//Methods
+	//================================================================
+	//------------------------------------------------
+	//Basics
+	//------------------------------------------------
+	/**
+	 * initializeコールバック
+	 *
+	 * @param $controller object& コントローラのインスタンス
+	 * @return (なし)
+	 * @access public
+	 */
 	function initialize(&$controller){
 		
 		$this->_controller = &$controller;
@@ -67,141 +103,385 @@ class KtaiComponent extends Object {
 		}
 	}
 	
-	//--------------------------------------------------
-	//Send params for ktai helper
-	//--------------------------------------------------
+	
+	/**
+	 * beforeRenderコールバック
+	 *
+	 * @param $controller object& コントローラのインスタンス
+	 * @return (なし)
+	 * @access public
+	 */
 	function beforeRender(&$controller){
 		if(isset($controller->ktai)){
 			Configure::write('Ktai', $this->_options);
 		}
 	}
 	
-	//--------------------------------------------------
-	//Convert encoding with emoji(optional)
-	//--------------------------------------------------
+	
+	/**
+	 * shutdownコールバック
+	 *
+	 * @param $controller object& コントローラのインスタンス
+	 * @return (なし)
+	 * @access public
+	 */
 	function shutdown(&$controller){
 		$this->_lib3gk->shutdown();
 	}
 	
-	//--------------------------------------------------
-	//URL callback function
-	//--------------------------------------------------
+	
+	//------------------------------------------------
+	//Ktai Library methods
+	//------------------------------------------------
+	/**
+	 * URLの生成
+	 *
+	 * @param $url string URL
+	 * @return array 加工されたURL
+	 * @access public
+	 */
 	function url_callback_func($url){
 		return Router::url($url);
 	}
 	
-	//------------------------------------------------
-	//Get this version.
-	//------------------------------------------------
+	
+	/**
+	 * バージョンの入手
+	 * 詳しくはLib3gk::get_version()を参照
+	 *
+	 * @return string バージョン番号
+	 * @access public
+	 */
 	function get_version(){
 		return $this->_lib3gk->get_version();
 	}
 	
-	//------------------------------------------------
-	//Check carrier.
-	//------------------------------------------------
-	function get_carrier($user_agent = null, $refresh = false){
-		return $this->_lib3gk->get_carrier($user_agent, $refresh);
-	}
+	
+	/**
+	 * ユーザエージェントの解析
+	 * 詳しくはLib3gkCarrier::analyze_user_agent()を参照
+	 *
+	 * @param $user_agent string ユーザエージェント文字列
+	 * @return array 端末情報
+	 * @access public
+	 */
 	function analyze_user_agent($user_agent = null){
 		return $this->_lib3gk->analyze_user_agent($user_agent);
 	}
+	
+	
+	/**
+	 * キャリア番号の入手
+	 * 詳しくはLib3gkCarrier::get_carrier()を参照
+	 *
+	 * @param $user_agent string ユーザエージェント文字列
+	 * @param $refresh boolean trueの場合は解析結果をキャッシュに反映させます
+	 * @return integer キャリア番号
+	 * @access public
+	 */
+	function get_carrier($user_agent = null, $refresh = false){
+		return $this->_lib3gk->get_carrier($user_agent, $refresh);
+	}
+	
+	
+	/**
+	 * docomo端末かのチェック
+	 * 詳しくはLib3gkCarrier::is_imode()を参照
+	 *
+	 * @return boolean trueの場合はdocomo端末
+	 * @access public
+	 */
 	function is_imode(){
 		return $this->_lib3gk->is_imode();
 	}
+	
+	
+	/**
+	 * SoftBank端末かのチェック
+	 * 詳しくはLib3gkCarrier::is_softbank()を参照
+	 *
+	 * @return boolean trueの場合はSoftBank端末
+	 * @access public
+	 */
 	function is_softbank(){
 		return $this->_lib3gk->is_softbank();
 	}
+	
+	
+	/**
+	 * vodafone端末かのチェック
+	 * 詳しくはLib3gkCarrier::is_vodafone()を参照
+	 *
+	 * @return boolean trueの場合はvodafone端末
+	 * @access public
+	 */
 	function is_vodafone(){
 		return $this->_lib3gk->is_vodafone();
 	}
+	
+	
+	/**
+	 * J-PHONE端末かのチェック
+	 * 詳しくはLib3gkCarrier::is_jphone()を参照
+	 *
+	 * @return boolean trueの場合はJ-PHONE端末
+	 * @access public
+	 */
 	function is_jphone(){
 		return $this->_lib3gk->is_jphone();
 	}
+	
+	
+	/**
+	 * AU端末かのチェック
+	 * 詳しくはLib3gkCarrier::is_ezweb()を参照
+	 *
+	 * @return boolean trueの場合はAU端末
+	 * @access public
+	 */
 	function is_ezweb(){
 		return $this->_lib3gk->is_ezweb();
 	}
+	
+	
+	/**
+	 * EMOBILE端末かのチェック
+	 * 詳しくはLib3gkCarrier::is_emobile()を参照
+	 *
+	 * @return boolean trueの場合はEMOBILE端末
+	 * @access public
+	 */
 	function is_emobile(){
 		return $this->_lib3gk->is_emobile();
 	}
+	
+	
+	/**
+	 * iPhone端末かのチェック
+	 * 詳しくはLib3gkCarrier::is_iphone()を参照
+	 *
+	 * @return boolean trueの場合はiPhone端末
+	 * @access public
+	 */
 	function is_iphone(){
 		return $this->_lib3gk->is_iphone();
 	}
-	function is_phs(){
-		return $this->_lib3gk->is_phs();
-	}
+	
+	
+	/**
+	 * 携帯かチェック
+	 * 詳しくはLib3gkCarrier::is_ktai()を参照
+	 *
+	 * @return boolean trueの場合は携帯
+	 * @access public
+	 */
 	function is_ktai(){
 		return $this->_lib3gk->is_ktai();
 	}
 	
-	//------------------------------------------------
-	//Check email carrier.
-	//------------------------------------------------
-	function get_email_carrier($email){
-		return $this->_lib3gk->get_email_carrier($email);
+	
+	/**
+	 * PHSかチェック
+	 * 詳しくはLib3gkCarrier::is_phs()を参照
+	 *
+	 * @return boolean trueの場合はPHS
+	 * @access public
+	 */
+	function is_phs(){
+		return $this->_lib3gk->is_phs();
 	}
+	
+	
+	/**
+	 * docomoのメールアドレスかチェック
+	 * 詳しくはLib3gkCarrier::is_imode_email()を参照
+	 *
+	 * @param $email string メールアドレス
+	 * @return boolean trueの場合はdocomoのメールアドレス
+	 * @access public
+	 */
 	function is_imode_email($email){
 		return $this->_lib3gk->is_imode_email($email);
 	}
+	
+	
+	/**
+	 * SoftBankのメールアドレスかチェック
+	 * 詳しくはLib3gkCarrier::is_softbank_email()を参照
+	 *
+	 * @param $email string メールアドレス
+	 * @return boolean trueの場合はSoftBankのメールアドレス
+	 * @access public
+	 */
 	function is_softbank_email($email){
 		return $this->_lib3gk->is_softbank_email($email);
 	}
+	
+	
+	/**
+	 * vodafoneのメールアドレスかチェック
+	 * 詳しくはLib3gkCarrier::is_vodafone_email()を参照
+	 *
+	 * @param $email string メールアドレス
+	 * @return boolean trueの場合はvodafoneのメールアドレス
+	 * @access public
+	 */
 	function is_vodafone_email($email){
 		return $this->_lib3gk->is_vodafone_email($email);
 	}
+	
+	
+	/**
+	 * J-PHONEのメールアドレスかチェック
+	 * 詳しくはLib3gkCarrier::is_jphone_email()を参照
+	 *
+	 * @param $email string メールアドレス
+	 * @return boolean trueの場合はJ-PHONEのメールアドレス
+	 * @access public
+	 */
 	function is_jphone_email($email){
 		return $this->_lib3gk->is_jphone_email($email);
 	}
+	
+	
+	/**
+	 * AUのメールアドレスかチェック
+	 * 詳しくはLib3gkCarrier::is_ezweb_email()を参照
+	 *
+	 * @param $email string メールアドレス
+	 * @return boolean trueの場合はvodafoneのメールアドレス
+	 * @access public
+	 */
 	function is_ezweb_email($email){
 		return $this->_lib3gk->is_ezweb_email($email);
 	}
+	
+	
+	/**
+	 * EMOBILEのメールアドレスかチェック
+	 * 詳しくはLib3gkCarrier::is_emobile_email()を参照
+	 *
+	 * @param $email string メールアドレス
+	 * @return boolean trueの場合はEMOBILEのメールアドレス
+	 * @access public
+	 */
 	function is_emobile_email($email){
 		return $this->_lib3gk->is_emobile_email($email);
 	}
+	
+	
+	/**
+	 * iPhoneのメールアドレスかチェック
+	 * 詳しくはLib3gkCarrier::is_iphone_email()を参照
+	 *
+	 * @param $email string メールアドレス
+	 * @return boolean trueの場合はiPhoneのメールアドレス
+	 * @access public
+	 */
 	function is_iphone_email($email){
 		return $this->_lib3gk->is_iphone_email($email);
 	}
-	function is_phs_email($email){
-		return $this->_lib3gk->is_phs_email($email);
-	}
+	
+	
+	/**
+	 * 携帯のメールアドレスかチェック
+	 * 詳しくはLib3gkCarrier::is_ktai_email()を参照
+	 *
+	 * @param $email string メールアドレス
+	 * @return boolean trueの場合は携帯のメールアドレス
+	 * @access public
+	 */
 	function is_ktai_email($email){
 		return $this->_lib3gk->is_ktai_email($email);
 	}
 	
-	//----------------------------------------------------------
-	//Convert emoji code.
-	//If you feed strings that is coded with iMODE emoji code, it replaces a 
-	//code for a carrier of using.
-	//----------------------------------------------------------
-	function convert_emoji(&$str, $carrier = null, $input_encoding = null, $output_encoding = null, $binary = null){
-		return $this->_lib3gk->convert_emoji($str, $carrier, $input_encoding, $output_encoding, $binary);
+	
+	/**
+	 * PHSのメールアドレスかチェック
+	 * 詳しくはLib3gkCarrier::is_phs_email()を参照
+	 *
+	 * @param $email string メールアドレス
+	 * @return boolean trueの場合はPHSのメールアドレス
+	 * @access public
+	 */
+	function is_phs_email($email){
+		return $this->_lib3gk->is_phs_email($email);
 	}
 	
-	//----------------------------------------------------------
-	//Call emoji code.
-	//If you feed iMODE emoji number or code, it creates a code for a carrier of 
-	//using.
-	//----------------------------------------------------------
+	
+	/**
+	 * メールアドレスからキャリアコードの入手
+	 * 詳しくはLib3gkCarrier::get_email_carrier()を参照
+	 *
+	 * @param $email string メールアドレス
+	 * @return integer キャリアコード
+	 * @access public
+	 */
+	function get_email_carrier($email){
+		return $this->_lib3gk->get_email_carrier($email);
+	}
+	
+	
+	/**
+	 * 絵文字の入手
+	 * 詳しくはLib3gkEmoji::emoji()を参照
+	 *
+	 * @param $code mixed 絵文字コード(数値)もしくはバイナリ文字
+	 * @param $disp boolean trueの場合、echoを行う(デフォルト)
+	 * @param $carrier integer キャリアコード
+	 * @param $input_encoding integer 入力エンコーディング
+	 * @param $output_encoding integer 出力エンコーディング
+	 * @param $binary boolean trueの場合はバイナリ出力
+	 * @return string 絵文字(バイナリ・数値文字参照・imageタグ)
+	 * @access public
+	 */
 	function emoji($code, $disp = true, $carrier = null, $input_encoding = null, $output_encoding = null, $binary = null){
 		return $this->_lib3gk->emoji($code, $disp, $carrier, $output_encoding, $binary);
 	}
 	
-	//----------------------------------------------------------
-	//Get machine information.
-	//Search machine information using by User Agent.
-	//You can get informations about carrier name, machine name, 
-	//screen size, count of charactors, max size of pixels, and 
-	//valid flag of picture format(gif / jpg / png).
-	//----------------------------------------------------------
+	
+	/**
+	 * 絵文字変換
+	 * 詳しくはLib3gkEmoji::convert_moji()を参照
+	 *
+	 * @param $code string& コンバート文字列
+	 * @param $disp boolean trueの場合、echoを行う(デフォルト)
+	 * @param $carrier integer キャリアコード
+	 * @param $input_encoding integer 入力エンコーディング
+	 * @param $output_encoding integer 出力エンコーディング
+	 * @param $binary boolean trueの場合はバイナリ出力
+	 * @return (なし)
+	 * @access public
+	 */
+	function convert_emoji(&$str, $carrier = null, $input_encoding = null, $output_encoding = null, $binary = null){
+		return $this->_lib3gk->convert_emoji($str, $carrier, $input_encoding, $output_encoding, $binary);
+	}
+	
+	
+	/**
+	 * 機種情報の入手
+	 * 詳しくはLib3gkMachine::get_machineinfo()を参照
+	 *
+	 * @param $carrier_name string キャリア名
+	 * @param $machine_name string 端末名
+	 * @return array 端末情報
+	 * @access public
+	 */
 	function get_machineinfo($carrier = null, $name = null){
 		return $this->_lib3gk->get_machineinfo($carrier, $name);
 	}
 	
-	//----------------------------------------------------------
-	//Get UID
-	//----------------------------------------------------------
+	
+	/**
+	 * 端末UIDの入手
+	 * 詳しくはLib3gkTools::get_uid()を参照
+	 *
+	 * @return string 端末UID
+	 * @access public
+	 */
 	function get_uid(){
 		return $this->_lib3gk->get_uid();
 	}
+	
 	
 }

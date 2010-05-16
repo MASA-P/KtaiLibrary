@@ -775,7 +775,7 @@ string utf82int(int $value)
 ◎QRコードの作成
 
 string get_qrcode(string $str, array $options = array(), 
-	$input_encoding = null, $output_encoding = null)
+	string $input_encoding = null, string $output_encoding = null)
 
 　Google chart APIを用いて、携帯サイト誘導手段として一般的なQRコードを作成
 します。
@@ -795,6 +795,21 @@ $options = array(
 　これ以外のキーを持つ値は、image()のオプションとして持ち越されます。
 　デフォルト値は、縦横220pixelとなっています。
 　戻り値はイメージタグの文字列となります。
+
+
+◎Google static Maps APIを用いて地図の表示 [New!]
+
+string get_static_maps(string $lat, string $lon, array $options = array(), 
+	string $api_key = null)
+
+　Google static Maps APIを用いて地図のHTML文字列を入手します。
+　$optionsは、連想配列でオプションを指定できます。
+　各オプション値の詳細は、Google static Maps APIデベロッパーガイドを参照して
+ください。
+　$api_keyは、省略した場合は$this->_params['google_api_key']の値を参照します。
+
+▼Google static Maps APIデベロッパーガイド
+http://code.google.com/intl/ja/apis/maps/documentation/staticmaps/
 
 
 --------------------------------------------------
@@ -870,6 +885,15 @@ http://blog.ecworks.jp/ktai
 --------------------------------------------------
 ■バージョン情報
 --------------------------------------------------
+
+【Ver0.3.1】2010.05.17
+　・session_use_trans_sid()を実行するための論理が逆になっているのを修正
+　・afterLayout()にある変換処理系をafterRender()に移動
+　・AUの絵文字情報が間違っている箇所を修正
+　・Lib3gkHtml::get_static_maps()がLib3gkやktaiヘルパーに実装
+　・Lib3gkEmoji内にあるLib3gkインスタンスを削除してLib3gkHtmlインスタンスを追加
+　・絵文字キャッシュ
+　・各プロパティ・メソッドのコメント欄を整備
 
 【Ver0.3.0】2010.04.27
 　・サブクラス化(lib3gk_carrier/lib3gk_def/lib3gk_html/lib3gk_ip/lib3gk_tools)

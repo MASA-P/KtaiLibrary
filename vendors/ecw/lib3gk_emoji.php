@@ -14,8 +14,8 @@
  *
  * @copyright		Copyright 2009-2010, ECWorks.
  * @link			http://www.ecworks.jp/ ECWorks.
- * @version			0.3.0
- * @lastmodified	$Date: 2010-04-27 12:00:00 +0900 (Thu, 27 Apr 2010) $
+ * @version			0.3.1
+ * @lastmodified	$Date: 2010-05-17 02:00:00 +0900 (Mon, 17 May 2010) $
  * @license			http://www.gnu.org/licenses/gpl.html The GNU General Public Licence
  */
 
@@ -26,20 +26,52 @@ require_once(dirname(__FILE__).'/lib3gk_def.php');
 
 
 /**
- * Emoji sub class
+ * Lib3gkEmoji sub class
+ *
+ * @package       KtaiLibrary
+ * @subpackage    KtaiLibrary.vendors.ecw
  */
 class Lib3gkEmoji {
 	
+	//================================================================
+	//Properties
+	//================================================================
 	//------------------------------------------------
 	//Library sub classes
 	//------------------------------------------------
-	var $__lib3gk  = null;
+	/**
+	 * Lib3gkCarrier‚ÌƒCƒ“ƒXƒ^ƒ“ƒX
+	 *
+	 * @var object
+	 * @access private
+	 */
 	var $__carrier = null;
+	
+	/**
+	 * Lib3gkHtml‚ÌƒCƒ“ƒXƒ^ƒ“ƒX
+	 *
+	 * @var object
+	 * @access private
+	 */
+	var $__html    = null;
+	
+	/**
+	 * Lib3gkTools‚ÌƒCƒ“ƒXƒ^ƒ“ƒX
+	 *
+	 * @var object
+	 * @access private
+	 */
 	var $__tools   = null;
 	
 	//------------------------------------------------
 	//Parameters
 	//------------------------------------------------
+	/**
+	 * Ktai Libraryƒpƒ‰ƒ[ƒ^
+	 *
+	 * @var array
+	 * @access protected
+	 */
 	var $_params = array(
 		
 		//Encoding params
@@ -55,28 +87,40 @@ class Lib3gkEmoji {
 		'img_emoji_ext' => 'gif', 
 		'img_emoji_size' => array(16, 16), 
 		
+		//Emoji caching params
+		//
+		'use_emoji_cache' => true,
 	);
 	
-	//------------------------------------------------
-	//endoding name to encode code
-	//------------------------------------------------
+	/**
+	 * ƒGƒ“ƒR[ƒh–¼¨ƒGƒ“ƒR[ƒhƒR[ƒh‚Ì•ÏŠ·ƒe[ƒuƒ‹
+	 *
+	 * @var array
+	 * @access public
+	 */
 	var $encodings = array(
 		KTAI_ENCODING_SJIS    => 0, 
 		KTAI_ENCODING_SJISWIN => 0, 
 		KTAI_ENCODING_UTF8    => 1, 
 	);
 	
-	//------------------------------------------------
-	//encode code to encoding name
-	//------------------------------------------------
+	/**
+	 * ƒGƒ“ƒR[ƒhƒR[ƒh¨ƒGƒ“ƒR[ƒh–¼‚Ì•ÏŠ·ƒe[ƒuƒ‹
+	 *
+	 * @var array
+	 * @access public
+	 */
 	var $encoding_codes = array(
 		0 => KTAI_ENCODING_SJISWIN, 
 		1 => KTAI_ENCODING_UTF8, 
 	);
 	
-	//------------------------------------------------
-	//carrier code to usings in emoji converters
-	//------------------------------------------------
+	/**
+	 * ƒLƒƒƒŠƒAƒR[ƒh¨ŠG•¶ŽšƒLƒƒƒŠƒAƒR[ƒh‚Ì•ÏŠ·ƒe[ƒuƒ‹
+	 *
+	 * @var array
+	 * @access public
+	 */
 	var $carriers = array(
 		KTAI_CARRIER_UNKNOWN  => 0, 
 		KTAI_CARRIER_DOCOMO   => 1, 
@@ -88,9 +132,12 @@ class Lib3gkEmoji {
 		KTAI_CARRIER_CLAWLER  => 0, 
 	);
 	
-	//------------------------------------------------
-	//usings of carrier code
-	//------------------------------------------------
+	/**
+	 * ƒLƒƒƒŠƒAŠG•¶ŽšƒR[ƒh¨ƒLƒƒƒŠƒAƒR[ƒh‚Ì•ÏŠ·ƒe[ƒuƒ‹
+	 *
+	 * @var array
+	 * @access public
+	 */
 	var $carrier_codes = array(
 		0 => KTAI_CARRIER_UNKNOWN, 
 		1 => KTAI_CARRIER_DOCOMO, 
@@ -98,9 +145,12 @@ class Lib3gkEmoji {
 		3 => KTAI_CARRIER_SOFTBANK, 
 	);
 	
-	//------------------------------------------------
-	//carrier code to emoji table indexes
-	//------------------------------------------------
+	/**
+	 * ƒLƒƒƒŠƒAƒR[ƒh¨ƒLƒƒƒŠƒAƒCƒ“ƒfƒbƒNƒX‚Ì•ÏŠ·ƒe[ƒuƒ‹
+	 *
+	 * @var array
+	 * @access public
+	 */
 	var $carrier_indexes = array(
 		0 => 3, 
 		1 => 0, 
@@ -108,9 +158,12 @@ class Lib3gkEmoji {
 		3 => 2, 
 	);
 	
-	//------------------------------------------------
-	//emoji patterns for preg_match()
-	//------------------------------------------------
+	/**
+	 * ŠG•¶Žš‚Ìƒpƒ^[ƒ“ƒ}ƒbƒ`³‹K•\Œ»
+	 *
+	 * @var array
+	 * @access public
+	 */
 	var $patterns = array(
 		0 => array(
 			'/^(\xf8[\x9f-\xfc])|(\xf9[\x40-\xfc])$/', 
@@ -131,9 +184,20 @@ class Lib3gkEmoji {
 		), 
 	);
 	
-	//------------------------------------------------
-	//emoji converting table
-	//------------------------------------------------
+	/**
+	 * ŠG•¶ŽšƒLƒƒƒbƒVƒ…ƒoƒbƒtƒ@
+	 *
+	 * @var array
+	 * @access private
+	 */
+	var $__cached = null;
+	
+	/**
+	 * ŠG•¶Žšƒe[ƒuƒ‹
+	 *
+	 * @var array
+	 * @access private
+	 */
 	var $__emoji_table = array(
 		array(						//1
 			array(0xf89f, 0xe63e), 
@@ -1222,7 +1286,7 @@ class Lib3gkEmoji {
 		), 
 		array(						//156
 			array(0xf9a5, 0xe700), 
-			array(0xf3ef, 0xe82e, 0xecef, 0x7a71, 0xedef), 
+			array(0xf3ef, 0xeb2e, 0xecef, 0x7a71, 0xedef), 
 			'$FX', 
 			'@', 
 			'down', 
@@ -1902,9 +1966,19 @@ class Lib3gkEmoji {
 	);
 	
 	
+	//================================================================
+	//Methods
+	//================================================================
 	//------------------------------------------------
-	//Get instance
+	//Basics
 	//------------------------------------------------
+	/**
+	 * ƒCƒ“ƒXƒ^ƒ“ƒX‚ÌŽæ“¾
+	 *
+	 * @return object Ž©•ªŽ©g‚ÌƒCƒ“ƒXƒ^ƒ“ƒX
+	 * @access public
+	 * @static
+	 */
 	function &get_instance(){
 		static $instance = array();
 		if(!$instance){
@@ -1915,37 +1989,40 @@ class Lib3gkEmoji {
 	}
 	
 	
-	//------------------------------------------------
-	//Initialize process
-	//------------------------------------------------
+	/**
+	 * ‰Šú‰»
+	 *
+	 * @return (‚È‚µ)
+	 * @access public
+	 */
 	function initialize(){
+		
+		$this->__initCache();
 	}
 	
 	
-	//------------------------------------------------
-	//Shutdown process
-	//------------------------------------------------
+	/**
+	 * ŒãŽn––
+	 *
+	 * @return (‚È‚µ)
+	 * @access public
+	 */
 	function shutdown(){
-		$this->__lib3gk  = null;
 		$this->__carrier = null;
+		$this->__html    = null;
 		$this->__tools   = null;
 	}
 	
-	//------------------------------------------------
-	//Load lib3gk class(deprecate)
-	//------------------------------------------------
-	function __load_lib3gk(){
-		if(!class_exists('lib3gk')){
-			require_once(dirname(__FILE__).'/lib3gk.php');
-		}
-		$this->__lib3gk = Lib3gk::get_instance();
-		$this->_params = array_merge($this->__lib3gk->_params, $this->_params);
-		$this->__lib3gk->_params = &$this->_params;
-	}
 	
 	//------------------------------------------------
-	//Load lib3gkCarrier class
+	//Load subclasses
 	//------------------------------------------------
+	/**
+	 * ƒLƒƒƒŠƒAŠÖ˜AƒTƒuƒNƒ‰ƒX‚Ì“Ç‚Ýž‚Ý
+	 *
+	 * @return (‚È‚µ)
+	 * @access private
+	 */
 	function __load_carrier(){
 		if(!class_exists('lib3gkcarrier')){
 			require_once(dirname(__FILE__).'/lib3gk_carrier.php');
@@ -1955,9 +2032,29 @@ class Lib3gkEmoji {
 		$this->__carrier->_params = &$this->_params;
 	}
 	
-	//------------------------------------------------
-	//Load tools class
-	//------------------------------------------------
+	
+	/**
+	 * HTMLŠÖ˜AƒTƒuƒNƒ‰ƒX‚Ì“Ç‚Ýž‚Ý
+	 *
+	 * @return (‚È‚µ)
+	 * @access private
+	 */
+	function __load_html(){
+		if(!class_exists('lib3gkhtml')){
+			require_once(dirname(__FILE__).'/lib3gk_html.php');
+		}
+		$this->__html = Lib3gkHtml::get_instance();
+		$this->_params = array_merge($this->__html->_params, $this->_params);
+		$this->__html->_params = &$this->_params;
+	}
+	
+	
+	/**
+	 * ‚»‚Ì‘¼ƒTƒuƒNƒ‰ƒX‚Ì“Ç‚Ýž‚Ý
+	 *
+	 * @return (‚È‚µ)
+	 * @access private
+	 */
 	function __load_tools(){
 		if(!class_exists('lib3gktools')){
 			require_once(dirname(__FILE__).'/lib3gk_tools.php');
@@ -1967,9 +2064,19 @@ class Lib3gkEmoji {
 		$this->__tools->_params = &$this->_params;
 	}
 	
+	
 	//------------------------------------------------
-	//Converting a emoji code to a charactor
+	//Lib3gkEmoji methods
 	//------------------------------------------------
+	/**
+	 * ŠG•¶ŽšƒR[ƒh‚ð•\Ž¦ƒLƒƒƒ‰ƒNƒ^[‚É•ÏŠ·
+	 *
+	 * @param $code integer ŠG•¶ŽšƒR[ƒh
+	 * @param $oekey integer o—Í‚·‚éƒGƒ“ƒR[ƒhƒL[B$this->encodings[$output_encoding]‚Ì’l
+	 * @param $binary boolean true‚ÅƒoƒCƒiƒŠo—ÍBfalse‚Å”’l•¶ŽšŽQÆ•¶Žš—ñB
+	 * @return string •ÏŠ·Œã‚ÌŠG•¶Žš
+	 * @access private
+	 */
 	function __convertEmojiChractor($code, $oekey, $binary){
 		
 		$replace = '';
@@ -1994,12 +2101,17 @@ class Lib3gkEmoji {
 		return $replace;
 	}
 	
-	//------------------------------------------------
-	//Create emoji image tags
-	//------------------------------------------------
+	
+	/**
+	 * ‰æ‘œŠG•¶Žš‚Ìì¬
+	 *
+	 * @param $name string ŠG•¶Žš–¼(‰æ‘œŠG•¶Žš‚Ìƒtƒ@ƒCƒ‹–¼(Šg’£Žq‚È‚µ))
+	 * @return string imgƒ^ƒO•t‚«‚Ì‰æ‘œŠG•¶Žš
+	 * @access public
+	 */
 	function create_image_emoji($name){
 		
-		$this->__load_lib3gk();		//deprecate
+		$this->__load_html();
 		
 		$url = $this->_params['img_emoji_url'].$name.'.'.$this->_params['img_emoji_ext'];
 		$htmlAttribute = array(
@@ -2007,12 +2119,22 @@ class Lib3gkEmoji {
 			'width' => $this->_params['img_emoji_size'][0], 
 			'height' => $this->_params['img_emoji_size'][1], 
 		);
-		return $this->__lib3gk->image($url, $htmlAttribute);	//deprecate
+		return $this->__html->image($url, $htmlAttribute);
 	}
 	
-	//------------------------------------------------------------------------------
-	//Create Emoji charactor code
-	//------------------------------------------------------------------------------
+	
+	/**
+	 * ŠG•¶Žš‚Ì“üŽè
+	 *
+	 * @param $code mixed ŠG•¶ŽšƒR[ƒh(”’l)‚à‚µ‚­‚ÍƒoƒCƒiƒŠ•¶Žš
+	 * @param $disp boolean true‚Ìê‡Aecho‚ðs‚¤(ƒfƒtƒHƒ‹ƒg)
+	 * @param $carrier integer ƒLƒƒƒŠƒAƒR[ƒh
+	 * @param $input_encoding integer “ü—ÍƒGƒ“ƒR[ƒfƒBƒ“ƒO
+	 * @param $output_encoding integer o—ÍƒGƒ“ƒR[ƒfƒBƒ“ƒO
+	 * @param $binary boolean true‚Ìê‡‚ÍƒoƒCƒiƒŠo—Í
+	 * @return string ŠG•¶Žš(ƒoƒCƒiƒŠE”’l•¶ŽšŽQÆEimageƒ^ƒO)
+	 * @access public
+	 */
 	function emoji($code, $disp = true, $carrier = null, $output_encoding = null, $binary = null){
 		
 		$this->__load_tools();
@@ -2121,9 +2243,72 @@ class Lib3gkEmoji {
 		return $str;
 	}
 	
-	//------------------------------------------------------------------------------
-	//Emoji analizer for convert_emoji()
-	//------------------------------------------------------------------------------
+	
+	/**
+	 * ŠG•¶ŽšƒLƒƒƒbƒVƒ…‚Ì‰Šú‰»
+	 *
+	 * @return (‚È‚µ)
+	 * @access private
+	 */
+	function __initCache(){
+		$this->__cached = array();
+		foreach(array_keys($this->carrier_indexes) as $ci){
+			foreach(array_keys($this->encoding_codes) as $ec){
+				$this->__cached[$ci][$ec] = array();
+			}
+		}
+	}
+	
+	
+	/**
+	 * ŠG•¶ŽšƒLƒƒƒbƒVƒ…‚©‚çŠG•¶Žš‚Ì“üŽè
+	 *
+	 * @param $code mixed ŠG•¶ŽšƒR[ƒh(”’l)‚à‚µ‚­‚ÍƒoƒCƒiƒŠ•¶Žš
+	 * @param $carrier_index integer $this->carrier_indexes[$this->carriers[$carrier]]‚Ì’l
+	 * @param $encoding_code integer $this->encodings[$output_encoding]‚Ì’l
+	 * @return (‚È‚µ)
+	 * @access private
+	 */
+	function __getCache($code, $carrier_index = 0, $encoding_code = 1){
+		return empty($this->__cached[$carrier_index][$encoding_code][$code]) ? false : $this->__cached[$carrier_index][$encoding_code][$code];
+	}
+	
+	
+	/**
+	 * ŠG•¶ŽšƒLƒƒƒbƒVƒ…‚ÉŠG•¶Žš‚ÌƒZƒbƒg
+	 *
+	 * @param $value integer ŠG•¶Žš‚ÌƒCƒ“ƒfƒbƒNƒX’l
+	 * @param $code mixed ŠG•¶ŽšƒR[ƒh(”’l)‚à‚µ‚­‚ÍƒoƒCƒiƒŠ•¶Žš
+	 * @param $carrier_index integer $this->carrier_indexes[$this->carriers[$carrier]]‚Ì’l
+	 * @param $encoding_code integer $this->encodings[$output_encoding]‚Ì’l
+	 * @return (‚È‚µ)
+	 * @access private
+	 */
+	function __setCache($value, $code, $carrier_index = 0, $encoding_code = 1){
+		if(!isset($this->__emoji_table[0][$carrier_index])){
+			return false;
+		}
+		if(!isset($this->encoding_codes[$encoding_code])){
+			return false;
+		}
+		$this->__cached[$carrier_index][$encoding_code][$code] = $value;
+		return true;
+	}
+	
+	
+	/**
+	 * ŠG•¶Žš‰ðÍ
+	 *
+	 * @param $str string ‰ðÍ‚·‚é•¶Žš—ñ
+	 * @param $options array ‰ðÍƒIƒvƒVƒ‡ƒ“
+	 * @return array ‰ðÍƒf[ƒ^
+	 * @access private
+	 *
+	 * $option‚Ì‚Æ‚éƒL[‚Æ’l(È—ª‰Â)
+	 *   'input_carrier'  “ü—Íƒf[ƒ^‚ÌƒLƒƒƒŠƒA
+	 *   'output_carrier' •ÏŠ·‚·‚éƒLƒƒƒŠƒA
+	 *   'input_encoding' “ü—Íƒf[ƒ^‚ÌƒGƒ“ƒR[ƒfƒBƒ“ƒO
+	 */
 	function &__analyzeEmoji($str, $options = array()){
 		
 		$this->__load_carrier();
@@ -2224,9 +2409,16 @@ class Lib3gkEmoji {
 		return $arr;
 	}
 	
-	//------------------------------------------------------------------------------
-	//Emoji search for convert_emoji()
-	//------------------------------------------------------------------------------
+	
+	/**
+	 * ŠG•¶Žš‚ÌŒŸõ
+	 *
+	 * @param $code mixed ŠG•¶ŽšƒR[ƒh(”’l)‚à‚µ‚­‚ÍƒoƒCƒiƒŠ•¶Žš
+	 * @param $encoding string ƒGƒ“ƒR[ƒfƒBƒ“ƒO–¼
+	 * @param $carrier integer ƒLƒƒƒŠƒAƒR[ƒh
+	 * @return array ŠG•¶Žšƒe[ƒuƒ‹‚©‚ç“üŽè‚µ‚½ŠG•¶Žšƒf[ƒ^
+	 * @access private
+	 */
 	function __searchEmojiSet($code, $encoding = KTAI_ENCODING_UTF8, $carrier = KTAI_CARRIER_DOCOMO){
 		
 		//ƒLƒƒƒŠƒA‚ÆƒGƒ“ƒR[ƒfƒBƒ“ƒO‚Ì³‹K‰»
@@ -2249,16 +2441,28 @@ class Lib3gkEmoji {
 			$e = 0;		//SoftBank‚Í•K‚¸‚PŽí—Þ
 		}
 		
+		//ƒLƒƒƒbƒVƒ…‚ðƒ`ƒFƒbƒN
+		//
+		if($this->_params['use_emoji_cache'] && ($key = $this->__getCache($code, $c, $e)) !== false){
+			return $this->__emoji_table[$key];
+		}
+		
 		//ŠG•¶ŽšƒZƒbƒg‚ð’T‚µo‚·(¦«—ˆ“I‚ÉŒ©’¼‚µ—\’è)
 		//
-		foreach($this->__emoji_table as $table){
+		foreach($this->__emoji_table as $key => $table){
 			if($code == $table[$c][$e]){
+				if($this->_params['use_emoji_cache']){
+					$this->__setCache($key, $code, $c, $e);
+				}
 				return $table;
 			}
 			//AU‚Ìê‡‚Í”’l•¶ŽšŽQÆ‚ÆƒoƒCƒiƒŠ‚Ì‚Q‚Â‚ÌƒR[ƒh‚ðŽQÆ‚·‚é•K—v‚ ‚è
 			//
 			if($c == 1 && $e == 1){
 				if($code == $table[$c][$e + 1]){
+					if($this->_params['use_emoji_cache']){
+						$this->__setCache($key, $code, $c, $e);
+					}
 					return $table;
 				}
 			}
@@ -2266,9 +2470,19 @@ class Lib3gkEmoji {
 		return false;
 	}
 	
-	//------------------------------------------------------------------------------
-	//Convert iMODE Emoji to other carriers
-	//------------------------------------------------------------------------------
+	
+	/**
+	 * ŠG•¶Žš•ÏŠ·
+	 *
+	 * @param $code string& ƒRƒ“ƒo[ƒg•¶Žš—ñ
+	 * @param $disp boolean true‚Ìê‡Aecho‚ðs‚¤(ƒfƒtƒHƒ‹ƒg)
+	 * @param $carrier integer ƒLƒƒƒŠƒAƒR[ƒh
+	 * @param $input_encoding integer “ü—ÍƒGƒ“ƒR[ƒfƒBƒ“ƒO
+	 * @param $output_encoding integer o—ÍƒGƒ“ƒR[ƒfƒBƒ“ƒO
+	 * @param $binary boolean true‚Ìê‡‚ÍƒoƒCƒiƒŠo—Í
+	 * @return (‚È‚µ)
+	 * @access public
+	 */
 	function convert_emoji(&$str, $carrier = null, $input_encoding = null, $output_encoding = null, $binary = null){
 		
 		$this->__load_carrier();
@@ -2283,7 +2497,7 @@ class Lib3gkEmoji {
 			$output_encoding = $this->_params['output_encoding'];
 		}
 		if($binary === null){
-			$binary = false;
+			$binary = $this->_params['use_binary_emoji'];
 		}
 		
 		$options = compact('input_carrier', 'output_carrier', 'input_encoding', 'output_encoding', 'binary');
