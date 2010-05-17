@@ -14,8 +14,8 @@
  *
  * @copyright		Copyright 2009-2010, ECWorks.
  * @link			http://www.ecworks.jp/ ECWorks.
- * @version			0.3.1
- * @lastmodified	$Date: 2010-05-17 02:00:00 +0900 (Mon, 17 May 2010) $
+ * @version			0.3.2
+ * @lastmodified	$Date: 2010-05-17 14:00:00 +0900 (Mon, 17 May 2010) $
  * @license			http://www.gnu.org/licenses/gpl.html The GNU General Public Licence
  */
 
@@ -45,7 +45,7 @@ class Lib3gk {
 	 * @var string
 	 * @access protected
 	 */
-	var $_version = '0.3.1';
+	var $_version = '0.3.2';
 	
 	//------------------------------------------------
 	//Library sub classes

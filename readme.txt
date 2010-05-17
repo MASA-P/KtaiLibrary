@@ -122,7 +122,9 @@ CakePHPで使う？ --→ １：ライブラリ単体で用いる場合 --------
 　　｜No                                               |              |
 　　｜                      +--------------------------+              |
 　　↓                      | Yes                                     |
-ktaiコンポーネントを使う？ -+-→ 2-b：ktaiコンポーネントを用いる場合 -+
+ktaiコンポーネントを使う？ -+                                         |
+ もしくは                   +-→ 2-b：ktaiコンポーネントを用いる場合 -+
+自動変換処理を行う？       -+                                         |
 　　｜No                                                              |
 　　↓                                                                |
 2-c：ktaiヘルパーのみを用いる場合                                     |
@@ -217,17 +219,25 @@ var $ktai = array(
 
 　コンポーネントを用いる場合は、利用するコントローラ内に「ktai」プロパティを
 作成します。
+　また、絵文字や文字エンコーディングなどの自動変換を行いたい場合も
+コンポーネントを導入する必要があります。
 
 【設定例】
 
 class HogeController extends AppController {
 	
+	var $components = array('Ktai');
+	
 	//省略
 	
 	var $ktai = array(
-		'use_img_emoji' => true, 			//画像絵文字を使用
-		'input_encoding'  => 'UTF-8', 		//入力をUTF-8に変更
-		'output_encoding' => 'UTF-8', 		//出力をUTF-8に変更
+		'use_img_emoji' => true, 				//画像絵文字を使用
+		'input_encoding'  => 'UTF-8', 			//入力をUTF-8に変更
+		'output_encoding' => 'UTF-8', 			//出力をUTF-8に変更
+		
+		'output_convert_kana' => 'knrs', 		//かなの変換を行う
+		'output_auto_convert_emoji' => true, 	//絵文字自動変換を行う
+		
 	
 	//省略
 }
@@ -259,7 +269,6 @@ class HogeController extends AppController {
 			'use_img_emoji'   => true, 					//画像絵文字を使用
 			'input_encoding'  => KTAI_ENCODING_UTF8, 	//入力をUTF-8に変更
 			'output_encoding' => KTAI_ENCDING_UTF8, 	//出力をUTF-8に変更
-			'output_convert_kana' => 'knr', 			//半角変換
 		));
 	}
 	
@@ -299,7 +308,6 @@ class HogeController extends AppController {
 $ktai->options['use_img_emoji']   = true;
 $ktai->options['input_encoding']  = KTAI_ENCODING_UTF8, //入力をUTF-8に変更
 $ktai->options['output_encoding'] = KTAI_ENCDING_UTF8, 	//出力をUTF-8に変更
-$ktai->options['output_convert_kana'] = 'knr', 			//半角変換
 ?>
 ■今日のお天気<br>
 東京都：<?php $ktai->emoji(0xe63e); ?><br>
@@ -381,13 +389,16 @@ $ktai->options['output_convert_kana'] = 'knr', 			//半角変換
 最適化した画像を表示」を参照)で使用されます。
 
 
-【文字コードコンバート関連】(ヘルパーのみ)
+【文字コードコンバート関連】(コンポーネントのみ)
 
 ・アウトプットに対して絵文字の自動コンバートを行う(bool)
 	'output_auto_convert_emoji' => false, 
 
 　このフラグを指定すると、アウトプット内にある絵文字について検索を行い、
 コンバートを自動で行います。
+　なお、絵文字の自動変換に入力と出力の文字エンコーディング情報が必要です。必ず
+「input_encoding」「output_encoding」も指定します。
+　また、絵文字コンバートを行う場合、文字コードのコンバートも自動的に行います。
 
 
 ・アウトプットに対して文字コードの自動コンバートを行う(bool)
@@ -885,6 +896,11 @@ http://blog.ecworks.jp/ktai
 --------------------------------------------------
 ■バージョン情報
 --------------------------------------------------
+
+【Ver0.3.2】2010.05.17
+・0.3.1の修正でlayout内について自動変換処理がされない問題を修正
+　(これにより自動変換処理にktaiコンポーネント導入が必須になる)
+・ktaiヘルパー本体とテストケースにvar_dumpがあったため除去
 
 【Ver0.3.1】2010.05.17
 　・session_use_trans_sid()を実行するための論理が逆になっているのを修正
