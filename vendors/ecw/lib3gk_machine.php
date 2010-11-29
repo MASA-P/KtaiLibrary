@@ -6,7 +6,7 @@
  *
  * PHP versions 4 and 5
  *
- * Ktai Library for CakePHP1.2
+ * Ktai Library for CakePHP
  * Copyright 2009-2010, ECWorks.
  
  * Licensed under The GNU General Public Licence
@@ -14,8 +14,8 @@
  *
  * @copyright		Copyright 2009-2010, ECWorks.
  * @link			http://www.ecworks.jp/ ECWorks.
- * @version			0.3.2
- * @lastmodified	$Date: 2010-05-17 14:00:00 +0900 (Mon, 17 May 2010) $
+ * @version			0.4.0
+ * @lastmodified	$Date: 2010-11-30 03:00:00 +0900 (Tue, 30 Nov 2010) $
  * @license			http://www.gnu.org/licenses/gpl.html The GNU General Public Licence
  */
 
@@ -61,167 +61,383 @@ class Lib3gkMachine {
 		//docomo
 		//
 		'DoCoMo' => array(
+			'F03C' => array(
+				'text_size'   => array(24, 14), 
+				'screen_size' => array(240, 328), 
+				'image_size'  => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
+			), 
+			'F02C' => array(
+				'text_size'   => array(24, 14), 
+				'screen_size' => array(240, 328), 
+				'image_size'  => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
+			), 
+			'F01C' => array(
+				'text_size'   => array(24, 14), 
+				'screen_size' => array(240, 328), 
+				'image_size'  => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
+			), 
+			'SH02C' => array(
+				'text_size'   => array(24, 16), 
+				'screen_size' => array(240, 328), 
+				'image_size'  => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
+			), 
+			'SH01C' => array(
+				'text_size'   => array(24, 16), 
+				'screen_size' => array(240, 328), 
+				'image_size'  => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
+			), 
+			'N02C' => array(
+				'text_size'   => array(24, 16), 
+				'screen_size' => array(240, 325), 
+				'image_size'  => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
+			), 
+			'N01C' => array(
+				'text_size'   => array(24, 16), 
+				'screen_size' => array(240, 325), 
+				'image_size'  => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
+			), 
+			'P01C' => array(
+				'text_size'   => array(24, 16), 
+				'screen_size' => array(240, 331), 
+				'image_size'  => array(240, 427), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
+			), 
+			'L01B' => array(
+				'text_size'   => array(24, 16), 
+				'screen_size' => array(240, 331), 
+				'image_size'  => array(480, 800), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
+			), 
+			'P07B' => array(
+				'text_size'   => array(24, 16), 
+				'screen_size' => array(240, 331), 
+				'image_size'  => array(240, 427), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
+			), 
+			'P05B' => array(
+				'text_size'   => array(24, 16), 
+				'screen_size' => array(240, 331), 
+				'image_size'  => array(240, 427), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
+			), 
 			'P03B' => array(
 				'text_size'   => array(24, 16), 
 				'screen_size' => array(240, 331), 
 				'image_size'  => array(240, 427), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
+			), 
+			'P02C' => array(
+				'text_size'   => array(24, 16), 
+				'screen_size' => array(240, 331), 
+				'image_size'  => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
+			), 
+			'N08B' => array(
+				'text_size'   => array(30, 15), 
+				'screen_size' => array(240, 240), 
+				'image_size'  => array(854, 480), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
+			), 
+			'N07B' => array(
+				'text_size'   => array(24, 16), 
+				'screen_size' => array(240, 320), 
+				'image_size'  => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
+			), 
+			'N05B' => array(
+				'text_size'   => array(24, 16), 
+				'screen_size' => array(240, 320), 
+				'image_size'  => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
+			), 
+			'N04B' => array(
+				'text_size'   => array(24, 16), 
+				'screen_size' => array(240, 320), 
+				'image_size'  => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'N03B' => array(
 				'text_size'   => array(24, 16), 
 				'screen_size' => array(240, 320), 
 				'image_size'  => array(480, 854), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'N02B' => array(
 				'text_size'   => array(24, 16), 
 				'screen_size' => array(240, 320), 
 				'image_size'  => array(480, 854), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'N01B' => array(
 				'text_size'   => array(24, 16), 
 				'screen_size' => array(240, 320), 
 				'image_size'  => array(480, 854), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
+			), 
+			'P06B' => array(
+				'text_size'   => array(24, 16), 
+				'screen_size' => array(240, 325), 
+				'image_size'  => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
+			), 
+			'P04B' => array(
+				'text_size'   => array(24, 16), 
+				'screen_size' => array(240, 331), 
+				'image_size'  => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'P02B' => array(
 				'text_size'   => array(24, 16), 
 				'screen_size' => array(240, 331), 
 				'image_size'  => array(480, 854), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'P01B' => array(
 				'text_size'   => array(24, 16), 
 				'screen_size' => array(240, 331), 
 				'image_size'  => array(480, 854), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
+			), 
+			'F10B' => array(
+				'text_size'   => array(24, 16), 
+				'screen_size' => array(240, 324), 
+				'image_size'  => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
+			), 
+			'F08B' => array(
+				'text_size'   => array(24, 16), 
+				'screen_size' => array(240, 324), 
+				'image_size'  => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
+			), 
+			'F07B' => array(
+				'text_size'   => array(24, 16), 
+				'screen_size' => array(240, 324), 
+				'image_size'  => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
+			), 
+			'F06B' => array(
+				'text_size'   => array(24, 16), 
+				'screen_size' => array(240, 328), 
+				'image_size'  => array(480, 960), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
+			), 
+			'F04B' => array(
+				'text_size'   => array(24, 16), 
+				'screen_size' => array(240, 324), 
+				'image_size'  => array(480, 960), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'F03B' => array(
 				'text_size'   => array(24, 16), 
 				'screen_size' => array(240, 324), 
 				'image_size'  => array(480, 854), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'F02B' => array(
 				'text_size'   => array(24, 16), 
 				'screen_size' => array(240, 324), 
 				'image_size'  => array(480, 854), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'F01B' => array(
 				'text_size'   => array(24, 16), 
 				'screen_size' => array(240, 324), 
 				'image_size'  => array(480, 960), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
+			), 
+			'SH09B' => array(
+				'text_size'   => array(24, 16), 
+				'screen_size' => array(240, 323), 
+				'image_size'  => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
+			), 
+			'SH08B' => array(
+				'text_size'   => array(24, 16), 
+				'screen_size' => array(240, 323), 
+				'image_size'  => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
+			), 
+			'SH07B' => array(
+				'text_size'   => array(24, 16), 
+				'screen_size' => array(240, 328), 
+				'image_size'  => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
+			), 
+			'SH06B' => array(
+				'text_size'   => array(20, 13), 
+				'screen_size' => array(240, 323), 
+				'image_size'  => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'SH05B' => array(
 				'text_size'   => array(24, 16), 
 				'screen_size' => array(240, 323), 
 				'image_size'  => array(480, 854), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'SH04B' => array(
 				'text_size'   => array(24, 14), 
 				'screen_size' => array(240, 296), 
 				'image_size'  => array(480, 854), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'SH03B' => array(
 				'text_size'   => array(24, 18), 
 				'screen_size' => array(240, 296), 
 				'image_size'  => array(480, 854), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'SH02B' => array(
 				'text_size'   => array(24, 16), 
 				'screen_size' => array(240, 323), 
 				'image_size'  => array(480, 854), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'SH01B' => array(
 				'text_size'   => array(24, 16), 
 				'screen_size' => array(240, 323), 
 				'image_size'  => array(480, 854), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'SH08A' => array(
 				'text_size'   => array(24, 14), 
 				'screen_size' => array(240, 296), 
 				'image_size'  => array(480, 854), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'SH07A3' => array(
 				'text_size'   => array(24, 14), 
 				'screen_size' => array(240, 296), 
 				'image_size'  => array(480, 854), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'SH06A3' => array(
 				'text_size'   => array(24, 14), 
 				'screen_size' => array(240, 296), 
 				'image_size'  => array(480, 854), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'SH05A3' => array(
 				'text_size'   => array(24, 14), 
 				'screen_size' => array(240, 296), 
 				'image_size'  => array(480, 854), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'F09A3' => array(
 				'text_size'   => array(24, 16), 
 				'screen_size' => array(240, 324), 
 				'image_size'  => array(480, 960), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'F08A3' => array(
 				'text_size'   => array(24, 16), 
 				'screen_size' => array(240, 324), 
 				'image_size'  => array(480, 854), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'N09A3' => array(
 				'text_size'   => array(24, 16), 
 				'screen_size' => array(240, 320), 
 				'image_size'  => array(480, 854), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'N08A3' => array(
 				'text_size'   => array(24, 16), 
 				'screen_size' => array(240, 320), 
 				'image_size'  => array(480, 854), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'N07A3' => array(
 				'text_size'   => array(24, 16), 
 				'screen_size' => array(240, 320), 
 				'image_size'  => array(480, 854), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'N06A3' => array(
 				'text_size'   => array(24, 16), 
 				'screen_size' => array(240, 320), 
 				'image_size'  => array(480, 854), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'P09A3' => array(
 				'text_size'   => array(24, 15), 
 				'screen_size' => array(240, 331), 
 				'image_size'  => array(480, 854), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'P08A3' => array(
 				'text_size'   => array(24, 15), 
 				'screen_size' => array(240, 331), 
 				'image_size'  => array(480, 854), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'P07A3' => array(
 				'text_size'   => array(24, 15), 
 				'screen_size' => array(240, 331), 
 				'image_size'  => array(480, 854), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => false, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			
 			'N04A' => array(
@@ -1388,11 +1604,133 @@ class Lib3gkMachine {
 		//Softbank(/Vodaphone/Disney Mobile)
 		//
 		'SoftBank' => array(
+			'002SH' => array(
+				'text_size' => array(30, 23), 
+				'screen_size' => array(480, 738), 
+				'image_size' => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+			), 
+			'001N' => array(
+				'text_size' => array(23, 16), 
+				'screen_size' => array(480, 650), 
+				'image_size' => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+			), 
+			'001SH' => array(
+				'text_size' => array(23, 16), 
+				'screen_size' => array(240, 350), 
+				'image_size' => array(240, 400), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+			), 
+			'840Z' => array(
+				'text_size' => array(23, 16), 
+				'screen_size' => array(234, 322), 
+				'image_size' => array(240, 400), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+			), 
+			'840Pp' => array(
+				'text_size' => array(23, 16), 
+				'screen_size' => array(236, 369), 
+				'image_size' => array(240, 427), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+			), 
+			'945SH' => array(
+				'text_size' => array(30, 23), 
+				'screen_size' => array(480, 738), 
+				'image_size' => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+				'font_size' => array('reso' => 'high'), 
+			), 
+			'843SH' => array(
+				'text_size' => array(20, 14), 
+				'screen_size' => array(240, 338), 
+				'image_size' => array(240, 400), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+			), 
+			'841N' => array(
+				'text_size' => array(24, 16), 
+				'screen_size' => array(480, 650), 
+				'image_size' => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+				'font_size' => array('reso' => 'high'), 
+			), 
+			'941SC' => array(
+				'text_size' => array(30, 16), 
+				'screen_size' => array(480, 512), 
+				'image_size' => array(480, 800), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+				'font_size' => array('reso' => 'high'), 
+			), 
+			'942P' => array(
+				'text_size' => array(29, 21), 
+				'screen_size' => array(471, 700), 
+				'image_size' => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+				'font_size' => array('reso' => 'high'), 
+			), 
+			'842SH' => array(
+				'text_size' => array(20, 14), 
+				'screen_size' => array(240, 350), 
+				'image_size' => array(240, 400), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+			), 
+			'840N' => array(
+				'text_size' => array(24, 16), 
+				'screen_size' => array(240, 325), 
+				'image_size' => array(240, 427), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+			), 
+			'945SH' => array(
+				'text_size' => array(30, 23), 
+				'screen_size' => array(480, 738), 
+				'image_size' => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+				'font_size' => array('reso' => 'high'), 
+			), 
+			'840SC' => array(
+				'text_size' => array(25, 19), 
+				'screen_size' => array(232, 336), 
+				'image_size' => array(240, 400), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+			), 
+			'944SH' => array(
+				'text_size' => array(30, 23), 
+				'screen_size' => array(480, 754), 
+				'image_size' => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+				'font_size' => array('reso' => 'high'), 
+			), 
+			'842P' => array(
+				'text_size' => array(23, 17), 
+				'screen_size' => array(231, 350), 
+				'image_size' => array(240, 427), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+			), 
+			'841SH' => array(
+				'text_size' => array(24, 17), 
+				'screen_size' => array(240, 350), 
+				'image_size' => array(240, 400), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+			), 
+			'841SHs' => array(
+				'text_size' => array(20, 14), 
+				'screen_size' => array(240, 350), 
+				'image_size' => array(240, 400), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+			), 
+			'942SH' => array(
+				'text_size' => array(30, 23), 
+				'screen_size' => array(480, 754), 
+				'image_size' => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+				'font_size' => array('reso' => 'high'), 
+			), 
 			'943SH' => array(
 				'text_size' => array(30, 23), 
 				'screen_size' => array(480, 754), 
 				'image_size' => array(480, 854), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'841P' => array(
 				'text_size' => array(23, 16), 
@@ -1411,12 +1749,14 @@ class Lib3gkMachine {
 				'screen_size' => array(480, 754), 
 				'image_size' => array(480, 854), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'941P' => array(
 				'text_size' => array(29, 21), 
 				'screen_size' => array(471, 700), 
 				'image_size' => array(480, 854), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'840SH' => array(
 				'text_size' => array(24, 17), 
@@ -1429,12 +1769,14 @@ class Lib3gkMachine {
 				'screen_size' => array(471, 700), 
 				'image_size' => array(480, 854), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'940N' => array(
 				'text_size' => array(24, 16), 
 				'screen_size' => array(480, 650), 
 				'image_size' => array(480, 854), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'840P' => array(
 				'text_size' => array(23, 16), 
@@ -1447,24 +1789,28 @@ class Lib3gkMachine {
 				'screen_size' => array(480, 824), 
 				'image_size' => array(480, 1024), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'940SC' => array(
 				'text_size' => array(30, 16), 
 				'screen_size' => array(480, 512), 
 				'image_size' => array(480, 800), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'931N' => array(
 				'text_size' => array(24, 16), 
 				'screen_size' => array(480, 640), 
 				'image_size' => array(480, 854), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'940SH' => array(
 				'text_size' => array(30, 23), 
 				'screen_size' => array(480, 738), 
 				'image_size' => array(480, 854), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'832SHs' => array(
 				'text_size' => array(20, 14), 
@@ -1495,6 +1841,7 @@ class Lib3gkMachine {
 				'screen_size' => array(480, 754), 
 				'image_size' => array(480, 854), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'832SH' => array(
 				'text_size' => array(24, 17), 
@@ -1507,12 +1854,14 @@ class Lib3gkMachine {
 				'screen_size' => array(480, 754), 
 				'image_size' => array(480, 854), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'931P' => array(
 				'text_size' => array(29, 21), 
 				'screen_size' => array(471, 700), 
 				'image_size' => array(480, 854), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'832T' => array(
 				'text_size' => array(15, 6), 
@@ -1525,24 +1874,28 @@ class Lib3gkMachine {
 				'screen_size' => array(471, 512), 
 				'image_size' => array(480, 800), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'930N' => array(
 				'text_size' => array(24, 16), 
 				'screen_size' => array(480, 650), 
 				'image_size' => array(480, 854), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'934SH' => array(
 				'text_size' => array(24, 13), 
 				'screen_size' => array(480, 754), 
 				'image_size' => array(480, 854), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'933SH' => array(
 				'text_size' => array(30, 23), 
 				'screen_size' => array(480, 738), 
 				'image_size' => array(480, 854), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'832P' => array(
 				'text_size' => array(23, 17), 
@@ -1585,6 +1938,7 @@ class Lib3gkMachine {
 				'screen_size' => array(480, 700), 
 				'image_size' => array(480, 854), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'830SHe' => array(
 				'text_size' => array(24, 13), 
@@ -1597,12 +1951,14 @@ class Lib3gkMachine {
 				'screen_size' => array(480, 650), 
 				'image_size' => array(480, 854), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'932SH' => array(
 				'text_size' => array(30, 23), 
 				'screen_size' => array(480, 754), 
 				'image_size' => array(480, 854), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'831SH' => array(
 				'text_size' => array(24, 17), 
@@ -1615,6 +1971,7 @@ class Lib3gkMachine {
 				'screen_size' => array(471, 700), 
 				'image_size' => array(480, 854), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'831T' => array(
 				'text_size' => array(18, 11), 
@@ -1633,18 +1990,21 @@ class Lib3gkMachine {
 				'screen_size' => array(480, 824), 
 				'image_size' => array(480, 1024), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'930SC' => array(
 				'text_size' => array(29, 16), 
 				'screen_size' => array(475, 512), 
 				'image_size' => array(480, 800), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'930SH' => array(
 				'text_size' => array(30, 23), 
 				'screen_size' => array(480, 754), 
 				'image_size' => array(480, 854), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'830CA' => array(
 				'text_size' => array(24, 17), 
@@ -1687,6 +2047,7 @@ class Lib3gkMachine {
 				'screen_size' => array(471, 700), 
 				'image_size' => array(480, 854), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'824P' => array(
 				'text_size' => array(23, 17), 
@@ -1699,6 +2060,7 @@ class Lib3gkMachine {
 				'screen_size' => array(480, 754), 
 				'image_size' => array(480, 854), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'824SH' => array(
 				'text_size' => array(24, 17), 
@@ -1741,6 +2103,7 @@ class Lib3gkMachine {
 				'screen_size' => array(854, 384), 
 				'image_size' => array(854, 480), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'921T' => array(
 				'text_size' => array(18, 11), 
@@ -1753,24 +2116,28 @@ class Lib3gkMachine {
 				'screen_size' => array(468, 754), 
 				'image_size' => array(480, 854), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'920T' => array(
 				'text_size' => array(18, 11), 
 				'screen_size' => array(234, 339), 
 				'image_size' => array(480, 800), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'920SH' => array(
 				'text_size' => array(29, 23), 
 				'screen_size' => array(468, 754), 
 				'image_size' => array(480, 854), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'920SH' => array(
 				'text_size' => array(29, 23), 
 				'screen_size' => array(468, 754), 
 				'image_size' => array(480, 854), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'920SC' => array(
 				'text_size' => array(25, 14), 
@@ -1783,6 +2150,7 @@ class Lib3gkMachine {
 				'screen_size' => array(471, 700), 
 				'image_size' => array(480, 854), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'913SH' => array(
 				'text_size' => array(23, 17), 
@@ -1807,12 +2175,14 @@ class Lib3gkMachine {
 				'screen_size' => array(468, 700), 
 				'image_size' => array(480, 800), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'911T' => array(
 				'text_size' => array(18, 11), 
 				'screen_size' => array(234, 339), 
 				'image_size' => array(480, 800), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'911SH' => array(
 				'text_size' => array(23, 17), 
@@ -2089,6 +2459,7 @@ class Lib3gkMachine {
 				'screen_size' => array(480, 754), 
 				'image_size' => array(480, 854), 
 				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+				'font_size' => array('reso' => 'high'), 
 			), 
 			'DM004SH' => array(
 				'text_size' => array(24, 17), 
@@ -2283,6 +2654,122 @@ class Lib3gkMachine {
 		//AU(KDDI)
 		//
 		'KDDI' => array(
+			'CA3I' => array(
+				'text_size' => array(23, 16), 
+				'screen_size' => array(232, 336), 
+				'image_size' => array(480, 854), 
+				'pic_format'  => array('gif' => false, 'jpg' => false, 'png' => false, ), 
+			), 
+			'SH3K' => array(
+				'text_size' => array(23, 16), 
+				'screen_size' => array(234, 358), 
+				'image_size' => array(480, 854), 
+				'pic_format'  => array('gif' => false, 'jpg' => false, 'png' => false, ), 
+			), 
+			'TS3W' => array(
+				'text_size' => array(23, 16), 
+				'screen_size' => array(233, 358), 
+				'image_size' => array(480, 854), 
+				'pic_format'  => array('gif' => false, 'jpg' => false, 'png' => false, ), 
+			), 
+			'SN3Q' => array(
+				'text_size' => array(23, 16), 
+				'screen_size' => array(233, 358), 
+				'image_size' => array(480, 854), 
+				'pic_format'  => array('gif' => false, 'jpg' => false, 'png' => false, ), 
+			), 
+			'TS3V' => array(
+				'text_size' => array(23, 16), 
+				'screen_size' => array(233, 358), 
+				'image_size' => array(480, 854), 
+				'pic_format'  => array('gif' => false, 'jpg' => false, 'png' => false, ), 
+			), 
+			'SN3R' => array(
+				'text_size' => array(19, 13), 
+				'screen_size' => array(233, 358), 
+				'image_size' => array(480, 854), 
+				'pic_format'  => array('gif' => false, 'jpg' => false, 'png' => false, ), 
+			), 
+			'KC41' => array(
+				'text_size' => array(23, 15), 
+				'screen_size' => array(232, 358), 
+				'image_size' => array(240, 400), 
+				'pic_format'  => array('gif' => false, 'jpg' => false, 'png' => false, ), 
+			), 
+			'SH3J' => array(
+				'text_size' => array(23, 16), 
+				'screen_size' => array(234, 358), 
+				'image_size' => array(480, 854), 
+				'pic_format'  => array('gif' => false, 'jpg' => false, 'png' => false, ), 
+			), 
+			
+			
+			'KC3Z' => array(
+				'text_size' => array(23, 15), 
+				'screen_size' => array(232, 325), 
+				'image_size' => array(240, 400), 
+				'pic_format'  => array('gif' => false, 'jpg' => false, 'png' => false, ), 
+			), 
+			'TS3U' => array(
+				'text_size' => array(23, 16), 
+				'screen_size' => array(233, 358), 
+				'image_size' => array(480, 854), 
+				'pic_format'  => array('gif' => false, 'jpg' => false, 'png' => false, ), 
+			), 
+			'KC3Y' => array(
+				'text_size' => array(14, 10), 
+				'screen_size' => array(232, 325), 
+				'image_size' => array(240, 400), 
+				'pic_format'  => array('gif' => false, 'jpg' => false, 'png' => false, ), 
+			), 
+			'SH3I' => array(
+				'text_size' => array(23, 16), 
+				'screen_size' => array(234, 358), 
+				'image_size' => array(480, 854), 
+				'pic_format'  => array('gif' => false, 'jpg' => false, 'png' => false, ), 
+			), 
+			'SN3O' => array(
+				'text_size' => array(23, 16), 
+				'screen_size' => array(233, 358), 
+				'image_size' => array(480, 854), 
+				'pic_format'  => array('gif' => false, 'jpg' => false, 'png' => false, ), 
+			), 
+			'KC3X' => array(
+				'text_size' => array(23, 16), 
+				'screen_size' => array(233, 358), 
+				'image_size' => array(480, 854), 
+				'pic_format'  => array('gif' => false, 'jpg' => false, 'png' => false, ), 
+			), 
+			'TS3S' => array(
+				'text_size' => array(23, 16), 
+				'screen_size' => array(233, 358), 
+				'image_size' => array(480, 854), 
+				'pic_format'  => array('gif' => false, 'jpg' => false, 'png' => false, ), 
+			), 
+			'SN3P' => array(
+				'text_size' => array(23, 16), 
+				'screen_size' => array(233, 358), 
+				'image_size' => array(480, 854), 
+				'pic_format'  => array('gif' => false, 'jpg' => false, 'png' => false, ), 
+			), 
+			'HI3H' => array(
+				'text_size' => array(23, 16), 
+				'screen_size' => array(232, 336), 
+				'image_size' => array(480, 854), 
+				'pic_format'  => array('gif' => false, 'jpg' => false, 'png' => false, ), 
+			), 
+			'CA3H' => array(
+				'text_size' => array(23, 16), 
+				'screen_size' => array(232, 336), 
+				'image_size' => array(480, 854), 
+				'pic_format'  => array('gif' => false, 'jpg' => false, 'png' => false, ), 
+			), 
+			'SH3H' => array(
+				'text_size' => array(23, 16), 
+				'screen_size' => array(234, 358), 
+				'image_size' => array(480, 854), 
+				'pic_format'  => array('gif' => false, 'jpg' => false, 'png' => false, ), 
+			), 
 //			'KC3W' => array(
 //				'text_size' => array(0, 0), 
 //				'screen_size' => array(0, 0), 
@@ -3619,6 +4106,15 @@ class Lib3gkMachine {
 			), 
 		), 
 		
+		'Android' => array(
+			'default' => array(
+				'text_size'   => array(30, 18), 
+				'screen_size' => array(240, 320), 
+				'image_size'  => array(480, 854), 
+				'pic_format'  => array('gif' => true, 'jpg' => true, 'png' => true, ), 
+			), 
+		), 
+		
 		//WILLCOM(/DDIPOCKET)
 		//
 		'WILLCOM' => array(
@@ -3800,6 +4296,7 @@ class Lib3gkMachine {
 		'iPhone'    => 5, 
 		'WILLCOM'   => 6, 
 		'DDIPOCKET' => 6, 
+		'Android'   => 8, 
 	);
 	
 	
@@ -3892,12 +4389,10 @@ class Lib3gkMachine {
 			$machine_name = 'default';
 			$default = true;
 		}
-		$arr = $this->machine_table[$carrier_name][$machine_name];
+		$carrier = $this->carrier_name_table[$carrier_name];
 		
-		$arr['carrier'] = $this->carrier_name_table[$carrier_name];
-		$arr['carrier_name'] = $carrier_name;
-		$arr['machine_name'] = $machine_name;
-		$arr['default'] = $default;
+		$arr = $this->machine_table[$carrier_name][$machine_name];
+		$arr = array_merge($arr, compact('carrier', 'carrier_name', 'machine_name', 'default'));
 		
 		return $arr;
 	}

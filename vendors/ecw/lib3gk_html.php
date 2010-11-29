@@ -6,7 +6,7 @@
  *
  * PHP versions 4 and 5
  *
- * Ktai Library for CakePHP1.2
+ * Ktai Library for CakePHP
  * Copyright 2009-2010, ECWorks.
  
  * Licensed under The GNU General Public Licence
@@ -14,8 +14,8 @@
  *
  * @copyright		Copyright 2009-2010, ECWorks.
  * @link			http://www.ecworks.jp/ ECWorks.
- * @version			0.3.2
- * @lastmodified	$Date: 2010-05-17 14:00:00 +0900 (Mon, 17 May 2010) $
+ * @version			0.4.0
+ * @lastmodified	$Date: 2010-11-30 03:00:00 +0900 (Tue, 30 Nov 2010) $
  * @license			http://www.gnu.org/licenses/gpl.html The GNU General Public Licence
  */
 
@@ -81,6 +81,10 @@ class Lib3gkHtml {
 		//Inline stylesheet params
 		//
 		'style' => array(), 
+		
+		//デフォルトのフォントサイズ
+		//
+		'default_font_size' => 'medium', 
 	);
 	
 	/**
@@ -91,6 +95,51 @@ class Lib3gkHtml {
 	 */
 	var $_url_callback = null;
 	
+	
+	/**
+	 * 指定したフォントタグのスタック
+	 *
+	 * @var array
+	 * @access private
+	 */
+	var $__fontTags = array();
+	
+	/**
+	 * 各キャリアの対応フォントサイズテーブル
+	 *
+	 * @var array
+	 * @access private
+	 */
+	var $__fontSizeTable = array(
+		'low' => array(
+			KTAI_CARRIER_KDDI => array('small' => '15px', 'medium' => '22px', 'large' => '32px'), 
+		), 
+		'high' => array(
+			KTAI_CARRIER_DOCOMO => array('small' => 'medium', 'medium' => 'large', 'large' => 'x-large'), 
+			KTAI_CARRIER_SOFTBANK => array('small' => 'medium', 'medium' => 'large', 'large' => 'x-large'), 
+		), 
+	);
+	
+	/**
+	 * タグのテンプレート
+	 *
+	 * @var array
+	 * @access private
+	 */
+	var $__fontTagBase = array('<%tag% style="font-size: %size%;%style%">', '</%tag%>');
+	
+	/**
+	 * 各キャリアで使用するタグ
+	 *
+	 * @var array
+	 * @access private
+	 */
+	var $__fontTagTable = array(
+		KTAI_CARRIER_UNKNOWN => 'div', 
+		KTAI_CARRIER_DOCOMO => 'div', 
+		KTAI_CARRIER_KDDI => 'font', 
+		KTAI_CARRIER_SOFTBANK => 'font', 
+	);
 	
 	//================================================================
 	//Methods
@@ -508,5 +557,106 @@ class Lib3gkHtml {
 		$url .= '&key='.$api_key;
 		
 		return $this->image($url, array('width' => $width, 'height' => $height), false);
+	}
+	
+	/**
+	 * 同サイズフォント指定
+	 * 機種判別してフォントサイズの差異をなくします
+	 * 
+	 * ※XHTMLの場合のみ有効です
+	 * 　フォントサイズは「small」「medium」「large」が指定可能。それ以外の値はそのまま出力します
+	 * 　デフォルトは$__params['default_font_size']の値です。無指定の場合は「medium」です。
+	 *
+	 * @param $size string フォントのサイズ(small/medium/large)
+	 * @param $tag string カスタムで使用するタグ(div, span, fontなど)
+	 * @param $style string 付加するスタイル名。$ktai->style()で指定する値
+	 * @param $display boolean trueでechoを自動で行う
+	 * @return string フォント指定タグ
+	 * @access public
+	 *
+	 */
+	function font($size = null, $tag = null, $style = null, $display = true){
+		
+		if(!$this->_params['use_xml']){
+			return null;
+		}
+		
+		if($size === null){
+			if(isset($this->_params['default_font_size'])){
+				$size = $this->_params['default_font_size'];
+			}else{
+				$size = 'medium';
+			}
+		}
+		
+		if($style !== null){
+			$style = $this->style($style, false);
+		}
+		
+		$this->__load_machine();
+		$machine = $this->__machine->get_machineinfo();
+		$carrier = $machine['carrier'];
+		
+		if($tag === null){
+			if($carrier == KTAI_CARRIER_DOCOMO || $carrier == KTAI_CARRIER_KDDI || $carrier == KTAI_CARRIER_SOFTBANK){
+				$tag = $this->__fontTagTable[$carrier];
+			}else{
+				$tag = $this->__fontTagTable[KTAI_CARRIER_UNKNOWN];
+			}
+		}
+		
+		if($carrier != KTAI_CARRIER_DOCOMO && $carrier != KTAI_CARRIER_KDDI && $carrier != KTAI_CARRIER_SOFTBANK){
+			$carrier = KTAI_CARRIER_DOCOMO;
+		}
+		
+		$reso = 'low';
+		if(isset($machine['font_size'])){
+			if(isset($machine['font_size']['reso'])){
+				$reso = $machine['font_size']['reso'];
+				if(isset($this->__fontSizeTable[$reso][$carrier][$size])){
+					$size = $this->__fontSizeTable[$reso][$carrier][$size];
+				}
+			}else
+			if(isset($machine['font_size'][$size])){
+				$size = $machine['font_size'][$size];
+			}
+		}else
+		if(isset($this->__fontSizeTable[$reso][$carrier][$size])){
+			$size = $this->__fontSizeTable[$reso][$carrier][$size];
+		}
+		
+		$search = array('%tag%', '%size%', '%style%');
+		$replace = array($tag, $size, $style);
+		
+		$result = str_replace($search, $replace, $this->__fontTagBase[0]);
+		$this->__fontTags[] = str_replace('%tag%', $tag, $this->__fontTagBase[1]);
+		
+		if($display){
+			echo $result;
+		}
+		return $result;
+	}
+	
+	/**
+	 * フォントタグの終端
+	 * 直近に処理されたfont()に対応する閉じタグを出力します
+	 *
+	 * @param $display boolean trueでechoを自動で行う
+	 * @return string フォント指定タグの閉じタグ
+	 * @access public
+	 *
+	 */
+	function fontend($display = true){
+		
+		$result = null;
+		
+		if(!empty($this->__fontTags)){
+			$result = array_pop($this->__fontTags);
+		}
+		
+		if($display){
+			echo $result;
+		}
+		return $result;
 	}
 }

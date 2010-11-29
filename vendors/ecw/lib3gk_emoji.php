@@ -6,7 +6,7 @@
  *
  * PHP versions 4 and 5
  *
- * Ktai Library for CakePHP1.2
+ * Ktai Library for CakePHP
  * Copyright 2009-2010, ECWorks.
  
  * Licensed under The GNU General Public Licence
@@ -14,8 +14,8 @@
  *
  * @copyright		Copyright 2009-2010, ECWorks.
  * @link			http://www.ecworks.jp/ ECWorks.
- * @version			0.3.2
- * @lastmodified	$Date: 2010-05-17 14:00:00 +0900 (Mon, 17 May 2010) $
+ * @version			0.4.0
+ * @lastmodified	$Date: 2010-11-30 03:00:00 +0900 (Tue, 30 Nov 2010) $
  * @license			http://www.gnu.org/licenses/gpl.html The GNU General Public Licence
  */
 
@@ -40,7 +40,7 @@ class Lib3gkEmoji {
 	//Library sub classes
 	//------------------------------------------------
 	/**
-	 * Lib3gkCarrierÇÃÉCÉìÉXÉ^ÉìÉX
+	 * Lib3gkCarrier„ÅÆ„Ç§„É≥„Çπ„Çø„É≥„Çπ
 	 *
 	 * @var object
 	 * @access private
@@ -48,7 +48,7 @@ class Lib3gkEmoji {
 	var $__carrier = null;
 	
 	/**
-	 * Lib3gkHtmlÇÃÉCÉìÉXÉ^ÉìÉX
+	 * Lib3gkHtml„ÅÆ„Ç§„É≥„Çπ„Çø„É≥„Çπ
 	 *
 	 * @var object
 	 * @access private
@@ -56,7 +56,7 @@ class Lib3gkEmoji {
 	var $__html    = null;
 	
 	/**
-	 * Lib3gkToolsÇÃÉCÉìÉXÉ^ÉìÉX
+	 * Lib3gkTools„ÅÆ„Ç§„É≥„Çπ„Çø„É≥„Çπ
 	 *
 	 * @var object
 	 * @access private
@@ -67,7 +67,7 @@ class Lib3gkEmoji {
 	//Parameters
 	//------------------------------------------------
 	/**
-	 * Ktai LibraryÉpÉâÉÅÅ[É^
+	 * Ktai Library„Éë„É©„É°„Éº„Çø
 	 *
 	 * @var array
 	 * @access protected
@@ -93,7 +93,7 @@ class Lib3gkEmoji {
 	);
 	
 	/**
-	 * ÉGÉìÉRÅ[ÉhñºÅ®ÉGÉìÉRÅ[ÉhÉRÅ[ÉhÇÃïœä∑ÉeÅ[ÉuÉã
+	 * „Ç®„É≥„Ç≥„Éº„ÉâÂêç‚Üí„Ç®„É≥„Ç≥„Éº„Éâ„Ç≥„Éº„Éâ„ÅÆÂ§âÊèõ„ÉÜ„Éº„Éñ„É´
 	 *
 	 * @var array
 	 * @access public
@@ -105,7 +105,7 @@ class Lib3gkEmoji {
 	);
 	
 	/**
-	 * ÉGÉìÉRÅ[ÉhÉRÅ[ÉhÅ®ÉGÉìÉRÅ[ÉhñºÇÃïœä∑ÉeÅ[ÉuÉã
+	 * „Ç®„É≥„Ç≥„Éº„Éâ„Ç≥„Éº„Éâ‚Üí„Ç®„É≥„Ç≥„Éº„ÉâÂêç„ÅÆÂ§âÊèõ„ÉÜ„Éº„Éñ„É´
 	 *
 	 * @var array
 	 * @access public
@@ -116,7 +116,7 @@ class Lib3gkEmoji {
 	);
 	
 	/**
-	 * ÉLÉÉÉäÉAÉRÅ[ÉhÅ®äGï∂éöÉLÉÉÉäÉAÉRÅ[ÉhÇÃïœä∑ÉeÅ[ÉuÉã
+	 * „Ç≠„É£„É™„Ç¢„Ç≥„Éº„Éâ‚ÜíÁµµÊñáÂ≠ó„Ç≠„É£„É™„Ç¢„Ç≥„Éº„Éâ„ÅÆÂ§âÊèõ„ÉÜ„Éº„Éñ„É´
 	 *
 	 * @var array
 	 * @access public
@@ -133,7 +133,7 @@ class Lib3gkEmoji {
 	);
 	
 	/**
-	 * ÉLÉÉÉäÉAäGï∂éöÉRÅ[ÉhÅ®ÉLÉÉÉäÉAÉRÅ[ÉhÇÃïœä∑ÉeÅ[ÉuÉã
+	 * „Ç≠„É£„É™„Ç¢ÁµµÊñáÂ≠ó„Ç≥„Éº„Éâ‚Üí„Ç≠„É£„É™„Ç¢„Ç≥„Éº„Éâ„ÅÆÂ§âÊèõ„ÉÜ„Éº„Éñ„É´
 	 *
 	 * @var array
 	 * @access public
@@ -146,7 +146,7 @@ class Lib3gkEmoji {
 	);
 	
 	/**
-	 * ÉLÉÉÉäÉAÉRÅ[ÉhÅ®ÉLÉÉÉäÉAÉCÉìÉfÉbÉNÉXÇÃïœä∑ÉeÅ[ÉuÉã
+	 * „Ç≠„É£„É™„Ç¢„Ç≥„Éº„Éâ‚Üí„Ç≠„É£„É™„Ç¢„Ç§„É≥„Éá„ÉÉ„ÇØ„Çπ„ÅÆÂ§âÊèõ„ÉÜ„Éº„Éñ„É´
 	 *
 	 * @var array
 	 * @access public
@@ -159,7 +159,7 @@ class Lib3gkEmoji {
 	);
 	
 	/**
-	 * äGï∂éöÇÃÉpÉ^Å[ÉìÉ}ÉbÉ`ê≥ãKï\åª
+	 * ÁµµÊñáÂ≠ó„ÅÆ„Éë„Çø„Éº„É≥„Éû„ÉÉ„ÉÅÊ≠£Ë¶èË°®Áèæ
 	 *
 	 * @var array
 	 * @access public
@@ -185,7 +185,7 @@ class Lib3gkEmoji {
 	);
 	
 	/**
-	 * äGï∂éöÉLÉÉÉbÉVÉÖÉoÉbÉtÉ@
+	 * ÁµµÊñáÂ≠ó„Ç≠„É£„ÉÉ„Ç∑„É•„Éê„ÉÉ„Éï„Ç°
 	 *
 	 * @var array
 	 * @access private
@@ -193,7 +193,7 @@ class Lib3gkEmoji {
 	var $__cached = null;
 	
 	/**
-	 * äGï∂éöÉeÅ[ÉuÉã
+	 * ÁµµÊñáÂ≠ó„ÉÜ„Éº„Éñ„É´
 	 *
 	 * @var array
 	 * @access private
@@ -203,280 +203,280 @@ class Lib3gkEmoji {
 			array(0xf89f, 0xe63e), 
 			array(0xf660, 0xe488, 0xef60, 0x7541, 0xeb60), 
 			'$Gj', 
-			'[ê∞]', 
+			'[Êô¥]', 
 			'sun', 
 		), 
 		array(						//2
 			array(0xf8a0, 0xe63f), 
 			array(0xf665, 0xe48d, 0xef65, 0x7546, 0xeb65), 
 			'$Gi', 
-			'[ì‹]', 
+			'[Êõá]', 
 			'cloud', 
 		), 
 		array(						//3
 			array(0xf8a1, 0xe640), 
 			array(0xf664, 0xe48c, 0xef64, 0x7545, 0xeb64), 
 			'$Gk', 
-			'[âJ]', 
+			'[Èõ®]', 
 			'rain', 
 		), 
 		array(						//4
 			array(0xf8a2, 0xe641), 
 			array(0xf65d, 0xe485, 0xef5d, 0x753e, 0xeb5d), 
 			'$Gh', 
-			'[ê·]', 
+			'[Èõ™]', 
 			'snow', 
 		), 
 		array(						//5
 			array(0xf8a3, 0xe642), 
 			array(0xf65f, 0xe487, 0xef5f, 0x7540, 0xeb5f), 
 			'$E]', 
-			'[óã]', 
+			'[Èõ∑]', 
 			'thunder', 
 		), 
 		array(						//6
 			array(0xf8a4, 0xe643), 
 			array(0xf641, 0xe469, 0xef41, 0x7522, 0xeb41), 
 			'$Pc', 
-			'[ë‰ïó]', 
+			'[Âè∞È¢®]', 
 			'typhoon', 
 		), 
 		array(						//7
 			array(0xf8a5, 0xe644), 
 			array(0xf7b5, 0xe598, 0xf0b5, 0x7837, 0xecb5), 
 			'', 
-			'[ñ∂]', 
+			'[Èúß]', 
 			'mist', 
 		), 
 		array(						//8
 			array(0xf8a6, 0xe645), 
 			array(0xf3bc, 0xeae8, 0xecbc, 0x7a3e, 0xedbc), 
 			'$P\\', 
-			'Å@', 
+			'„ÄÄ', 
 			'sprinkle', 
 		), 
 		array(						//9
 			array(0xf8a7, 0xe646), 
 			array(0xf667, 0xe48f, 0xef67, 0x7548, 0xeb67), 
 			'$F_', 
-			'[â≤órç¿]', 
+			'[Áâ°ÁæäÂ∫ß]', 
 			'aries', 
 		), 
 		array(						//10
 			array(0xf8a8, 0xe647), 
 			array(0xf668, 0xe490, 0xef68, 0x7549, 0xeb68), 
 			'$F`', 
-			'[â≤ãçç¿]', 
+			'[Áâ°ÁâõÂ∫ß]', 
 			'taurus', 
 		), 
 		array(						//11
 			array(0xf8a9, 0xe648), 
 			array(0xf669, 0xe491, 0xef69, 0x754a, 0xeb69), 
 			'$Fa', 
-			'[ëoéqç¿]', 
+			'[ÂèåÂ≠êÂ∫ß]', 
 			'gemini', 
 		), 
 		array(						//12
 			array(0xf8aa, 0xe649), 
 			array(0xf66a, 0xe492, 0xef6a, 0x754b, 0xeb6a), 
 			'$Fb', 
-			'[äIç¿]', 
+			'[ËüπÂ∫ß]', 
 			'cancer', 
 		), 
 		array(						//13
 			array(0xf8ab, 0xe64a), 
 			array(0xf66b, 0xe493, 0xef6b, 0x754c, 0xeb6b), 
 			'$Fc', 
-			'[éÇéqç¿]', 
+			'[ÁçÖÂ≠êÂ∫ß]', 
 			'leo', 
 		), 
 		array(						//14
 			array(0xf8ac, 0xe64b), 
 			array(0xf66c, 0xe494, 0xef6c, 0x754d, 0xeb6c), 
 			'$Fd', 
-			'[â≥èóç¿]', 
+			'[‰πôÂ•≥Â∫ß]', 
 			'virgo', 
 		), 
 		array(						//15
 			array(0xf8ad, 0xe64c), 
 			array(0xf66d, 0xe495, 0xef6d, 0x754e, 0xeb6d), 
 			'$Fe', 
-			'[ìVîâç¿]', 
+			'[Â§©Áß§Â∫ß]', 
 			'libra', 
 		), 
 		array(		 				//16
 			array(0xf8ae, 0xe64d), 
 			array(0xf66e, 0xe496, 0xef6e, 0x754f, 0xeb6e), 
 			'$Ff', 
-			'[Â∂ç¿]', 
+			'[Ë†çÂ∫ß]', 
 			'scorpius', 
 		)	,
 		array(						//17
 			array(0xf8af, 0xe64e), 
 			array(0xf66f, 0xe497, 0xef6f, 0x7550, 0xeb6f), 
 			'$Fg', 
-			'[éÀéËç¿]', 
+			'[Â∞ÑÊâãÂ∫ß]', 
 			'sagittarius', 
 		), 
 		array(						//18
 			array(0xf8b0, 0xe64f), 
 			array(0xf670, 0xe498, 0xef70, 0x7551, 0xeb70), 
 			'$Fh', 
-			'[éRórç¿]', 
+			'[Â±±ÁæäÂ∫ß]', 
 			'capricornus', 
 		), 
 		array(						//19
 			array(0xf8b1, 0xe650), 
 			array(0xf671, 0xe499, 0xef71, 0x7552, 0xeb71), 
 			'$Fi', 
-			'[êÖïrç¿]', 
+			'[Ê∞¥Áì∂Â∫ß]', 
 			'aquarius', 
 		), 
 		array(						//20
 			array(0xf8b2, 0xe651), 
 			array(0xf672, 0xe49a, 0xef72, 0x7553, 0xeb72), 
 			'$Fj', 
-			'[ãõç¿]', 
+			'[È≠öÂ∫ß]', 
 			'pisces', 
 		), 
 		array(						//21
 			array(0xf8b3, 0xe652), 
 			array(0, 0, 0, 0, 0), 
 			'', 
-			'Å@', 
+			'„ÄÄ', 
 			'sports', 
 		), 
 		array(		 				//22
 			array(0xf8b4, 0xe653), 
 			array(0xf693, 0xe4ba, 0xef93, 0x7573, 0xeb93), 
 			'$G6', 
-			'Å@', 
+			'„ÄÄ', 
 			'baseball', 
 		),	
 		array(						//23
 			array(0xf8b5, 0xe654), 
 			array(0xf7b6, 0xe599, 0xf0b6, 0x7838, 0xecb6), 
 			'$G4', 
-			'Å@', 
+			'„ÄÄ', 
 			'golf', 
 		), 
 		array(						//24
 			array(0xf8b6, 0xe655), 
 			array(0xf690, 0xe4b7, 0xef90, 0x7570, 0xeb90), 
 			'$G5', 
-			'Å@', 
+			'„ÄÄ', 
 			'tennis', 
 		), 
 		array(						//25
 			array(0xf8b7, 0xe656), 
 			array(0xf68f, 0xe4b6, 0xef8f, 0x756f, 0xeb8f), 
 			'$G8', 
-			'Å@', 
+			'„ÄÄ', 
 			'soccer', 
 		), 
 		array(						//26
 			array(0xf8b8, 0xe657), 
 			array(0xf380, 0xeaac, 0xec80, 0x7960, 0xed80), 
 			'$G3', 
-			'Å@', 
+			'„ÄÄ', 
 			'ski', 
 		), 
 		array(						//27
 			array(0xf8b9, 0xe658), 
 			array(0xf7b7, 0xe59a, 0xf0b7, 0x7839, 0xecb7), 
 			'$PJ', 
-			'Å@', 
+			'„ÄÄ', 
 			'basketball', 
 		), 
 		array(						//28
 			array(0xf8ba, 0xe659), 
 			array(0xf692, 0xe4b9, 0xef92, 0x7572, 0xeb92), 
 			'$ER', 
-			'Å@', 
+			'„ÄÄ', 
 			'motorsports', 
 		), 
 		array(						//29
 			array(0xf8bb, 0xe65a), 
 			array(0xf7b8, 0xe59b, 0xf0b8, 0x783a, 0xecb8), 
 			'', 
-			'Å@', 
+			'„ÄÄ', 
 			'pocketbell', 
 		), 
 		array(						//30
 			array(0xf8bc, 0xe65b), 
 			array(0xf68e, 0xe4b5, 0xef8e, 0x756e, 0xeb8e), 
 			'$G>', 
-			'[ìdé‘]', 
+			'[ÈõªËªä]', 
 			'train', 
 		), 
 		array(						//31
 			array(0xf8bd, 0xe65c), 
 			array(0xf7ec, 0xe5bc, 0xf0ec, 0x786e, 0xecec), 
 			'$PT', 
-			'[ínâ∫ìS]', 
+			'[Âú∞‰∏ãÈâÑ]', 
 			'subway', 
 		), 
 		array(						//32
 			array(0xf8be, 0xe65d), 
 			array(0xf689, 0xe4b0, 0xef89, 0x7569, 0xeb89), 
 			'$PU', 
-			'[êVä≤ê¸]', 
+			'[Êñ∞ÂππÁ∑ö]', 
 			'bullettrain', 
 		), 
 		array(						//33
 			array(0xf8bf, 0xe65e), 
 			array(0xf68a, 0xe4b1, 0xef8a, 0x756a, 0xeb8a), 
 			'$G;', 
-			'[é‘]', 
+			'[Ëªä]', 
 			'car', 
 		), 
 		array(						//34
 			array(0xf8c0, 0xe65f), 
 			array(0xf68a, 0xe4b1, 0xef8a, 0x756a, 0xeb8a), 
 			'$PN', 
-			'[é‘]', 
+			'[Ëªä]', 
 			'car', 
 		), 
 		array(						//35
 			array(0xf8c1, 0xe660), 
 			array(0xf688, 0xe4af, 0xef88, 0x7568, 0xeb88), 
 			'$Ey', 
-			'[ ﬁΩ]', 
+			'[ÔæäÔæûÔΩΩ]', 
 			'bus', 
 		), 
 		array(						//36
 			array(0xf8c2, 0xe661), 
 			array(0xf355, 0xea82, 0xec55, 0x7936, 0xed55), 
 			'$F"', 
-			'[ëD]', 
+			'[Ëàπ]', 
 			'ship', 
 		), 
 		array(						//37
 			array(0xf8c3, 0xe662), 
 			array(0xf68c, 0xe4b3, 0xef8c, 0x756c, 0xeb8c), 
 			'$G=', 
-			'[îÚçsã@]', 
+			'[È£õË°åÊ©ü]', 
 			'airplane', 
 		), 
 		array(						//38
 			array(0xf8c4, 0xe663), 
 			array(0xf684, 0xe4ab, 0xef84, 0x7564, 0xeb84), 
 			'$GV', 
-			'[â∆]', 
+			'[ÂÆ∂]', 
 			'house', 
 		), 
 		array(						//39
 			array(0xf8c5, 0xe664), 
 			array(0xf686, 0xe4ad, 0xef86, 0x7566, 0xeb86), 
 			'$GX', 
-			'[ÀﬁŸ]', 
+			'[ÔæãÔæûÔæô]', 
 			'building', 
 		), 
 		array(						//40
 			array(0xf8c6, 0xe665), 
 			array(0xf351, 0xe5de, 0xec51, 0x7932, 0xed51), 
 			'$Es', 
-			'[Åß]', 
+			'[„Äí]', 
 			'postoffice', 
 		), 
 		array(						//41
@@ -532,7 +532,7 @@ class Lib3gkEmoji {
 			array(0xf8ce, 0xe66d), 
 			array(0xf642, 0xe46a, 0xef42, 0x7523, 0xeb42), 
 			'$En', 
-			'[êMçÜ]', 
+			'[‰ø°Âè∑]', 
 			'signaler', 
 		), 
 		array(						//49
@@ -546,168 +546,168 @@ class Lib3gkEmoji {
 			array(0xf8d0, 0xe66f), 
 			array(0xf685, 0xe4ac, 0xef85, 0x7565, 0xeb85), 
 			'$Gc', 
-			'Å@', 
+			'„ÄÄ', 
 			'restaurant', 
 		), 
 		array(						//51
 			array(0xf8d1, 0xe670), 
 			array(0xf7b4, 0xe597, 0xf0b4, 0x7836, 0xecb4), 
 			'$Ge', 
-			'Å@', 
+			'„ÄÄ', 
 			'cafe', 
 		), 
 		array(						//52
 			array(0xf8d2, 0xe671), 
 			array(0xf69b, 0xe4c2, 0xef9b, 0x757b, 0xeb9b), 
 			'$Gd', 
-			'Å@', 
+			'„ÄÄ', 
 			'bar', 
 		), 
 		array(						//53
 			array(0xf8d3, 0xe672), 
 			array(0xf69c, 0xe4c3, 0xef9c, 0x757c, 0xeb9c), 
 			'$Gg', 
-			'Å@', 
+			'„ÄÄ', 
 			'beer', 
 		), 
 		array(						//54
 			array(0xf8d4, 0xe673), 
 			array(0xf6af, 0xe4d6, 0xefaf, 0x7631, 0xebaf), 
 			'$E@', 
-			'Å@', 
+			'„ÄÄ', 
 			'fastfood', 
 		), 
 		array(						//55
 			array(0xf8d5, 0xe674), 
 			array(0xf6f3, 0xe51a, 0xeff3, 0x7675, 0xebf3), 
 			'$E^', 
-			'Å@', 
+			'„ÄÄ', 
 			'boutique', 
 		), 
 		array(						//56
 			array(0xf8d6, 0xe675), 
 			array(0xf6ef, 0xe516, 0xefef, 0x7671, 0xebef), 
 			'$O3', 
-			'Å@', 
+			'„ÄÄ', 
 			'hairsalon', 
 		), 
 		array(						//57
 			array(0xf8d7, 0xe676), 
 			array(0xf6dc, 0xe503, 0xefdc, 0x765e, 0xebdc), 
 			'$G\\', 
-			'Å@', 
+			'„ÄÄ', 
 			'karaoke', 
 		), 
 		array(						//58
 			array(0xf8d8, 0xe677), 
 			array(0xf6f0, 0xe517, 0xeff0, 0x7672, 0xebf0), 
 			'$G]', 
-			'Å@', 
+			'„ÄÄ', 
 			'movie', 
 		), 
 		array(						//59
 			array(0xf8d9, 0xe678), 
 			array(0xf771, 0xe555, 0xf071, 0x7752, 0xec71), 
 			'$FV', 
-			'Å@', 
+			'„ÄÄ', 
 			'upwardright', 
 		), 
 		array(						//60
 			array(0xf8da, 0xe679), 
 			array(0, 0, 0, 0, 0), 
 			'', 
-			'Å@', 
+			'„ÄÄ', 
 			'carouselpony', 
 		), 
 		array(						//61
 			array(0xf8db, 0xe67a), 
 			array(0xf6e1, 0xe508, 0xefe1, 0x7663, 0xebe1), 
 			'$O*', 
-			'Å@', 
+			'„ÄÄ', 
 			'music', 
 		), 
 		array(						//62
 			array(0xf8dc, 0xe67b), 
 			array(0xf7b9, 0xe59c, 0xf0b9, 0x783b, 0xecb9), 
 			'$Q"', 
-			'Å@', 
+			'„ÄÄ', 
 			'art', 
 		), 
 		array(						//63
 			array(0xf8dd, 0xe67c), 
 			array(0xf3c9, 0xeaf5, 0xecc9, 0x7a4b, 0xedc9), 
 			'$Q#', 
-			'Å@', 
+			'„ÄÄ', 
 			'drama', 
 		), 
 		array(						//64
 			array(0xf8de, 0xe67d), 
 			array(0xf7bb, 0xe59e, 0xf0bb, 0x783d, 0xecbb), 
 			'', 
-			'Å@', 
+			'„ÄÄ', 
 			'event', 
 		), 
 		array(						//65
 			array(0xf8df, 0xe67e), 
 			array(0xf676, 0xe49e, 0xef76, 0x7557, 0xeb76), 
 			'$EE', 
-			'Å@', 
+			'„ÄÄ', 
 			'ticket', 
 		), 
 		array(						//66
 			array(0xf8e0, 0xe67f), 
 			array(0xf655, 0xe47d, 0xef55, 0x7536, 0xeb55), 
 			'$O.', 
-			'Å@', 
+			'„ÄÄ', 
 			'smoking', 
 		), 
 		array(						//67
 			array(0xf8e1, 0xe680), 
 			array(0xf656, 0xe47e, 0xef56, 0x7537, 0xeb56), 
 			'$F(', 
-			'[ã÷âå]', 
+			'[Á¶ÅÁÖô]', 
 			'nosmoking', 
 		), 
 		array(						//68
 			array(0xf8e2, 0xe681), 
 			array(0xf6ee, 0xe515, 0xefee, 0x7670, 0xebee), 
 			'$G(', 
-			'Å@', 
+			'„ÄÄ', 
 			'camera', 
 		), 
 		array(						//69
 			array(0xf8e3, 0xe682), 
 			array(0xf674, 0xe49c, 0xef74, 0x7555, 0xeb74), 
 			'$OC', 
-			'Å@', 
+			'„ÄÄ', 
 			'bag', 
 		), 
 		array(						//70
 			array(0xf8e4, 0xe683), 
 			array(0xf677, 0xe49f, 0xef77, 0x7558, 0xeb77), 
 			'$Eh', 
-			'[ñ{]', 
+			'[Êú¨]', 
 			'book', 
 		), 
 		array(						//71
 			array(0xf8e5, 0xe684), 
 			array(0xf7bc, 0xe59f, 0xf0bc, 0x783e, 0xecbc), 
 			'$O4', 
-			'Å@', 
+			'„ÄÄ', 
 			'ribbon', 
 		), 
 		array(						//72
 			array(0xf8e6, 0xe685), 
 			array(0xf6a8, 0xe4cf, 0xefa8, 0x762a, 0xeba8), 
 			'$E2', 
-			'Å@', 
+			'„ÄÄ', 
 			'present', 
 		), 
 		array(						//73
 			array(0xf8e7, 0xe686), 
 			array(0xf7bd, 0xe5a0, 0xf0bd, 0x783f, 0xecbd), 
 			'$Ok', 
-			'Å@', 
+			'„ÄÄ', 
 			'birthday', 
 		), 
 		array(						//74
@@ -721,210 +721,210 @@ class Lib3gkEmoji {
 			array(0xf8e9, 0xe688), 
 			array(0xf7a5, 0xe588, 0xf0a5, 0x7827, 0xeca5), 
 			'$G*', 
-			'[ågë—]', 
+			'[Êê∫Â∏Ø]', 
 			'mobilephone', 
 		), 
 		array(						//76
 			array(0xf8ea, 0xe689), 
 			array(0xf365, 0xea92, 0xec65, 0x7946, 0xed65), 
 			'$O!', 
-			'Å@', 
+			'„ÄÄ', 
 			'memo', 
 		), 
 		array(						//77
 			array(0xf8eb, 0xe68a), 
 			array(0xf6db, 0xe502, 0xefdb, 0x765d, 0xebdb), 
 			'$EJ', 
-			'Å@', 
+			'„ÄÄ', 
 			'tv', 
 		), 
 		array(						//78
 			array(0xf8ec, 0xe68b), 
 			array(0xf69f, 0xe4c6, 0xef9f, 0x7621, 0xeb9f), 
 			'', 
-			'Å@', 
+			'„ÄÄ', 
 			'game', 
 		), 
 		array(						//79
 			array(0xf8ed, 0xe68c), 
 			array(0xf6e5, 0xe50c, 0xefe5, 0x7667, 0xebe5), 
 			'$EF', 
-			'Å@', 
+			'„ÄÄ', 
 			'cd', 
 		), 
 		array(						//80
 			array(0xf8ee, 0xe68d), 
 			array(0xf378, 0xeaa5, 0xec78, 0x7959, 0xed78), 
 			'$F,', 
-			'Å@', 
+			'„ÄÄ', 
 			'heart', 
 		), 
 		array(						//81
 			array(0xf8ef, 0xe68e), 
 			array(0xf7be, 0xe5a1, 0xf0be, 0x7840, 0xecbe), 
 			'$F.', 
-			'Å@', 
+			'„ÄÄ', 
 			'spade', 
 		), 
 		array(						//82
 			array(0xf8f0, 0xe68f), 
 			array(0xf7bf, 0xe5a2, 0xf0bf, 0x7841, 0xecbf), 
 			'$F-', 
-			'Å@', 
+			'„ÄÄ', 
 			'diamond', 
 		), 
 		array(						//83
 			array(0xf8f1, 0xe690), 
 			array(0xf7c0, 0xe5a3, 0xf0c0, 0x7842, 0xecc0), 
 			'$F/', 
-			'Å@', 
+			'„ÄÄ', 
 			'club', 
 		), 
 		array(						//84
 			array(0xf8f2, 0xe691), 
 			array(0xf7c1, 0xe5a4, 0xf0c1, 0x7843, 0xecc1), 
 			'$P9', 
-			'Å@', 
+			'„ÄÄ', 
 			'eye', 
 		), 
 		array(						//85
 			array(0xf8f3, 0xe692), 
 			array(0xf7c2, 0xe5a5, 0xf0c2, 0x7844, 0xecc2), 
 			'$P;', 
-			'Å@', 
+			'„ÄÄ', 
 			'ear', 
 		), 
 		array(						//86
 			array(0xf8f4, 0xe693), 
 			array(0xf488, 0xeb83, 0xed88, 0x7b68, 0xee88), 
 			'$G0', 
-			'Å@', 
+			'„ÄÄ', 
 			'rock', 
 		), 
 		array(						//87
 			array(0xf8f5, 0xe694), 
 			array(0xf7c3, 0xe5a6, 0xf0c3, 0x7845, 0xecc3), 
 			'$G1', 
-			'Å@', 
+			'„ÄÄ', 
 			'scissors', 
 		), 
 		array(						//88
 			array(0xf8f6, 0xe695), 
 			array(0xf7c4, 0xe5a7, 0xf0c4, 0x7846, 0xecc4), 
 			'$G2', 
-			'Å@', 
+			'„ÄÄ', 
 			'paper', 
 		), 
 		array(						//89
 			array(0xf8f7, 0xe696), 
 			array(0xf769, 0xe54d, 0xf069, 0x774a, 0xec69), 
 			'$FX', 
-			'Å@', 
+			'„ÄÄ', 
 			'downwardright', 
 		), 
 		array(						//90
 			array(0xf8f8, 0xe697), 
 			array(0xf768, 0xe54c, 0xf068, 0x7749, 0xec68), 
 			'$FW', 
-			'Å@', 
+			'„ÄÄ', 
 			'upwardleft', 
 		), 
 		array(						//91
 			array(0xf8f9, 0xe698), 
 			array(0xf3eb, 0xeb2a, 0xeceb, 0x7a6d, 0xedeb), 
 			'$QV', 
-			'Å@', 
+			'„ÄÄ', 
 			'foot', 
 		), 
 		array(						//92
 			array(0xf8fa, 0xe699), 
 			array(0xf3ec, 0xeb2b, 0xecec, 0x7a6e, 0xedec), 
 			'$G\'', 
-			'Å@', 
+			'„ÄÄ', 
 			'shoe', 
 		), 
 		array(						//93
 			array(0xf8fb, 0xe69a), 
 			array(0xf6d7, 0xe4fe, 0xefd7, 0x7659, 0xebd7), 
 			'', 
-			'Å@', 
+			'„ÄÄ', 
 			'eyeglass', 
 		), 
 		array(						//94
 			array(0xf8fc, 0xe69b), 
 			array(0xf657, 0xe47f, 0xef57, 0x7538, 0xeb57), 
 			'$F*', 
-			'Å@', 
+			'„ÄÄ', 
 			'wheelchair', 
 		), 
 		array(						//95
 			array(0xf940, 0xe69c), 
 			array(0xf7c5, 0xe5a8, 0xf0c5, 0x7847, 0xecc5), 
 			'', 
-			'Åú', 
+			'‚óè', 
 			'newmoon', 
 		), 
 		array(						//96
 			array(0xf941, 0xe69d), 
 			array(0xf7c6, 0xe5a9, 0xf0c6, 0x7848, 0xecc6), 
 			'$Gl', 
-			'Åú', 
+			'‚óè', 
 			'moon1', 
 		), 
 		array(						//97
 			array(0xf942, 0xe69e), 
 			array(0xf7c7, 0xe5aa, 0xf0c7, 0x7849, 0xecc7), 
 			'$Gl', 
-			'Åõ', 
+			'‚óã', 
 			'moon2', 
 		), 
 		array(						//98
 			array(0xf943, 0xe69f), 
 			array(0xf65e, 0xe486, 0xef5e, 0x753f, 0xeb5e), 
 			'$Gl', 
-			'Åõ', 
+			'‚óã', 
 			'moon3', 
 		), 
 		array(						//99
 			array(0xf944, 0xe6a0), 
 			array(0, 0, 0, 0, 0), 
 			'', 
-			'Åõ', 
+			'‚óã', 
 			'fullmoon', 
 		), 
 		array(						//100
 			array(0xf945, 0xe6a1), 
 			array(0xf6ba, 0xe4e1, 0xefba, 0x763c, 0xebba), 
 			'$Gr', 
-			'Å@', 
+			'„ÄÄ', 
 			'dog', 
 		), 
 		array(						//101
 			array(0xf946, 0xe6a2), 
 			array(0xf6b4, 0xe4db, 0xefb4, 0x7636, 0xebb4), 
 			'$Go', 
-			'Å@', 
+			'„ÄÄ', 
 			'cat', 
 		), 
 		array(						//102
 			array(0xf947, 0xe6a3), 
 			array(0xf68d, 0xe4b4, 0xef8d, 0x756d, 0xeb8d), 
 			'$G<', 
-			'Å@', 
+			'„ÄÄ', 
 			'yacht', 
 		), 
 		array(						//103
 			array(0xf948, 0xe6a4), 
 			array(0xf6a2, 0xe4c9, 0xefa2, 0x7624, 0xeba2), 
 			'$GS', 
-			'Å@', 
+			'„ÄÄ', 
 			'xmas', 
 		), 
 		array(						//104
 			array(0xf949, 0xe6a5), 
 			array(0xf772, 0xe556, 0xf072, 0x7753, 0xec72), 
 			'$FY', 
-			'Å@', 
+			'„ÄÄ', 
 			'downwardleft', 
 		), 
 		array(						//105
@@ -973,14 +973,14 @@ class Lib3gkEmoji {
 			array(0xf978, 0xe6d4), 
 			array(0, 0, 0, 0, 0), 
 			'', 
-			'Å@', 
+			'„ÄÄ', 
 			'by-d', 
 		), 
 		array(						//112
 			array(0xf979, 0xe6d5), 
 			array(0, 0, 0, 0, 0), 
 			'', 
-			'Å@', 
+			'„ÄÄ', 
 			'd-point', 
 		), 
 		array(						//113
@@ -1015,7 +1015,7 @@ class Lib3gkEmoji {
 			array(0xf97e, 0xe6da), 
 			array(0xf779, 0xe55d, 0xf079, 0x775a, 0xec79), 
 			'', 
-			'Å@', 
+			'„ÄÄ', 
 			'enter', 
 		), 
 		array(						//118
@@ -1029,7 +1029,7 @@ class Lib3gkEmoji {
 			array(0xf981, 0xe6dc), 
 			array(0xf6f1, 0xe518, 0xeff1, 0x7673, 0xebf1), 
 			'$E4', 
-			'Å@', 
+			'„ÄÄ', 
 			'search', 
 		), 
 		array(						//120
@@ -1043,21 +1043,21 @@ class Lib3gkEmoji {
 			array(0xf983, 0xe6de), 
 			array(0xf3ed, 0xeb2c, 0xeced, 0x7a6f, 0xeded), 
 			'', 
-			'Å@', 
+			'„ÄÄ', 
 			'flag', 
 		), 
 		array(						//122
 			array(0xf984, 0xe6df), 
 			array(0, 0, 0, 0, 0), 
 			'$F1', 
-			'Å@', 
+			'„ÄÄ', 
 			'freedial', 
 		), 
 		array(						//123
 			array(0xf985, 0xe6e0), 
 			array(0xf489, 0xeb84, 0xed89, 0x7b69, 0xee89), 
 			'$F0', 
-			'Å@', 
+			'„ÄÄ', 
 			'sharp', 
 		), 
 		array(						//124
@@ -1148,147 +1148,147 @@ class Lib3gkEmoji {
 			array(0xf991, 0xe6ec), 
 			array(0xf7b2, 0xe595, 0xf0b2, 0x7834, 0xecb2), 
 			'$GB', 
-			'Å@', 
+			'„ÄÄ', 
 			'heart01', 
 		), 
 		array(						//137
 			array(0xf992, 0xe6ed), 
 			array(0xf479, 0xeb75, 0xed79, 0x7b5a, 0xee79), 
 			'$OG', 
-			'Å@', 
+			'„ÄÄ', 
 			'heart02', 
 		), 
 		array(						//138
 			array(0xf993, 0xe6ee), 
 			array(0xf64f, 0xe477, 0xef4f, 0x7530, 0xeb4f), 
 			'$GC', 
-			'Å@', 
+			'„ÄÄ', 
 			'heart03', 
 		), 
 		array(						//139
 			array(0xf994, 0xe6ef), 
 			array(0xf650, 0xe478, 0xef50, 0x7531, 0xeb50), 
 			'$OG', 
-			'Å@', 
+			'„ÄÄ', 
 			'heart04', 
 		), 
 		array(						//140
 			array(0xf995, 0xe6f0), 
 			array(0xf649, 0xe471, 0xef49, 0x752a, 0xeb49), 
 			'$Gw', 
-			'Å@', 
+			'„ÄÄ', 
 			'happy01', 
 		), 
 		array(						//141
 			array(0xf996, 0xe6f1), 
 			array(0xf64a, 0xe472, 0xef4a, 0x752b, 0xeb4a), 
 			'$Gy', 
-			'Å@', 
+			'„ÄÄ', 
 			'angry', 
 		), 
 		array(						//142
 			array(0xf997, 0xe6f2), 
 			array(0xf394, 0xeac0, 0xec94, 0x7974, 0xed94), 
 			'$Gx', 
-			'Å@', 
+			'„ÄÄ', 
 			'despair', 
 		), 
 		array(						//143
 			array(0xf998, 0xe6f3), 
 			array(0xf397, 0xeac3, 0xec97, 0x7977, 0xed97), 
 			'$P\'', 
-			'Å@', 
+			'„ÄÄ', 
 			'sad', 
 		), 
 		array(						//144
 			array(0xf999, 0xe6f4), 
 			array(0xf7cb, 0xe5ae, 0xf0cb, 0x784d, 0xeccb), 
 			'$P&', 
-			'Å@', 
+			'„ÄÄ', 
 			'wobbly', 
 		), 
 		array(						//145
 			array(0xf99a, 0xe6f5), 
 			array(0xf3ee, 0xeb2d, 0xecee, 0x7a70, 0xedee), 
 			'$FV', 
-			'Å@', 
+			'„ÄÄ', 
 			'up', 
 		), 
 		array(						//146
 			array(0xf99b, 0xe6f6), 
 			array(0xf7ee, 0xe5be, 0xf0ee, 0x7870, 0xecee), 
 			'$G^', 
-			'ÅÙ', 
+			'‚ô™', 
 			'note', 
 		), 
 		array(						//147
 			array(0xf99c, 0xe6f7), 
 			array(0xf695, 0xe4bc, 0xef95, 0x7575, 0xeb95), 
 			'$EC', 
-			'Å@', 
+			'„ÄÄ', 
 			'spa', 
 		), 
 		array(						//148
 			array(0xf99d, 0xe6f8), 
 			array(0, 0, 0, 0, 0), 
 			'', 
-			'Å@', 
+			'„ÄÄ', 
 			'cute', 
 		), 
 		array(						//149
 			array(0xf99e, 0xe6f9), 
 			array(0xf6c4, 0xe4eb, 0xefc4, 0x7646, 0xebc4), 
 			'$G#', 
-			'Å@', 
+			'„ÄÄ', 
 			'kissmark', 
 		), 
 		array(						//150
 			array(0xf99f, 0xe6fa), 
 			array(0xf37e, 0xeaab, 0xec7e, 0x795f, 0xed7e), 
 			'$ON', 
-			'Å@', 
+			'„ÄÄ', 
 			'shine', 
 		), 
 		array(						//151
 			array(0xf9a0, 0xe6fb), 
 			array(0xf64e, 0xe476, 0xef4e, 0x752f, 0xeb4e), 
 			'$E/', 
-			'Å@', 
+			'„ÄÄ', 
 			'flair', 
 		), 
 		array(						//152
 			array(0xf9a1, 0xe6fc), 
 			array(0xf6be, 0xe4e5, 0xefbe, 0x7640, 0xebbe), 
 			'$OT', 
-			'Å@', 
+			'„ÄÄ', 
 			'annoy', 
 		), 
 		array(						//153
 			array(0xf9a2, 0xe6fd), 
 			array(0xf6cc, 0xe4f3, 0xefcc, 0x764e, 0xebcc), 
 			'$G-', 
-			'Å@', 
+			'„ÄÄ', 
 			'punch', 
 		), 
 		array(						//154
 			array(0xf9a3, 0xe6fe), 
 			array(0xf652, 0xe47a, 0xef52, 0x7533, 0xeb52), 
 			'$O1', 
-			'Å@', 
+			'„ÄÄ', 
 			'bomb', 
 		), 
 		array(						//155
 			array(0xf9a4, 0xe6ff), 
 			array(0xf6de, 0xe505, 0xefde, 0x7660, 0xebde), 
 			'$OF', 
-			'Å@', 
+			'„ÄÄ', 
 			'notes', 
 		), 
 		array(						//156
 			array(0xf9a5, 0xe700), 
 			array(0xf3ef, 0xeb2e, 0xecef, 0x7a71, 0xedef), 
 			'$FX', 
-			'Å@', 
+			'„ÄÄ', 
 			'down', 
 		), 
 		array(						//157
@@ -1323,175 +1323,175 @@ class Lib3gkEmoji {
 			array(0xf9aa, 0xe705), 
 			array(0xf7cd, 0xe5b0, 0xf0cd, 0x784f, 0xeccd), 
 			'', 
-			'Å@', 
+			'„ÄÄ', 
 			'impact', 
 		), 
 		array(						//162
 			array(0xf9ab, 0xe706), 
 			array(0xf7ce, 0xe5b1, 0xf0ce, 0x7850, 0xecce), 
 			'$OQ', 
-			'Å@', 
+			'„ÄÄ', 
 			'sweat01', 
 		), 
 		array(						//163
 			array(0xf9ac, 0xe707), 
 			array(0xf6bf, 0xe4e6, 0xefbf, 0x7641, 0xebbf), 
 			'$FV', 
-			'Å@', 
+			'„ÄÄ', 
 			'sweat02', 
 		), 
 		array(						//164
 			array(0xf9ad, 0xe708), 
 			array(0xf6cd, 0xe4f4, 0xefcd, 0x764f, 0xebcd), 
 			'$OP', 
-			'Å@', 
+			'„ÄÄ', 
 			'dash', 
 		), 
 		array(						//165
 			array(0xf9ae, 0xe709), 
 			array(0, 0, 0, 0, 0), 
 			'', 
-			'Å@', 
+			'„ÄÄ', 
 			'sign04', 
 		), 
 		array(						//166
 			array(0xf9af, 0xe70a), 
 			array(0xf3f2, 0xeb31, 0xecf2, 0x7a74, 0xedf2), 
 			'', 
-			'Å@', 
+			'„ÄÄ', 
 			'sign05', 
 		), 
 		array(						//167
 			array(0xf950, 0xe6ac), 
 			array(0xf697, 0xe4be, 0xef97, 0x7577, 0xeb97), 
 			'$OD', 
-			'Å@', 
+			'„ÄÄ', 
 			'slate', 
 		), 
 		array(						//168
 			array(0xf951, 0xe6ad), 
 			array(0, 0, 0, 0, 0), 
 			'', 
-			'Å@', 
+			'„ÄÄ', 
 			'pouch', 
 		), 
 		array(						//169
 			array(0xf952, 0xe6ae), 
 			array(0xf7da, 0xeb03, 0xf0da, 0x785c, 0xecda), 
 			'', 
-			'Å@', 
+			'„ÄÄ', 
 			'pen', 
 		), 
 		array(						//170
 			array(0xf955, 0xe6b1), 
 			array(0, 0, 0, 0, 0), 
 			'', 
-			'Å@', 
+			'„ÄÄ', 
 			'shadow', 
 		), 
 		array(						//171
 			array(0xf956, 0xe6b2), 
 			array(0, 0, 0, 0, 0), 
 			'$E?', 
-			'Å@', 
+			'„ÄÄ', 
 			'chair', 
 		), 
 		array(						//172
 			array(0xf957, 0xe6b3), 
 			array(0xf3c5, 0xeaf1, 0xecc5, 0x7a47, 0xedc5), 
 			'$Pk', 
-			'Å@', 
+			'„ÄÄ', 
 			'night', 
 		), 
 		array(						//173
 			array(0xf95b, 0xe6b7), 
 			array(0, 0, 0, 0, 0), 
 			'', 
-			'Å@', 
+			'„ÄÄ', 
 			'soon', 
 		), 
 		array(						//174
 			array(0xf95c, 0xe6b8), 
 			array(0, 0, 0, 0, 0), 
 			'', 
-			'Å@', 
+			'„ÄÄ', 
 			'on', 
 		), 
 		array(						//175
 			array(0xf95d, 0xe6b9), 
 			array(0, 0, 0, 0, 0), 
 			'', 
-			'Å@', 
+			'„ÄÄ', 
 			'end', 
 		), 
 		array(						//176
 			array(0xf95e, 0xe6ba), 
 			array(0xf7b1, 0xe594, 0xf0b1, 0x7833, 0xecb1), 
 			'$GM', 
-			'Å@', 
+			'„ÄÄ', 
 			'clock', 
 		), 
 		array(						//E1
 			array(0xf9b1, 0xe70c), 
 			array(0, 0, 0, 0, 0), 
 			'', 
-			'[Éø]', 
+			'[Œ±]', 
 			'appli01', 
 		), 
 		array(						//E2
 			array(0xf9b2, 0xe70d), 
 			array(0, 0, 0, 0, 0), 
 			'', 
-			'[Éø]', 
+			'[Œ±]', 
 			'appli02', 
 		), 
 		array(						//E3
 			array(0xf9b3, 0xe70e), 
 			array(0xf7e6, 0xe5b6, 0xf0e6, 0x7868, 0xece6), 
 			'$G&', 
-			'Å@', 
+			'„ÄÄ', 
 			't-shirt', 
 		), 
 		array(						//E4
 			array(0xf9b4, 0xe70f), 
 			array(0xf6dd, 0xe504, 0xefdd, 0x765f, 0xebdd), 
 			'', 
-			'Å@', 
+			'„ÄÄ', 
 			'moneybag', 
 		), 
 		array(						//E5
 			array(0xf9b5, 0xe710), 
 			array(0xf6e2, 0xe509, 0xefe2, 0x7664, 0xebe2), 
 			'$O<', 
-			'Å@', 
+			'„ÄÄ', 
 			'rouge', 
 		), 
 		array(						//E6
 			array(0xf9b6, 0xe711), 
 			array(0xf47b, 0xeb77, 0xed7b, 0x7b5c, 0xee7b), 
 			'', 
-			'Å@', 
+			'„ÄÄ', 
 			'denim', 
 		), 
 		array(						//E7
 			array(0xf9b7, 0xe712), 
 			array(0xf691, 0xe4b8, 0xef91, 0x7571, 0xeb91), 
 			'', 
-			'Å@', 
+			'„ÄÄ', 
 			'snowboard', 
 		), 
 		array(						//E8
 			array(0xf9b8, 0xe713), 
 			array(0xf6eb, 0xe512, 0xefeb, 0x766d, 0xebeb), 
 			'$OE', 
-			'Å@', 
+			'„ÄÄ', 
 			'bell', 
 		), 
 		array(						//E9
 			array(0xf9b9, 0xe714), 
 			array(0, 0, 0, 0, 0), 
 			'', 
-			'Å@', 
+			'„ÄÄ', 
 			'door', 
 		), 
 		array(						//E10
@@ -1505,175 +1505,175 @@ class Lib3gkEmoji {
 			array(0xf9bb, 0xe716), 
 			array(0xf7e8, 0xe5b8, 0xf0e8, 0x786a, 0xece8), 
 			'$G,', 
-			'Å@', 
+			'„ÄÄ', 
 			'pc', 
 		), 
 		array(						//E12
 			array(0xf9bc, 0xe717), 
 			array(0xf47c, 0xeb78, 0xed7c, 0x7b5d, 0xee7c), 
 			'$E#', 
-			'Å@', 
+			'„ÄÄ', 
 			'loveletter', 
 		), 
 		array(						//E13
 			array(0xf9bd, 0xe718), 
 			array(0xf7a4, 0xe587, 0xf0a4, 0x7826, 0xeca4), 
 			'', 
-			'Å@', 
+			'„ÄÄ', 
 			'wrench', 
 		), 
 		array(						//E14
 			array(0xf9be, 0xe719), 
 			array(0xf679, 0xe4a1, 0xef79, 0x755a, 0xeb79), 
 			'$O!', 
-			'Å@', 
+			'„ÄÄ', 
 			'pencil', 
 		), 
 		array(						//E15
 			array(0xf9bf, 0xe71a), 
 			array(0xf7f9, 0xe5c9, 0xf0f9, 0x787b, 0xecf9), 
 			'$E.', 
-			'Å@', 
+			'„ÄÄ', 
 			'crown', 
 		), 
 		array(						//E16
 			array(0xf9c0, 0xe71b), 
 			array(0xf6ed, 0xe514, 0xefed, 0x766f, 0xebed), 
 			'$GT', 
-			'Å@', 
+			'„ÄÄ', 
 			'ring', 
 		), 
 		array(						//E17
 			array(0xf9c1, 0xe71c), 
 			array(0xf654, 0xe47c, 0xef54, 0x7535, 0xeb54), 
 			'', 
-			'Å@', 
+			'„ÄÄ', 
 			'sandclock', 
 		), 
 		array(						//E18
 			array(0xf9c2, 0xe71d), 
 			array(0xf687, 0xe4ae, 0xef87, 0x7567, 0xeb87), 
 			'$EV', 
-			'Å@', 
+			'„ÄÄ', 
 			'bicycle', 
 		), 
 		array(						//E19
 			array(0xf9c3, 0xe71e), 
 			array(0xf382, 0xeaae, 0xec82, 0x7962, 0xed82), 
 			'$OX', 
-			'Å@', 
+			'„ÄÄ', 
 			'japanesetea', 
 		), 
 		array(						//E20
 			array(0xf9c4, 0xe71f), 
 			array(0xf797, 0xe57a, 0xf097, 0x7777, 0xec97), 
 			'', 
-			'Å@', 
+			'„ÄÄ', 
 			'watch', 
 		), 
 		array(						//E21
 			array(0xf9c5, 0xe720), 
 			array(0xf394, 0xeac0, 0xec94, 0x7974, 0xed94), 
 			'$P#', 
-			'Å@', 
+			'„ÄÄ', 
 			'think', 
 		), 
 		array(						//E22
 			array(0xf9c6, 0xe721), 
 			array(0xf399, 0xeac5, 0xec99, 0x7979, 0xed99), 
 			'$P*', 
-			'Å@', 
+			'„ÄÄ', 
 			'confident', 
 		), 
 		array(						//E23
 			array(0xf9c7, 0xe722), 
 			array(0xf7f6, 0xe5c6, 0xf0f6, 0x7878, 0xecf6), 
 			'$E(', 
-			'Å@', 
+			'„ÄÄ', 
 			'coldsweats01', 
 		), 
 		array(						//E24
 			array(0xf9c8, 0xe723), 
 			array(0xf7f6, 0xe5c6, 0xf0f6, 0x7878, 0xecf6), 
 			'$E(', 
-			'Å@', 
+			'„ÄÄ', 
 			'coldsweats02', 
 		), 
 		array(						//E25
 			array(0xf9c9, 0xe724), 
 			array(0xf461, 0xeb5d, 0xed61, 0x7b42, 0xee61), 
 			'$P6', 
-			'Å@', 
+			'„ÄÄ', 
 			'pout', 
 		), 
 		array(						//E26
 			array(0xf9ca, 0xe725), 
 			array(0xf39d, 0xeac9, 0xec9d, 0x797d, 0xed9d), 
 			'$P.', 
-			'Å@', 
+			'„ÄÄ', 
 			'gawk', 
 		), 
 		array(						//E27
 			array(0xf9cb, 0xe726), 
 			array(0xf7f4, 0xe5c4, 0xf0f4, 0x7876, 0xecf4), 
 			'$E&', 
-			'Å@', 
+			'„ÄÄ', 
 			'lovely', 
 		), 
 		array(						//E28
 			array(0xf9cc, 0xe727), 
 			array(0xf6d2, 0xe4f9, 0xefd2, 0x7654, 0xebd2), 
 			'$G.', 
-			'Å@', 
+			'„ÄÄ', 
 			'good', 
 		), 
 		array(						//E29
 			array(0xf9cd, 0xe728), 
 			array(0xf6c0, 0xe4e7, 0xefc0, 0x7642, 0xebc0), 
 			'$E%', 
-			'Å@', 
+			'„ÄÄ', 
 			'bleah', 
 		), 
 		array(						//E30
 			array(0xf9ce, 0xe729), 
 			array(0xf7f3, 0xe5c3, 0xf0f3, 0x7875, 0xecf3), 
 			'$P%', 
-			'Å@', 
+			'„ÄÄ', 
 			'wink', 
 		), 
 		array(						//E31
 			array(0xf9cf, 0xe72a), 
 			array(0xf399, 0xeac5, 0xec99, 0x7979, 0xed99), 
 			'$P*', 
-			'Å@', 
+			'„ÄÄ', 
 			'happy02', 
 		), 
 		array(						//E32
 			array(0xf9d0, 0xe72b), 
 			array(0xf396, 0xeac2, 0xec96, 0x7976, 0xed96), 
 			'$P&', 
-			'Å@', 
+			'„ÄÄ', 
 			'bearing', 
 		), 
 		array(						//E33
 			array(0xf9d1, 0xe72c), 
 			array(0xf393, 0xeabf, 0xec93, 0x7973, 0xed93), 
 			'$P"', 
-			'Å@', 
+			'„ÄÄ', 
 			'catface', 
 		), 
 		array(						//E34
 			array(0xf9d2, 0xe72d), 
 			array(0xf64b, 0xe473, 0xef4b, 0x752c, 0xeb4b), 
 			'$P1', 
-			'Å@', 
+			'„ÄÄ', 
 			'crying', 
 		), 
 		array(						//E35
 			array(0xf9d3, 0xe72e), 
 			array(0xf46d, 0xeb69, 0xed6d, 0x7b4e, 0xee6d), 
 			'$P3', 
-			'Å@', 
+			'„ÄÄ', 
 			'weep', 
 		), 
 		array(						//E36
@@ -1687,7 +1687,7 @@ class Lib3gkEmoji {
 			array(0xf9d5, 0xe730), 
 			array(0xf678, 0xe4a0, 0xef78, 0x7559, 0xeb78), 
 			'', 
-			'Å@', 
+			'„ÄÄ', 
 			'clip', 
 		), 
 		array(						//E38
@@ -1708,21 +1708,21 @@ class Lib3gkEmoji {
 			array(0xf9d8, 0xe733), 
 			array(0xf643, 0xe46b, 0xef43, 0x7524, 0xeb43), 
 			'$E5', 
-			'Å@', 
+			'„ÄÄ', 
 			'run', 
 		), 
 		array(						//E41
 			array(0xf9d9, 0xe734), 
 			array(0xf6ca, 0xe4f1, 0xefca, 0x764c, 0xebca), 
 			'$O5', 
-			'[îÈ]', 
+			'[Áßò]', 
 			'secret', 
 		), 
 		array(						//E42
 			array(0xf9da, 0xe735), 
 			array(0xf47d, 0xeb79, 0xed7d, 0x7b5e, 0xee7d), 
 			'', 
-			'Å@', 
+			'„ÄÄ', 
 			'recycle', 
 		), 
 		array(						//E43
@@ -1736,231 +1736,231 @@ class Lib3gkEmoji {
 			array(0xf9dc, 0xe737), 
 			array(0xf659, 0xe481, 0xef59, 0x753a, 0xeb59), 
 			'$Fr', 
-			'Å@', 
+			'„ÄÄ', 
 			'danger', 
 		), 
 		array(						//E45
 			array(0xf9dd, 0xe738), 
 			array(0, 0, 0, 0, 0), 
 			'', 
-			'[ã÷]', 
+			'[Á¶Å]', 
 			'ban', 
 		), 
 		array(						//E46
 			array(0xf9de, 0xe739), 
 			array(0xf35d, 0xea8a, 0xec5d, 0x793e, 0xed5d), 
 			'$FK', 
-			'[ãÛ]', 
+			'[Á©∫]', 
 			'empty', 
 		), 
 		array(						//E47
 			array(0xf9df, 0xe73a), 
 			array(0, 0, 0, 0, 0), 
 			'', 
-			'[çá]', 
+			'[Âêà]', 
 			'pass', 
 		), 
 		array(						//E48
 			array(0xf9e0, 0xe73b), 
 			array(0xf35c, 0xea89, 0xec5c, 0x793d, 0xed5c), 
 			'$FJ', 
-			'[ñû]', 
+			'[Ê∫Ä]', 
 			'full', 
 		), 
 		array(						//E49
 			array(0xf9e1, 0xe73c), 
 			array(0xf47e, 0xeb7a, 0xed7e, 0x7b5f, 0xee7e), 
 			'', 
-			'ÅÃ', 
+			'‚áî', 
 			'leftright', 
 		), 
 		array(						//E50
 			array(0xf9e2, 0xe73d), 
 			array(0xf480, 0xeb7b, 0xed80, 0x7b60, 0xee80), 
 			'', 
-			'Å@', 
+			'„ÄÄ', 
 			'updown', 
 		), 
 		array(						//E51
 			array(0xf9e3, 0xe73e), 
 			array(0xf353, 0xea80, 0xec53, 0x7934, 0xed53), 
 			'$Ew', 
-			'Å@', 
+			'„ÄÄ', 
 			'school', 
 		), 
 		array(						//E52
 			array(0xf9e4, 0xe73f), 
 			array(0xf481, 0xeb7c, 0xed81, 0x7b61, 0xee81), 
 			'$P^', 
-			'Å@', 
+			'„ÄÄ', 
 			'wave', 
 		), 
 		array(						//E53
 			array(0xf9e5, 0xe740), 
 			array(0xf7ed, 0xe5bd, 0xf0ed, 0x786f, 0xeced), 
 			'$G[', 
-			'Å@', 
+			'„ÄÄ', 
 			'fuji', 
 		), 
 		array(						//E54
 			array(0xf9e6, 0xe741), 
 			array(0xf6ec, 0xe513, 0xefec, 0x766e, 0xebec), 
 			'$E0', 
-			'Å@', 
+			'„ÄÄ', 
 			'clover', 
 		), 
 		array(						//E55
 			array(0xf9e7, 0xe742), 
 			array(0xf6ab, 0xe4d2, 0xefab, 0x762d, 0xebab), 
 			'', 
-			'Å@', 
+			'„ÄÄ', 
 			'cherry', 
 		), 
 		array(						//E56
 			array(0xf9e8, 0xe743), 
 			array(0xf6bd, 0xe4ea, 0xefbd, 0x763f, 0xebbd), 
 			'$O$', 
-			'Å@', 
+			'„ÄÄ', 
 			'tulip', 
 		), 
 		array(						//E57
 			array(0xf9e9, 0xe744), 
 			array(0xf3f6, 0xeb35, 0xecf6, 0x7a78, 0xedf6), 
 			'', 
-			'Å@', 
+			'„ÄÄ', 
 			'banana', 
 		), 
 		array(						//E58
 			array(0xf9ea, 0xe745), 
 			array(0xf38d, 0xeab9, 0xec8d, 0x796d, 0xed8d), 
 			'$Oe', 
-			'Å@', 
+			'„ÄÄ', 
 			'apple', 
 		), 
 		array(						//E59
 			array(0xf9eb, 0xe746), 
 			array(0xf482, 0xeb7d, 0xed82, 0x7b62, 0xee82), 
 			'$E0', 
-			'Å@', 
+			'„ÄÄ', 
 			'bud', 
 		), 
 		array(						//E60
 			array(0xf9ec, 0xe747), 
 			array(0xf6a7, 0xe4ce, 0xefa7, 0x7629, 0xeba7), 
 			'$E8', 
-			'Å@', 
+			'„ÄÄ', 
 			'maple', 
 		), 
 		array(						//E61
 			array(0xf9ed, 0xe748), 
 			array(0xf6a3, 0xe4ca, 0xefa3, 0x7625, 0xeba3), 
 			'$GP', 
-			'Å@', 
+			'„ÄÄ', 
 			'cherryblossom', 
 		), 
 		array(						//E62
 			array(0xf9ee, 0xe749), 
 			array(0xf6ae, 0xe4d5, 0xefae, 0x7630, 0xebae), 
 			'$Ob', 
-			'Å@', 
+			'„ÄÄ', 
 			'riceball', 
 		), 
 		array(						//E63
 			array(0xf9ef, 0xe74a), 
 			array(0xf6a9, 0xe4d0, 0xefa9, 0x762b, 0xeba9), 
 			'$Gf', 
-			'Å@', 
+			'„ÄÄ', 
 			'cake', 
 		), 
 		array(						//E64
 			array(0xf9f0, 0xe74b), 
 			array(0xf36a, 0xea97, 0xec6a, 0x794b, 0xed6a), 
 			'$O+', 
-			'Å@', 
+			'„ÄÄ', 
 			'bottle', 
 		), 
 		array(						//E65
 			array(0xf9f1, 0xe74c), 
 			array(0xf7d1, 0xe5b4, 0xf0d1, 0x7853, 0xecd1), 
 			'$O`', 
-			'Å@', 
+			'„ÄÄ', 
 			'noodle', 
 		), 
 		array(						//E66
 			array(0xf9f2, 0xe74d), 
 			array(0xf383, 0xeaaf, 0xec83, 0x7963, 0xed83), 
 			'$OY', 
-			'Å@', 
+			'„ÄÄ', 
 			'bread', 
 		), 
 		array(						//E67
 			array(0xf9f3, 0xe74e), 
 			array(0xf483, 0xeb7e, 0xed83, 0x7b63, 0xee83), 
 			'', 
-			'Å@', 
+			'„ÄÄ', 
 			'snail', 
 		), 
 		array(						//E68
 			array(0xf9f4, 0xe74f), 
 			array(0xf6b9, 0xe4e0, 0xefb9, 0x763b, 0xebb9), 
 			'$QC', 
-			'Å@', 
+			'„ÄÄ', 
 			'chick', 
 		), 
 		array(						//E69
 			array(0xf9f5, 0xe750), 
 			array(0xf6b5, 0xe4dc, 0xefb5, 0x7637, 0xebb5), 
 			'$Gu', 
-			'Å@', 
+			'„ÄÄ', 
 			'penguin', 
 		), 
 		array(						//E70
 			array(0xf9f6, 0xe751), 
 			array(0xf672, 0xe49a, 0xef72, 0x7553, 0xeb72), 
 			'$G9', 
-			'Å@', 
+			'„ÄÄ', 
 			'fish', 
 		), 
 		array(						//E71
 			array(0xf9f7, 0xe752), 
 			array(0xf3a1, 0xeacd, 0xeca1, 0x7a23, 0xeda1), 
 			'$Gv', 
-			'Å@', 
+			'„ÄÄ', 
 			'delicious', 
 		), 
 		array(						//E72
 			array(0xf9f8, 0xe753), 
 			array(0xf485, 0xeb80, 0xed85, 0x7b65, 0xee85), 
 			'$P$', 
-			'Å@', 
+			'„ÄÄ', 
 			'smile', 
 		), 
 		array(						//E73
 			array(0xf9f9, 0xe754), 
 			array(0xf6b1, 0xe4d8, 0xefb1, 0x7633, 0xebb1), 
 			'$G:', 
-			'Å@', 
+			'„ÄÄ', 
 			'horse', 
 		), 
 		array(						//E74
 			array(0xf9fa, 0xe755), 
 			array(0xf6b7, 0xe4de, 0xefb7, 0x7639, 0xebb7), 
 			'$E+', 
-			'Å@', 
+			'„ÄÄ', 
 			'pig', 
 		), 
 		array(						//E75
 			array(0xf9fb, 0xe756), 
 			array(0xf69a, 0xe4c1, 0xef9a, 0x757a, 0xeb9a), 
 			'$Gd', 
-			'Å@', 
+			'„ÄÄ', 
 			'wine', 
 		), 
 		array(						//E76
 			array(0xf9fc, 0xe757), 
 			array(0xf7f5, 0xe5c5, 0xf0f5, 0x7877, 0xecf5), 
 			'$E\'', 
-			'Å@, ', 
+			'„ÄÄ, ', 
 			'shock', 
 		), 
 	);
@@ -1973,9 +1973,9 @@ class Lib3gkEmoji {
 	//Basics
 	//------------------------------------------------
 	/**
-	 * ÉCÉìÉXÉ^ÉìÉXÇÃéÊìæ
+	 * „Ç§„É≥„Çπ„Çø„É≥„Çπ„ÅÆÂèñÂæó
 	 *
-	 * @return object é©ï™é©êgÇÃÉCÉìÉXÉ^ÉìÉX
+	 * @return object Ëá™ÂàÜËá™Ë∫´„ÅÆ„Ç§„É≥„Çπ„Çø„É≥„Çπ
 	 * @access public
 	 * @static
 	 */
@@ -1990,9 +1990,9 @@ class Lib3gkEmoji {
 	
 	
 	/**
-	 * èâä˙âª
+	 * ÂàùÊúüÂåñ
 	 *
-	 * @return (Ç»Çµ)
+	 * @return („Å™„Åó)
 	 * @access public
 	 */
 	function initialize(){
@@ -2002,9 +2002,9 @@ class Lib3gkEmoji {
 	
 	
 	/**
-	 * å„énññ
+	 * ÂæåÂßãÊú´
 	 *
-	 * @return (Ç»Çµ)
+	 * @return („Å™„Åó)
 	 * @access public
 	 */
 	function shutdown(){
@@ -2018,9 +2018,9 @@ class Lib3gkEmoji {
 	//Load subclasses
 	//------------------------------------------------
 	/**
-	 * ÉLÉÉÉäÉAä÷òAÉTÉuÉNÉâÉXÇÃì«Ç›çûÇ›
+	 * „Ç≠„É£„É™„Ç¢Èñ¢ÈÄ£„Çµ„Éñ„ÇØ„É©„Çπ„ÅÆË™≠„ÅøËæº„Åø
 	 *
-	 * @return (Ç»Çµ)
+	 * @return („Å™„Åó)
 	 * @access private
 	 */
 	function __load_carrier(){
@@ -2034,9 +2034,9 @@ class Lib3gkEmoji {
 	
 	
 	/**
-	 * HTMLä÷òAÉTÉuÉNÉâÉXÇÃì«Ç›çûÇ›
+	 * HTMLÈñ¢ÈÄ£„Çµ„Éñ„ÇØ„É©„Çπ„ÅÆË™≠„ÅøËæº„Åø
 	 *
-	 * @return (Ç»Çµ)
+	 * @return („Å™„Åó)
 	 * @access private
 	 */
 	function __load_html(){
@@ -2050,9 +2050,9 @@ class Lib3gkEmoji {
 	
 	
 	/**
-	 * ÇªÇÃëºÉTÉuÉNÉâÉXÇÃì«Ç›çûÇ›
+	 * „Åù„ÅÆ‰ªñ„Çµ„Éñ„ÇØ„É©„Çπ„ÅÆË™≠„ÅøËæº„Åø
 	 *
-	 * @return (Ç»Çµ)
+	 * @return („Å™„Åó)
 	 * @access private
 	 */
 	function __load_tools(){
@@ -2069,12 +2069,12 @@ class Lib3gkEmoji {
 	//Lib3gkEmoji methods
 	//------------------------------------------------
 	/**
-	 * äGï∂éöÉRÅ[ÉhÇï\é¶ÉLÉÉÉâÉNÉ^Å[Ç…ïœä∑
+	 * ÁµµÊñáÂ≠ó„Ç≥„Éº„Éâ„ÇíË°®Á§∫„Ç≠„É£„É©„ÇØ„Çø„Éº„Å´Â§âÊèõ
 	 *
-	 * @param $code integer äGï∂éöÉRÅ[Éh
-	 * @param $oekey integer èoóÕÇ∑ÇÈÉGÉìÉRÅ[ÉhÉLÅ[ÅB$this->encodings[$output_encoding]ÇÃíl
-	 * @param $binary boolean trueÇ≈ÉoÉCÉiÉäèoóÕÅBfalseÇ≈êîílï∂éöéQè∆ï∂éöóÒÅB
-	 * @return string ïœä∑å„ÇÃäGï∂éö
+	 * @param $code integer ÁµµÊñáÂ≠ó„Ç≥„Éº„Éâ
+	 * @param $oekey integer Âá∫Âäõ„Åô„Çã„Ç®„É≥„Ç≥„Éº„Éâ„Ç≠„Éº„ÄÇ$this->encodings[$output_encoding]„ÅÆÂÄ§
+	 * @param $binary boolean true„Åß„Éê„Ç§„Éä„É™Âá∫Âäõ„ÄÇfalse„ÅßÊï∞ÂÄ§ÊñáÂ≠óÂèÇÁÖßÊñáÂ≠óÂàó„ÄÇ
+	 * @return string Â§âÊèõÂæå„ÅÆÁµµÊñáÂ≠ó
 	 * @access private
 	 */
 	function __convertEmojiChractor($code, $oekey, $binary){
@@ -2103,10 +2103,10 @@ class Lib3gkEmoji {
 	
 	
 	/**
-	 * âÊëúäGï∂éöÇÃçÏê¨
+	 * ÁîªÂÉèÁµµÊñáÂ≠ó„ÅÆ‰ΩúÊàê
 	 *
-	 * @param $name string äGï∂éöñº(âÊëúäGï∂éöÇÃÉtÉ@ÉCÉãñº(ägí£éqÇ»Çµ))
-	 * @return string imgÉ^ÉOïtÇ´ÇÃâÊëúäGï∂éö
+	 * @param $name string ÁµµÊñáÂ≠óÂêç(ÁîªÂÉèÁµµÊñáÂ≠ó„ÅÆ„Éï„Ç°„Ç§„É´Âêç(Êã°ÂºµÂ≠ê„Å™„Åó))
+	 * @return string img„Çø„Ç∞‰ªò„Åç„ÅÆÁîªÂÉèÁµµÊñáÂ≠ó
 	 * @access public
 	 */
 	function create_image_emoji($name){
@@ -2124,15 +2124,15 @@ class Lib3gkEmoji {
 	
 	
 	/**
-	 * äGï∂éöÇÃì¸éË
+	 * ÁµµÊñáÂ≠ó„ÅÆÂÖ•Êâã
 	 *
-	 * @param $code mixed äGï∂éöÉRÅ[Éh(êîíl)Ç‡ÇµÇ≠ÇÕÉoÉCÉiÉäï∂éö
-	 * @param $disp boolean trueÇÃèÍçáÅAechoÇçsÇ§(ÉfÉtÉHÉãÉg)
-	 * @param $carrier integer ÉLÉÉÉäÉAÉRÅ[Éh
-	 * @param $input_encoding integer ì¸óÕÉGÉìÉRÅ[ÉfÉBÉìÉO
-	 * @param $output_encoding integer èoóÕÉGÉìÉRÅ[ÉfÉBÉìÉO
-	 * @param $binary boolean trueÇÃèÍçáÇÕÉoÉCÉiÉäèoóÕ
-	 * @return string äGï∂éö(ÉoÉCÉiÉäÅEêîílï∂éöéQè∆ÅEimageÉ^ÉO)
+	 * @param $code mixed ÁµµÊñáÂ≠ó„Ç≥„Éº„Éâ(Êï∞ÂÄ§)„ÇÇ„Åó„Åè„ÅØ„Éê„Ç§„Éä„É™ÊñáÂ≠ó
+	 * @param $disp boolean true„ÅÆÂ†¥Âêà„ÄÅecho„ÇíË°å„ÅÜ(„Éá„Éï„Ç©„É´„Éà)
+	 * @param $carrier integer „Ç≠„É£„É™„Ç¢„Ç≥„Éº„Éâ
+	 * @param $input_encoding integer ÂÖ•Âäõ„Ç®„É≥„Ç≥„Éº„Éá„Ç£„É≥„Ç∞
+	 * @param $output_encoding integer Âá∫Âäõ„Ç®„É≥„Ç≥„Éº„Éá„Ç£„É≥„Ç∞
+	 * @param $binary boolean true„ÅÆÂ†¥Âêà„ÅØ„Éê„Ç§„Éä„É™Âá∫Âäõ
+	 * @return string ÁµµÊñáÂ≠ó(„Éê„Ç§„Éä„É™„ÉªÊï∞ÂÄ§ÊñáÂ≠óÂèÇÁÖß„Éªimage„Çø„Ç∞)
 	 * @access public
 	 */
 	function emoji($code, $disp = true, $carrier = null, $output_encoding = null, $binary = null){
@@ -2230,8 +2230,8 @@ class Lib3gkEmoji {
 					$str = $this->create_image_emoji($table[$default_key]);
 				}else{
 					$str = $table[$default_key];
-					if($oekey == 1){
-						$str = mb_convert_encoding($str, KTAI_ENCODING_UTF8, KTAI_ENCODING_SJISWIN);
+					if($oekey == 0){
+						$str = mb_convert_encoding($str, KTAI_ENCODING_SJISWIN, KTAI_ENCODING_UTF8);
 					}
 				}
 			}
@@ -2245,9 +2245,9 @@ class Lib3gkEmoji {
 	
 	
 	/**
-	 * äGï∂éöÉLÉÉÉbÉVÉÖÇÃèâä˙âª
+	 * ÁµµÊñáÂ≠ó„Ç≠„É£„ÉÉ„Ç∑„É•„ÅÆÂàùÊúüÂåñ
 	 *
-	 * @return (Ç»Çµ)
+	 * @return („Å™„Åó)
 	 * @access private
 	 */
 	function __initCache(){
@@ -2261,12 +2261,12 @@ class Lib3gkEmoji {
 	
 	
 	/**
-	 * äGï∂éöÉLÉÉÉbÉVÉÖÇ©ÇÁäGï∂éöÇÃì¸éË
+	 * ÁµµÊñáÂ≠ó„Ç≠„É£„ÉÉ„Ç∑„É•„Åã„ÇâÁµµÊñáÂ≠ó„ÅÆÂÖ•Êâã
 	 *
-	 * @param $code mixed äGï∂éöÉRÅ[Éh(êîíl)Ç‡ÇµÇ≠ÇÕÉoÉCÉiÉäï∂éö
-	 * @param $carrier_index integer $this->carrier_indexes[$this->carriers[$carrier]]ÇÃíl
-	 * @param $encoding_code integer $this->encodings[$output_encoding]ÇÃíl
-	 * @return (Ç»Çµ)
+	 * @param $code mixed ÁµµÊñáÂ≠ó„Ç≥„Éº„Éâ(Êï∞ÂÄ§)„ÇÇ„Åó„Åè„ÅØ„Éê„Ç§„Éä„É™ÊñáÂ≠ó
+	 * @param $carrier_index integer $this->carrier_indexes[$this->carriers[$carrier]]„ÅÆÂÄ§
+	 * @param $encoding_code integer $this->encodings[$output_encoding]„ÅÆÂÄ§
+	 * @return („Å™„Åó)
 	 * @access private
 	 */
 	function __getCache($code, $carrier_index = 0, $encoding_code = 1){
@@ -2275,13 +2275,13 @@ class Lib3gkEmoji {
 	
 	
 	/**
-	 * äGï∂éöÉLÉÉÉbÉVÉÖÇ…äGï∂éöÇÃÉZÉbÉg
+	 * ÁµµÊñáÂ≠ó„Ç≠„É£„ÉÉ„Ç∑„É•„Å´ÁµµÊñáÂ≠ó„ÅÆ„Çª„ÉÉ„Éà
 	 *
-	 * @param $value integer äGï∂éöÇÃÉCÉìÉfÉbÉNÉXíl
-	 * @param $code mixed äGï∂éöÉRÅ[Éh(êîíl)Ç‡ÇµÇ≠ÇÕÉoÉCÉiÉäï∂éö
-	 * @param $carrier_index integer $this->carrier_indexes[$this->carriers[$carrier]]ÇÃíl
-	 * @param $encoding_code integer $this->encodings[$output_encoding]ÇÃíl
-	 * @return (Ç»Çµ)
+	 * @param $value integer ÁµµÊñáÂ≠ó„ÅÆ„Ç§„É≥„Éá„ÉÉ„ÇØ„ÇπÂÄ§
+	 * @param $code mixed ÁµµÊñáÂ≠ó„Ç≥„Éº„Éâ(Êï∞ÂÄ§)„ÇÇ„Åó„Åè„ÅØ„Éê„Ç§„Éä„É™ÊñáÂ≠ó
+	 * @param $carrier_index integer $this->carrier_indexes[$this->carriers[$carrier]]„ÅÆÂÄ§
+	 * @param $encoding_code integer $this->encodings[$output_encoding]„ÅÆÂÄ§
+	 * @return („Å™„Åó)
 	 * @access private
 	 */
 	function __setCache($value, $code, $carrier_index = 0, $encoding_code = 1){
@@ -2297,17 +2297,17 @@ class Lib3gkEmoji {
 	
 	
 	/**
-	 * äGï∂éöâêÕ
+	 * ÁµµÊñáÂ≠óËß£Êûê
 	 *
-	 * @param $str string âêÕÇ∑ÇÈï∂éöóÒ
-	 * @param $options array âêÕÉIÉvÉVÉáÉì
-	 * @return array âêÕÉfÅ[É^
+	 * @param $str string Ëß£Êûê„Åô„ÇãÊñáÂ≠óÂàó
+	 * @param $options array Ëß£Êûê„Ç™„Éó„Ç∑„Éß„É≥
+	 * @return array Ëß£Êûê„Éá„Éº„Çø
 	 * @access private
 	 *
-	 * $optionÇÃÇ∆ÇÈÉLÅ[Ç∆íl(è»ó™â¬)
-	 *   'input_carrier'  ì¸óÕÉfÅ[É^ÇÃÉLÉÉÉäÉA
-	 *   'output_carrier' ïœä∑Ç∑ÇÈÉLÉÉÉäÉA
-	 *   'input_encoding' ì¸óÕÉfÅ[É^ÇÃÉGÉìÉRÅ[ÉfÉBÉìÉO
+	 * $option„ÅÆ„Å®„Çã„Ç≠„Éº„Å®ÂÄ§(ÁúÅÁï•ÂèØ)
+	 *   'input_carrier'  ÂÖ•Âäõ„Éá„Éº„Çø„ÅÆ„Ç≠„É£„É™„Ç¢
+	 *   'output_carrier' Â§âÊèõ„Åô„Çã„Ç≠„É£„É™„Ç¢
+	 *   'input_encoding' ÂÖ•Âäõ„Éá„Éº„Çø„ÅÆ„Ç®„É≥„Ç≥„Éº„Éá„Ç£„É≥„Ç∞
 	 */
 	function &__analyzeEmoji($str, $options = array()){
 		
@@ -2334,7 +2334,7 @@ class Lib3gkEmoji {
 		
 		$arr = array();
 		
-		//êîílï∂éöéQè∆Çì¸éË
+		//Êï∞ÂÄ§ÊñáÂ≠óÂèÇÁÖß„ÇíÂÖ•Êâã
 		//
 		preg_match_all('/(&#[0-9]{5};)|(&#x[0-9a-zA-Z]{4};)/', $str, $match, PREG_OFFSET_CAPTURE);
 		$pos = 0;
@@ -2357,7 +2357,7 @@ class Lib3gkEmoji {
 		$s = substr($str, $pos, $len - $pos);
 		$arr[] = array($s, null, null, $ccode);
 		
-		//ÉoÉCÉiÉäÇÉ`ÉFÉbÉN
+		//„Éê„Ç§„Éä„É™„Çí„ÉÅ„Çß„ÉÉ„ÇØ
 		//
 		if($binary_search){
 			
@@ -2389,7 +2389,7 @@ class Lib3gkEmoji {
 					$pos++;
 				}
 				
-				//åªç›ÇÃéËëOÇ…îzóÒÇë}ì¸ÇµÅAÇ†Ç‹ÇËÇë„ì¸
+				//ÁèæÂú®„ÅÆÊâãÂâç„Å´ÈÖçÂàó„ÇíÊåøÂÖ•„Åó„ÄÅ„ÅÇ„Åæ„Çä„Çí‰ª£ÂÖ•
 				//
 				$arr[$i][0] = mb_substr($str_bin, $spos, $len - $spos);
 				
@@ -2411,17 +2411,17 @@ class Lib3gkEmoji {
 	
 	
 	/**
-	 * äGï∂éöÇÃåüçı
+	 * ÁµµÊñáÂ≠ó„ÅÆÊ§úÁ¥¢
 	 *
-	 * @param $code mixed äGï∂éöÉRÅ[Éh(êîíl)Ç‡ÇµÇ≠ÇÕÉoÉCÉiÉäï∂éö
-	 * @param $encoding string ÉGÉìÉRÅ[ÉfÉBÉìÉOñº
-	 * @param $carrier integer ÉLÉÉÉäÉAÉRÅ[Éh
-	 * @return array äGï∂éöÉeÅ[ÉuÉãÇ©ÇÁì¸éËÇµÇΩäGï∂éöÉfÅ[É^
+	 * @param $code mixed ÁµµÊñáÂ≠ó„Ç≥„Éº„Éâ(Êï∞ÂÄ§)„ÇÇ„Åó„Åè„ÅØ„Éê„Ç§„Éä„É™ÊñáÂ≠ó
+	 * @param $encoding string „Ç®„É≥„Ç≥„Éº„Éá„Ç£„É≥„Ç∞Âêç
+	 * @param $carrier integer „Ç≠„É£„É™„Ç¢„Ç≥„Éº„Éâ
+	 * @return array ÁµµÊñáÂ≠ó„ÉÜ„Éº„Éñ„É´„Åã„ÇâÂÖ•Êâã„Åó„ÅüÁµµÊñáÂ≠ó„Éá„Éº„Çø
 	 * @access private
 	 */
 	function __searchEmojiSet($code, $encoding = KTAI_ENCODING_UTF8, $carrier = KTAI_CARRIER_DOCOMO){
 		
-		//ÉLÉÉÉäÉAÇ∆ÉGÉìÉRÅ[ÉfÉBÉìÉOÇÃê≥ãKâª
+		//„Ç≠„É£„É™„Ç¢„Å®„Ç®„É≥„Ç≥„Éº„Éá„Ç£„É≥„Ç∞„ÅÆÊ≠£Ë¶èÂåñ
 		//
 		if(isset($this->carriers[$carrier])){
 			$c = $this->carrier_indexes[$this->carriers[$carrier]];
@@ -2435,19 +2435,19 @@ class Lib3gkEmoji {
 		}
 		
 		if($c == 3){
-			$c = 0;		//PCÇÕdocomoàµÇ¢
+			$c = 0;		//PC„ÅØdocomoÊâ±„ÅÑ
 		}
 		if($c == 2){
-			$e = 0;		//SoftBankÇÕïKÇ∏ÇPéÌóﬁ
+			$e = 0;		//SoftBank„ÅØÂøÖ„ÅöÔºëÁ®ÆÈ°û
 		}
 		
-		//ÉLÉÉÉbÉVÉÖÇÉ`ÉFÉbÉN
+		//„Ç≠„É£„ÉÉ„Ç∑„É•„Çí„ÉÅ„Çß„ÉÉ„ÇØ
 		//
 		if($this->_params['use_emoji_cache'] && ($key = $this->__getCache($code, $c, $e)) !== false){
 			return $this->__emoji_table[$key];
 		}
 		
-		//äGï∂éöÉZÉbÉgÇíTÇµèoÇ∑(Å¶è´óàìIÇ…å©íºÇµó\íË)
+		//ÁµµÊñáÂ≠ó„Çª„ÉÉ„Éà„ÇíÊé¢„ÅóÂá∫„Åô(‚ÄªÂ∞ÜÊù•ÁöÑ„Å´Ë¶ãÁõ¥„Åó‰∫àÂÆö)
 		//
 		foreach($this->__emoji_table as $key => $table){
 			if($code == $table[$c][$e]){
@@ -2456,7 +2456,7 @@ class Lib3gkEmoji {
 				}
 				return $table;
 			}
-			//AUÇÃèÍçáÇÕêîílï∂éöéQè∆Ç∆ÉoÉCÉiÉäÇÃÇQÇ¬ÇÃÉRÅ[ÉhÇéQè∆Ç∑ÇÈïKóvÇ†ÇË
+			//AU„ÅÆÂ†¥Âêà„ÅØÊï∞ÂÄ§ÊñáÂ≠óÂèÇÁÖß„Å®„Éê„Ç§„Éä„É™„ÅÆÔºí„Å§„ÅÆ„Ç≥„Éº„Éâ„ÇíÂèÇÁÖß„Åô„ÇãÂøÖË¶Å„ÅÇ„Çä
 			//
 			if($c == 1 && $e == 1){
 				if($code == $table[$c][$e + 1]){
@@ -2472,15 +2472,15 @@ class Lib3gkEmoji {
 	
 	
 	/**
-	 * äGï∂éöïœä∑
+	 * ÁµµÊñáÂ≠óÂ§âÊèõ
 	 *
-	 * @param $code string& ÉRÉìÉoÅ[Égï∂éöóÒ
-	 * @param $disp boolean trueÇÃèÍçáÅAechoÇçsÇ§(ÉfÉtÉHÉãÉg)
-	 * @param $carrier integer ÉLÉÉÉäÉAÉRÅ[Éh
-	 * @param $input_encoding integer ì¸óÕÉGÉìÉRÅ[ÉfÉBÉìÉO
-	 * @param $output_encoding integer èoóÕÉGÉìÉRÅ[ÉfÉBÉìÉO
-	 * @param $binary boolean trueÇÃèÍçáÇÕÉoÉCÉiÉäèoóÕ
-	 * @return (Ç»Çµ)
+	 * @param $code string& „Ç≥„É≥„Éê„Éº„ÉàÊñáÂ≠óÂàó
+	 * @param $disp boolean true„ÅÆÂ†¥Âêà„ÄÅecho„ÇíË°å„ÅÜ(„Éá„Éï„Ç©„É´„Éà)
+	 * @param $carrier integer „Ç≠„É£„É™„Ç¢„Ç≥„Éº„Éâ
+	 * @param $input_encoding integer ÂÖ•Âäõ„Ç®„É≥„Ç≥„Éº„Éá„Ç£„É≥„Ç∞
+	 * @param $output_encoding integer Âá∫Âäõ„Ç®„É≥„Ç≥„Éº„Éá„Ç£„É≥„Ç∞
+	 * @param $binary boolean true„ÅÆÂ†¥Âêà„ÅØ„Éê„Ç§„Éä„É™Âá∫Âäõ
+	 * @return („Å™„Åó)
 	 * @access public
 	 */
 	function convert_emoji(&$str, $carrier = null, $input_encoding = null, $output_encoding = null, $binary = null){
@@ -2553,7 +2553,7 @@ class Lib3gkEmoji {
 							$oc = 4;
 							$code = $this->create_image_emoji($emoji[$oc]);
 						}else{
-							$code = mb_convert_encoding($emoji[$oc], $output_encoding, KTAI_ENCODING_SJISWIN);
+							$code = mb_convert_encoding($emoji[$oc], $output_encoding, KTAI_ENCODING_UTF8);
 						}
 					}
 					

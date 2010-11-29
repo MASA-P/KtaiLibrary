@@ -76,22 +76,26 @@ CakePHP内の所定の場所にアップロードしてください。
 |  +- controllers					[755] 
 |  |  +- components					[755] 
 |  |  |  +- ktai.php				[644] 携帯コンポーネント
-|  |  +- app_error.php				[644] 携帯用app_error.php
-|  |  +- ktai_app_controller.php	[644] リダイレクト対応パッチ(*)
 |  +- views							[755] 
 |  |  +- helpers					[755] 
 |  |     +- ktai.php				[644] 携帯ヘルパー
 |  +- webroot						[755] 
-|     +- img						[755] 
-|        +- emoticons				[755] 絵文字画像はここに設置します(後述)
-|           +- empty				[***] (ダミー・アップロード不要です)
+|  |  +- img						[755] 
+|  |     +- emoticons				[755] 絵文字画像はここに設置します(後述)
+|  |        +- empty				[***] (ダミー・アップロード不要です)
+|  +- ktai_app_controller.php		[644] 携帯用app_controller.php(*)
+|  +- app_error.php					[644] 携帯用app_error.php
 +- vendors							[755] 
 |  +- ecw							[755] 
+|     +- session					[755] 
+|     |  +- ktai_session_12.php		[644] CakePHP1.2用セッション設定
+|     |  +- ktai_session_13.php		[644] CakePHP1.3用セッション設定
 |     +- lib3gk.php					[644] 携帯ライブラリ本体
 |     +- lib3gk_carrier.php			[644] 携帯ライブラリ本体(キャリア判定関連)
 |     +- lib3gk_def.php				[644] 携帯ライブラリ本体(定義関連)
 |     +- lib3gk_emoji.php			[644] 携帯ライブラリ本体(絵文字関連)
 |     +- lib3gk_html.php			[644] 携帯ライブラリ本体(HTML関連)
+|     +- lib3gk_ip.php				[644] 携帯ライブラリ本体(IPアドレス関連)
 |     +- lib3gk_machine.php			[644] 携帯ライブラリ本体(機種情報関連)
 |     +- lib3gk_tools.php			[644] 携帯ライブラリ本体(その他ツール関連)
 |									↓↓↓以下はアップロード不要です
@@ -192,17 +196,24 @@ iMODEにてセッションIDが付加されなくなりますので必ず指定�
 	//↓以下、Router::connect(～)を記述します
 
 
-2-a-2：app_controller.phpのコピー(もしくは編集)
+2-a-2：ktai_app_controller.phpの適用(もしくは編集)
 
-　添付されているapp_controller.php.ktaiをapp/controllersディレクトリに
-コピーして「app_controller.php」にリネームするか、既に設置されている
-app_controller.phpにコード部分をペーストします。
-　リネームを忘れるとリダイレクトが正常に動作しなくなりますので気をつけて
-ください。
+　添付されているktai_app_controller.phpをappディレクトリにコピーして
+「AppController」の代わりに「KtaiAppController」をextendsするようにします。
+もしくは、ktai_app_controller.phpの内容をapp_controller.phpにコピーして使います。
+
+　なおクラス定義の前に、次のように冒頭でktai_app_controller.phpを読み込む必要が
+あります。
+
+App::import('Controller', 'KtaiApp');	//ファイルは自動で読み込まれないため
+										//別途行う必要がある
+class FoosController extends KtaiAppController {
+	//通常のクラス定義
+}
 
 2-a-3：パラメータの追加
 
-　各コントローラもしくはapp_controler.php内に、セッション用のパラメータを
+　各コントローラもしくはktai_app_controler.php内に、セッション用のパラメータを
 追加します。
 　基本的にはデフォルトのままで動作するように出来ていますが、逆に動作させたくない
 場合などで行います。
@@ -224,7 +235,8 @@ var $ktai = array(
 
 【設定例】
 
-class HogeController extends AppController {
+App::import('Controller', 'KtaiApp');
+class HogeController extends KtaiAppController {
 	
 	var $components = array('Ktai');
 	
@@ -260,7 +272,8 @@ class HogeController extends AppController {
 
 【設定例１：beforeFilter内で設定する場合】
 
-class HogeController extends AppController {
+App::import('Controller', 'KtaiApp');
+class HogeController extends KtaiAppController {
 	
 	//省略
 	
@@ -277,7 +290,8 @@ class HogeController extends AppController {
 
 【設定例２：アクション処理内で設定する場合】
 
-class HogeController extends AppController {
+App::import('Controller', 'KtaiApp');
+class HogeController extends KtaiAppController {
 	
 	//省略
 	
@@ -379,6 +393,12 @@ $ktai->options['output_encoding'] = KTAI_ENCDING_UTF8, 	//出力をUTF-8に変�
 	'iphone_email_belongs_to_softbank_email' => false, 
 
 
+【Android関連設定】[New!]
+
+・Androidを携帯とみなす(bool)
+	'android_user_agent_belongs_to_ktai'      => false, 
+
+
 【仮想スクリーンサイズ設定】
 
 ・仮想スクリーンサイズの設定(array(int, int))
@@ -433,6 +453,15 @@ $ktai->options['output_encoding'] = KTAI_ENCDING_UTF8, 	//出力をUTF-8に変�
 
 　定義したいインラインCSSに名前をつけて管理することが出来ます。
 　style((名前))で、その名前のスタイルを呼び出すことが出来ます。
+
+【フォント関連】[New!]
+
+・デフォルトのフォントサイズ(string)
+	'default_font_size' => 'medium', 
+
+　Lib3gkHtml::font()にてデフォルト(第一引数を無指定)で指定するフォントサイズを
+記述します。「small」「medium」「large」から指定できます。デフォルトは
+「medium」です。
 
 
 --------------------------------------------------
@@ -523,6 +552,7 @@ bool is_jphone()	JPHONE携帯の判別
 bool is_ezweb()		EZWeb携帯の判別
 bool is_emobile()	EMOBILE携帯の判別
 bool is_iphone()	iPhoneの判別
+bool is_android()	Androidの判別[New!]
 
 　各携帯端末を判別し、そうであったらtrueを返します。
 　is_vodafone()はJ-PHONEも、is_softbank()はvodafoneとJ-PHONEも含みます
@@ -558,6 +588,7 @@ KTAI_CARRIER_SOFTBANK	Softbank
 KTAI_CARRIER_EMOBILE	EMOBILE
 KTAI_CARRIER_IPHONE		iPhone
 KTAI_CARRIER_PHS		PHS
+KTAI_CARRIER_ANDROID	Android[New!]
 
 
 ◎ユーザーエージェントの解析
@@ -668,7 +699,7 @@ string emoji(mixed $code, bool $disp = true, int $carrier = null,
 　際にはご注意ください。
 
 
-◎スクリーンサイズに最適化した画像を表示 [Update!]
+◎スクリーンサイズに最適化した画像を表示 
 
 string image(string $url, array $htmlAttribute = array(), $stretch = true)
 
@@ -743,6 +774,39 @@ string style(string $name)
 　あらかじめ登録した名前のスタイルシートを呼び出します。
 　スタイルの登録方法は「設定：設定値詳細」項目内の「インラインスタイルシートの
 登録」欄をご覧ください。
+
+※lib3gkおよびヘルパーにて利用可能な関数です。
+
+
+◎フォントサイズの均一化が可能なフォントタグの生成[New!]
+
+string font(string $size = null, string $tag = null, string $style = null, 
+	boolean $display = true)
+
+　異なるキャリアでも同じフォントサイズになるようなfontタグを出力します。
+docomoはdivタグ、それ以外はfontタグで出力します。
+　$sizeでフォントサイズを指定します。同じ大きさに補正するサイズは「small」
+「medium」「large」です。それ以外のサイズを指定した場合はその値がそのまま指定
+されます。
+　$tagでタグの種類を変更する事ができます。「div」「span」「font」等を指定
+します。
+　$styleはstyle()で指定するスタイル名を指定します。フォント指定の際に指定
+スタイルを埋め込みます。
+　$displayは処理終了の際にechoします。デフォルトはtrue(echoする)です。
+
+　なお、この機能は「use_xml」がtrueの場合(XHTMLの場合)にのみ実行します。
+
+※lib3gkおよびヘルパーにて利用可能な関数です。
+
+
+◎フォント終了タグの生成[New!]
+
+string fontend(boolean $display = true)
+
+　上記font()メソッドで出力したフォントタグに対する閉じタグを生成します。
+本メソッドを実行すると、直近に実行したfont()メソッドに対応するタグが出力
+されます。それ以降は後入れ先出しで出力します。
+　$displayは処理終了の際にechoします。デフォルトはtrue(echoする)です。
 
 ※lib3gkおよびヘルパーにて利用可能な関数です。
 
@@ -896,6 +960,20 @@ http://blog.ecworks.jp/ktai
 --------------------------------------------------
 ■バージョン情報
 --------------------------------------------------
+
+【Ver0.4.0】2010.11.30
+・ktai_app_controller.phpの場所をapp直下に移動
+・「use_xml」がtrueの場合、beforeRender()時にXHTMLのContent-typeを出力するように
+　修正
+・文字の大きさを機種毎に合わせる機能を追加
+・Android端末の判定ができるようになりました
+・KtaiHelper::link()でキャリア・出力エンコーディング・バイナリのオプション指定を
+　追加
+・機種情報・IPアドレス情報を追加修正
+・Lib3gkIpのIPアドレステーブル中にスペースが混じっているデータがあるのを修正
+・Lib3gk::get_ip_carrier()の内部で存在しないメソッドをコールしている不具合を修正
+・softbank jphoneの端末ID取得時にエラーが出る不具合を修正
+・本ドキュメントにKtaiAppControllerの使用方法について明記されていないため追加
 
 【Ver0.3.2】2010.05.17
 ・0.3.1の修正でlayout内について自動変換処理がされない問題を修正

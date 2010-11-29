@@ -6,7 +6,7 @@
  *
  * PHP versions 4 and 5
  *
- * Ktai Library for CakePHP1.2
+ * Ktai Library for CakePHP
  * Copyright 2009-2010, ECWorks.
  
  * Licensed under The GNU General Public Licence
@@ -14,8 +14,8 @@
  *
  * @copyright		Copyright 2009-2010, ECWorks.
  * @link			http://www.ecworks.jp/ ECWorks.
- * @version			0.3.2
- * @lastmodified	$Date: 2010-05-17 14:00:00 +0900 (Mon, 17 May 2010) $
+ * @version			0.4.0
+ * @lastmodified	$Date: 2010-11-30 03:00:00 +0900 (Tue, 30 Nov 2010) $
  * @license			http://www.gnu.org/licenses/gpl.html The GNU General Public Licence
  */
 
@@ -49,6 +49,7 @@ class Lib3gkCarrier {
 		'iphone_user_agent_belongs_to_softbank'  => false, 
 		'iphone_email_belongs_to_ktai_email'     => false, 
 		'iphone_email_belongs_to_softbank_email' => false, 
+		'android_user_agent_belongs_to_ktai'     => false, 
 	);
 	
 	//------------------------------------------------
@@ -221,6 +222,14 @@ class Lib3gkCarrier {
 			$arr['carrier_name'] = 'iPhone';
 			$arr['machine_name'] = 'default';
 		
+		//Android
+		//
+		}else
+		if(strpos($user_agent, 'Android') !== false){
+			$arr['carrier'] = KTAI_CARRIER_ANDROID;
+			$arr['carrier_name'] = 'Android';
+			$arr['machine_name'] = 'default';
+		
 		//PHS
 		//
 		}else
@@ -362,6 +371,18 @@ class Lib3gkCarrier {
 	
 	
 	/**
+	 * Android端末かのチェック
+	 * 詳しくはLib3gkCarrier::is_Android()を参照
+	 *
+	 * @return boolean trueの場合はAndroid端末
+	 * @access public
+	 */
+	function is_android(){
+		return $this->get_carrier() == KTAI_CARRIER_ANDROID;
+	}
+	
+	
+	/**
 	 * 携帯かチェック
 	 *
 	 * @return boolean trueの場合は携帯
@@ -372,7 +393,8 @@ class Lib3gkCarrier {
 				$this->is_softbank() || 
 				$this->is_ezweb() || 
 				$this->is_emobile() || 
-				($this->_params['iphone_user_agent_belongs_to_ktai'] && $this->is_iphone());
+				($this->_params['iphone_user_agent_belongs_to_ktai'] && $this->is_iphone()) ||
+				($this->_params['android_user_agent_belongs_to_ktai'] && $this->is_android());
 	}
 	
 	

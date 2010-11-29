@@ -6,7 +6,7 @@
  *
  * PHP versions 4 and 5
  *
- * Ktai Library for CakePHP1.2
+ * Ktai Library for CakePHP
  * Copyright 2009-2010, ECWorks.
  
  * Licensed under The GNU General Public Licence
@@ -14,8 +14,8 @@
  *
  * @copyright		Copyright 2009-2010, ECWorks.
  * @link			http://www.ecworks.jp/ ECWorks.
- * @version			0.3.2
- * @lastmodified	$Date: 2010-05-17 14:00:00 +0900 (Mon, 17 May 2010) $
+ * @version			0.4.0
+ * @lastmodified	$Date: 2010-11-30 03:00:00 +0900 (Tue, 30 Nov 2010) $
  * @license			http://www.gnu.org/licenses/gpl.html The GNU General Public Licence
  */
 
@@ -27,7 +27,7 @@ if(!class_exists('lib3gk')){
 }
 
 /**
- * Ktai component class for CakePHP1.2
+ * Ktai component class for CakePHP
  *
  * @package       KtaiLibrary
  * @subpackage    KtaiLibrary.app.controllers.components
@@ -119,6 +119,9 @@ class KtaiComponent extends Object {
 	function beforeRender(&$controller){
 		if(isset($controller->ktai)){
 			Configure::write('Ktai', $this->_options);
+		}
+		if($this->_options['use_xml'] && $this->is_imode() && Configure::read('debug') == 0){
+			header('Content-type: application/xhtml+xml');
 		}
 	}
 	
