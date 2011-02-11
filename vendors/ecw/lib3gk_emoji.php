@@ -7,15 +7,15 @@
  * PHP versions 4 and 5
  *
  * Ktai Library for CakePHP
- * Copyright 2009-2010, ECWorks.
+ * Copyright 2009-2011, ECWorks.
  
  * Licensed under The GNU General Public Licence
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright		Copyright 2009-2010, ECWorks.
+ * @copyright		Copyright 2009-2011, ECWorks.
  * @link			http://www.ecworks.jp/ ECWorks.
- * @version			0.4.0
- * @lastmodified	$Date: 2010-11-30 03:00:00 +0900 (Tue, 30 Nov 2010) $
+ * @version			0.4.1
+ * @lastmodified	$Date: 2011-02-11 18:00:00 +0900 (Fri, 11 Feb 2011) $
  * @license			http://www.gnu.org/licenses/gpl.html The GNU General Public Licence
  */
 
@@ -90,6 +90,11 @@ class Lib3gkEmoji {
 		//Emoji caching params
 		//
 		'use_emoji_cache' => true,
+		
+		//for CakePHP
+		//
+		'output_auto_convert_emoji' => false, 
+		
 	);
 	
 	/**
@@ -2144,14 +2149,20 @@ class Lib3gkEmoji {
 			$carrier = $this->__carrier->get_carrier();
 		}
 		
-		if($binary === null){
-			$binary = $this->_params['use_binary_emoji'];
-		}
-		
 		if($output_encoding === null){
 			$output_encoding = $this->_params['output_encoding'];
 		}
 		$output_encoding = $this->__tools->normal_encoding_str($output_encoding);
+		
+		if($binary === null){
+			$binary = $this->_params['use_binary_emoji'];
+		}
+		if($this->_params['output_auto_convert_emoji'] === true){
+			$carrier = KTAI_CARRIER_DOCOMO;
+			$output_encoding = $this->_params['input_encoding'];
+			$binary = false;
+		}
+		
 		if($output_encoding == KTAI_ENCODING_UTF8){
 			if($carrier == KTAI_CARRIER_KDDI && $binary){
 				$oekey = 2;
@@ -2306,7 +2317,6 @@ class Lib3gkEmoji {
 	 *
 	 * $optionのとるキーと値(省略可)
 	 *   'input_carrier'  入力データのキャリア
-	 *   'output_carrier' 変換するキャリア
 	 *   'input_encoding' 入力データのエンコーディング
 	 */
 	function &__analyzeEmoji($str, $options = array()){
@@ -2316,7 +2326,6 @@ class Lib3gkEmoji {
 		
 		$defalt_options = array(
 			'input_carrier'   => $this->__carrier->_carrier, 
-			'output_carrier'  => $this->__carrier->_carrier, 
 			'input_encoding'  => $this->_params['input_encoding'], 
 		);
 		$options = array_merge($defalt_options, $options);

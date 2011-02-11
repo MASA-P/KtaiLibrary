@@ -7,15 +7,15 @@
  * PHP versions 4 and 5
  *
  * Ktai Library for CakePHP
- * Copyright 2009-2010, ECWorks.
+ * Copyright 2009-2011, ECWorks.
  
  * Licensed under The GNU General Public Licence
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright		Copyright 2009-2010, ECWorks.
+ * @copyright		Copyright 2009-2011, ECWorks.
  * @link			http://www.ecworks.jp/ ECWorks.
- * @version			0.4.0
- * @lastmodified	$Date: 2010-11-30 03:00:00 +0900 (Tue, 30 Nov 2010) $
+ * @version			0.4.1
+ * @lastmodified	$Date: 2011-02-11 18:00:00 +0900 (Fri, 11 Feb 2011) $
  * @license			http://www.gnu.org/licenses/gpl.html The GNU General Public Licence
  */
 
@@ -23,7 +23,7 @@
  * includes
  */
 if(!class_exists('lib3gk')){
-	require_once(VENDORS.'ecw'.DS.'lib3gk.php');
+	App::import('Vendor', 'ecw'.DS.'Lib3gk');
 }
 
 /**
@@ -335,6 +335,18 @@ class KtaiHelper extends Helper {
 	 */
 	function is_iphone(){
 		return $this->_lib3gk->is_iphone();
+	}
+	
+	
+	/**
+	 * Android端末かのチェック
+	 * 詳しくはLib3gkCarrier::is_android()を参照
+	 *
+	 * @return boolean trueの場合はAndroid端末
+	 * @access public
+	 */
+	function is_android(){
+		return $this->_lib3gk->is_android();
 	}
 	
 	

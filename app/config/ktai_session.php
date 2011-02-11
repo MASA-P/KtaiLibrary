@@ -7,15 +7,15 @@
  * PHP versions 4 and 5
  *
  * Ktai Library for CakePHP
- * Copyright 2009-2010, ECWorks.
+ * Copyright 2009-2011, ECWorks.
  
  * Licensed under The GNU General Public Licence
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright		Copyright 2009-2010, ECWorks.
+ * @copyright		Copyright 2009-2011, ECWorks.
  * @link			http://www.ecworks.jp/ ECWorks.
- * @version			0.4.0
- * @lastmodified	$Date: 2010-11-30 03:00:00 +0900 (Tue, 30 Nov 2010) $
+ * @version			0.4.1
+ * @lastmodified	$Date: 2011-02-11 18:00:00 +0900 (Fri, 11 Feb 2011) $
  * @license			http://www.gnu.org/licenses/gpl.html The GNU General Public Licence
  */
 
@@ -39,7 +39,7 @@ if(!defined('__KTAI_SESSION__')){
 //Get Lib3gk instance.
 //
 if(!class_exists('lib3gk')){
-	require_once(VENDORS.'ecw'.DS.'lib3gk.php');
+	App::import('Vendor', 'ecw'.DS.'Lib3gk');
 }
 $ktai = Lib3gk::get_instance();
 
@@ -57,10 +57,17 @@ if($ktai->is_imode()){
 
 //Session settings.
 //
+$filepath = 'ecw'.DS.'session'.DS;
 if(version_compare(Configure::version(), '1.3') < 0){
-	include(VENDORS.'ecw'.DS.'session'.DS.'ktai_session_12.php');
+	$filepath .= 'ktai_session_12.php';
 }else{
-	include(VENDORS.'ecw'.DS.'session'.DS.'ktai_session_13.php');
+	$filepath .= 'ktai_session_13.php';
+}
+if(file_exists(APP.'vendors'.DS.$filepath)){
+	include(APP.'vendors'.DS.$filepath);
+}else
+if(file_exists(VENDORS.$filepath)){
+	include(VENDORS.$filepath);
 }
 
 //iMODE session settings.

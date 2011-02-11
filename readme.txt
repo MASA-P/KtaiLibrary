@@ -1,6 +1,6 @@
 ***************************************************************************
 	携帯用ライブラリ「Ktai Library」説明書
-	Copyright 2009-2010 ECWorks ( http://www.ecworks.jp/ )
+	Copyright 2009-2011 ECWorks ( http://www.ecworks.jp/ )
 ***************************************************************************
 
 　ダウンロードいただきましてありがとうございます。
@@ -961,19 +961,31 @@ http://blog.ecworks.jp/ktai
 ■バージョン情報
 --------------------------------------------------
 
+【Ver0.4.1】2011.2.11
+　・app/vendorsにもecwディレクトリを置けるように修正
+　・$ktaiプロパティなどにuse_xmlをセットしていないとワーニングが出る問題を修正
+　・emoji()で出力した絵文字がoutput_auto_convert_emojiオプション指定時に消えて
+　　しまう不具合を対処
+　・Lib3gkCarrier::is_android()のラッパーメソッドをコンポーネント・ヘルパー
+　　などに追加
+　・KDDIとemobileで出たの存在しない機種でLib3gkCarrier::analyze_user_agent()
+　　するとワーニングが出る問題を修正
+
+
 【Ver0.4.0】2010.11.30
-・ktai_app_controller.phpの場所をapp直下に移動
-・「use_xml」がtrueの場合、beforeRender()時にXHTMLのContent-typeを出力するように
-　修正
-・文字の大きさを機種毎に合わせる機能を追加
-・Android端末の判定ができるようになりました
-・KtaiHelper::link()でキャリア・出力エンコーディング・バイナリのオプション指定を
-　追加
-・機種情報・IPアドレス情報を追加修正
-・Lib3gkIpのIPアドレステーブル中にスペースが混じっているデータがあるのを修正
-・Lib3gk::get_ip_carrier()の内部で存在しないメソッドをコールしている不具合を修正
-・softbank jphoneの端末ID取得時にエラーが出る不具合を修正
-・本ドキュメントにKtaiAppControllerの使用方法について明記されていないため追加
+　・ktai_app_controller.phpの場所をapp直下に移動
+　・「use_xml」がtrueの場合、beforeRender()時にXHTMLのContent-typeを出力する
+　　ように修正
+　・文字の大きさを機種毎に合わせる機能を追加
+　・Android端末の判定ができるようになりました
+　・KtaiHelper::link()でキャリア・出力エンコーディング・バイナリのオプション
+　　指定を追加
+　・機種情報・IPアドレス情報を追加修正
+　・Lib3gkIpのIPアドレステーブル中にスペースが混じっているデータがあるのを修正
+　・Lib3gk::get_ip_carrier()の内部で存在しないメソッドをコールしている不具合を
+　　修正
+　・softbank jphoneの端末ID取得時にエラーが出る不具合を修正
+　・本ドキュメントにKtaiAppControllerの使用方法について明記されていないため追加
 
 【Ver0.3.2】2010.05.17
 ・0.3.1の修正でlayout内について自動変換処理がされない問題を修正
