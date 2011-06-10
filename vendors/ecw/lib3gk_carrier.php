@@ -142,7 +142,7 @@ class Lib3gkCarrier {
 			'machine_name' => 'default', 
 		);
 		
-		if($user_agent === null){
+		if($user_agent === null && isset($_SERVER['HTTP_USER_AGENT'])){
 			$user_agent = $_SERVER['HTTP_USER_AGENT'];
 		}
 		
