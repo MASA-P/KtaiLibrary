@@ -1,7 +1,27 @@
 <?php
+/**
+ * Ktai library, supports Japanese mobile phone sites coding.
+ * It provides many functions such as a carrier check to use Referer or E-mail, 
+ * conversion of an Emoji, and more.
+ *
+ * PHP versions 4 and 5
+ *
+ * Ktai Library for CakePHP
+ * Copyright 2009-2011, ECWorks.
+ 
+ * Licensed under The GNU General Public Licence
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @copyright		Copyright 2009-2011, ECWorks.
+ * @link			http://www.ecworks.jp/ ECWorks.
+ * @version			0.4.2
+ * @lastmodified	$Date: 2011-06-27 09:00:00 +0900 (Mon, 27 Jun 2011) $
+ * @license			http://www.gnu.org/licenses/gpl.html The GNU General Public Licence
+ */
 
-//Session.save proccess for CakePHP1.2(implements from 1.2.8)
-//
+/**
+ * Session.save proccess for CakePHP1.2(implements from 1.2.8)
+ */
 switch (Configure::read('Session.save')) {
 	case 'cake':
 		if (empty($_SESSION)) {

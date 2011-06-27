@@ -14,8 +14,8 @@
  *
  * @copyright		Copyright 2009-2011, ECWorks.
  * @link			http://www.ecworks.jp/ ECWorks.
- * @version			0.4.1
- * @lastmodified	$Date: 2011-02-11 18:00:00 +0900 (Fri, 11 Feb 2011) $
+ * @version			0.4.2
+ * @lastmodified	$Date: 2011-06-27 09:00:00 +0900 (Mon, 27 Jun 2011) $
  * @license			http://www.gnu.org/licenses/gpl.html The GNU General Public Licence
  */
 
@@ -142,7 +142,7 @@ class Lib3gkCarrier {
 			'machine_name' => 'default', 
 		);
 		
-		if($user_agent === null){
+		if($user_agent === null && isset($_SERVER['HTTP_USER_AGENT'])){
 			$user_agent = $_SERVER['HTTP_USER_AGENT'];
 		}
 		
@@ -434,6 +434,7 @@ class Lib3gkCarrier {
 	 */
 	function is_softbank_email($email){
 		if(stripos($email, '@softbank.ne.jp') !== false) return true;
+		if(stripos($email, '@disney.ne.jp') !== false) return true;
 		if($this->_params['iphone_email_belongs_to_softbank_email'] && $this->is_iphone_email($email)) return true;
 		return $this->is_vodafone_email($email);
 	}

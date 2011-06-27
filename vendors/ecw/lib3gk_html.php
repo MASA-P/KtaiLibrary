@@ -14,8 +14,8 @@
  *
  * @copyright		Copyright 2009-2011, ECWorks.
  * @link			http://www.ecworks.jp/ ECWorks.
- * @version			0.4.1
- * @lastmodified	$Date: 2011-02-11 18:00:00 +0900 (Fri, 11 Feb 2011) $
+ * @version			0.4.2
+ * @lastmodified	$Date: 2011-06-27 09:00:00 +0900 (Mon, 27 Jun 2011) $
  * @license			http://www.gnu.org/licenses/gpl.html The GNU General Public Licence
  */
 
@@ -388,7 +388,7 @@ class Lib3gkHtml {
 			unset($options['margin']);
 		}
 		if($ec != ''){
-			$url .= 'chld='.$ec;
+			$url .= '&chld='.$ec;
 		}
 		return $this->image($url, $options);
 	}
